@@ -1,115 +1,13 @@
-========== PUNTO 09 — LDoS [VULNERABLE] ==========
-time="2026-06-08T12:57:45-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
- Image p09v-cliente Building 
- Image p09v-servidor Building 
- Image p09v-atacante Building 
- Image p09v-cliente Building 
- Image p09v-atacante Building 
- Image p09v-servidor Building 
-Sending build context to Docker daemon  1.663kB
-Sending build context to Docker daemon  1.663kB
-Sending build context to Docker daemon  1.663kB
-Step 1/7 : FROM python:3.11-slim-bookworm
-Step 1/7 : FROM python:3.11-slim-bookworm
-Step 1/7 : FROM python:3.11-slim-bookworm
- ---> 8dca233de9f3
-Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
- ---> 8dca233de9f3
-Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
- ---> 8dca233de9f3
-Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
- ---> Using cache
- ---> 10fcde043905
-Step 3/7 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 10fcde043905
-Step 3/7 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 10fcde043905
-Step 3/7 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 35cffc687ce6
-Step 4/7 : WORKDIR /lab
- ---> Using cache
- ---> 35cffc687ce6
-Step 4/7 : WORKDIR /lab
- ---> Using cache
- ---> 35cffc687ce6
-Step 4/7 : WORKDIR /lab
- ---> Using cache
- ---> c2f864997f4b
-Step 5/7 : COPY scripts/ /lab/
- ---> Using cache
- ---> c2f864997f4b
-Step 5/7 : COPY scripts/ /lab/
- ---> Using cache
- ---> c2f864997f4b
-Step 5/7 : COPY scripts/ /lab/
- ---> Using cache
- ---> 065d046522d3
-Step 6/7 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> 065d046522d3
-Step 6/7 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> 065d046522d3
-Step 6/7 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> c513a76b2c84
-Step 7/7 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> c513a76b2c84
-Step 7/7 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> c513a76b2c84
-Step 7/7 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> 11daf28f6fdb
- ---> Using cache
- ---> 11daf28f6fdb
-Successfully built 11daf28f6fdb
- ---> Using cache
- ---> 11daf28f6fdb
-Successfully built 11daf28f6fdb
-Successfully built 11daf28f6fdb
-Successfully tagged p09v-atacante:latest
- Image p09v-atacante Built 
- Image p09v-atacante Built 
-Successfully tagged p09v-cliente:latest
- Image p09v-cliente Built 
- Image p09v-cliente Built 
-Successfully tagged p09v-servidor:latest
- Image p09v-servidor Built 
- Image p09v-servidor Built 
- Network p09v_labnet Creating 
- Network p09v_labnet Created 
- Container p09v-cliente-1 Creating 
- Container p09v-servidor-1 Creating 
- Container p09v-atacante-1 Creating 
- Container p09v-servidor-1 Created 
- Container p09v-atacante-1 Created 
- Container p09v-cliente-1 Created 
- Container p09v-servidor-1 Starting 
- Container p09v-atacante-1 Starting 
- Container p09v-cliente-1 Starting 
- Container p09v-cliente-1 Started 
- Container p09v-servidor-1 Started 
- Container p09v-atacante-1 Started 
-[*] Descarga sin ataque (referencia):
-velocidad=1289444171 B/s tiempo=0.004066s
-[*] Descarga durante LDoS:
-velocidad=1307451371 B/s tiempo=0.004010s
- Container p09v-cliente-1 Stopping 
- Container p09v-atacante-1 Stopping 
- Container p09v-servidor-1 Stopping 
- Container p09v-cliente-1 Stopped 
- Container p09v-cliente-1 Removing 
- Container p09v-atacante-1 Stopped 
- Container p09v-atacante-1 Removing 
- Container p09v-servidor-1 Stopped 
- Container p09v-servidor-1 Removing 
- Container p09v-atacante-1 Removed 
- Container p09v-servidor-1 Removed 
- Container p09v-cliente-1 Removed 
- Network p09v_labnet Removing 
- Network p09v_labnet Removed 
+
+╔══════════════════════════════════════════════════════════════╗
+║  Taller 2 — Punto 09 — LDoS                         ║
+║  Modo: VULNERABLE                                            ║
+╚══════════════════════════════════════════════════════════════╝
+
+oscar@lab $ [ATACANTE 10.9.0.101]
+python3 /lab/ldos.py 10.9.0.103 25  # ráfagas T=1s L=0.15s
+[*] Ataque LDoS en background...
+
+oscar@lab $ [CLIENTE 10.9.0.102]
+curl -w 'velocidad=%{speed_download} B/s' http://10.9.0.103/bigfile.bin
+velocidad=1232169212 B/s tiempo=0.004255s

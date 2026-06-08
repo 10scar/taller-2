@@ -1,55 +1,12 @@
-========== PUNTO 12 — DOWNGRADE TLS [VULNERABLE] ==========
-time="2026-06-08T12:59:55-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
- Image p12v-servidor Building 
- Image p12v-servidor Building 
-Sending build context to Docker daemon  1.128kB
-Step 1/7 : FROM debian:bookworm-slim
- ---> 0104b334637a
-Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends nginx openssl curl     && rm -rf /var/lib/apt/lists/*
- ---> Using cache
- ---> e4010372be5d
-Step 3/7 : COPY nginx.conf /etc/nginx/sites-available/default
- ---> Using cache
- ---> 5f8e3184cd4d
-Step 4/7 : COPY entrypoint.sh /entrypoint.sh
- ---> Using cache
- ---> bf182fe69da4
-Step 5/7 : RUN chmod +x /entrypoint.sh     && openssl req -x509 -nodes -days 365 -newkey rsa:2048        -keyout /etc/ssl/private/nginx-selfsigned.key        -out /etc/ssl/certs/nginx-selfsigned.crt        -subj "/CN=lab.local"
- ---> Using cache
- ---> b7a99576b390
-Step 6/7 : ENTRYPOINT ["/entrypoint.sh"]
- ---> Using cache
- ---> 27fa8b63fa0f
-Step 7/7 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> e21584e0f648
-Successfully built e21584e0f648
-Successfully tagged p12v-servidor:latest
- Image p12v-servidor Built 
- Image p12v-servidor Built 
- Network p12v_labnet Creating 
- Network p12v_labnet Created 
- Container p12v-cliente-1 Creating 
- Container p12v-servidor-1 Creating 
- Container p12v-servidor-1 Created 
- Container p12v-cliente-1 Created 
- Container p12v-cliente-1 Starting 
- Container p12v-servidor-1 Starting 
- Container p12v-cliente-1 Started 
- Container p12v-servidor-1 Started 
-40472893517F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../ssl/record/rec_layer_s3.c:1601:SSL alert number 80
-CONNECTED(00000003)
-New, (NONE), Cipher is (NONE)
-    Protocol  : TLSv1
-    Cipher    : 0000
-    Verify return code: 0 (ok)
- Container p12v-servidor-1 Stopping 
- Container p12v-cliente-1 Stopping 
- Container p12v-cliente-1 Stopped 
- Container p12v-cliente-1 Removing 
- Container p12v-servidor-1 Stopped 
- Container p12v-servidor-1 Removing 
- Container p12v-cliente-1 Removed 
- Container p12v-servidor-1 Removed 
- Network p12v_labnet Removing 
- Network p12v_labnet Removed 
+
+╔══════════════════════════════════════════════════════════════╗
+║  Taller 2 — Punto 12 — DOWNGRADE TLS                ║
+║  Modo: VULNERABLE                                            ║
+╚══════════════════════════════════════════════════════════════╝
+
+oscar@lab $ [CLIENTE 10.9.0.102]
+openssl s_client -connect 10.9.0.103:443 -tls1
+
+oscar@lab # [SERVIDOR/VÍCTIMA 10.9.0.103]
+# Servidor acepta TLS 1.0 / ciphers débiles
+[!] Negociación insegura posible — downgrade exitoso

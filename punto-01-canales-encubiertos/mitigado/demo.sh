@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "========== PUNTO 01 — CANALES ENCUBiertos [MITIGADO] =========="
-P="docker compose -p p01m -f docker-compose.yml"
-trap '$P down -v 2>/dev/null || true' EXIT
-$P down -v 2>/dev/null || true
-$P up -d --build
-sleep 4
-$P exec -d receptor python3 /lab/decode_headers.py
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+source "${ROOT}/lib/capture_helpers.sh"
+init_compose "p01m" "docker-compose.yml"
+trap 'teardown_lab 2>/dev/null || true' EXIT
+
+setup_lab
+${COMPOSE} exec -d receptor sh -c 'python3 /lab/decode_headers.py > /tmp/decode.log 2>&1' >> "${SETUP_LOG}" 2>&1
 sleep 2
-$P exec emisor python3 /lab/encode_headers.py 10.9.0.102 SECRETO
-sleep 6
-$P logs receptor 2>/dev/null || true
-$P down -v
+
+section "01" "CANALES ENCUBIERTOS" "MITIGADO"
+prompt_attack "10.9.0.101" "python3 /lab/encode_headers.py 10.9.0.102 SECRETO"
+run_exec emisor python3 /lab/encode_headers.py 10.9.0.102 SECRETO
+sleep 5
+blank_line
+prompt_server "10.9.0.102" "cat /tmp/decode.log  (normalización activa)"
+run_exec receptor cat /tmp/decode.log 2>/dev/null || true
+sleep 1
+run_exec receptor tail -8 /tmp/decode.log 2>/dev/null || true
+
+teardown_lab

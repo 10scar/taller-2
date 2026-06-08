@@ -1,285 +1,158 @@
-========== PUNTO 06 — DNS CACHE POISONING [VULNERABLE] ==========
-time="2026-06-08T12:55:16-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
- Image p06v-auth Building 
- Image p06v-atacante Building 
- Image p06v-resolver Building 
- Image p06v-resolver Building 
- Image p06v-auth Building 
- Image p06v-atacante Building 
-Sending build context to Docker daemon  2.016kB
-Sending build context to Docker daemon  2.016kB
-Sending build context to Docker daemon  2.016kB
-Step 1/10 : FROM python:3.11-slim-bookworm
-Step 1/10 : FROM python:3.11-slim-bookworm
-Step 1/10 : FROM python:3.11-slim-bookworm
- ---> 8dca233de9f3
-Step 2/10 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump procps dnsmasq dnsutils     && rm -rf /var/lib/apt/lists/*
- ---> 8dca233de9f3
-Step 2/10 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump procps dnsmasq dnsutils     && rm -rf /var/lib/apt/lists/*
- ---> 8dca233de9f3
-Step 2/10 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump procps dnsmasq dnsutils     && rm -rf /var/lib/apt/lists/*
- ---> Using cache
- ---> 5ead2bc03aaf
-Step 3/10 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 5ead2bc03aaf
-Step 3/10 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 5ead2bc03aaf
-Step 3/10 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 31d58a7d52dd
-Step 4/10 : WORKDIR /lab
- ---> Using cache
- ---> 31d58a7d52dd
-Step 4/10 : WORKDIR /lab
- ---> Using cache
- ---> 31d58a7d52dd
-Step 4/10 : WORKDIR /lab
- ---> Using cache
- ---> 65ff9468d4e0
-Step 5/10 : COPY scripts/ /lab/
- ---> Using cache
- ---> 65ff9468d4e0
-Step 5/10 : COPY scripts/ /lab/
- ---> Using cache
- ---> 65ff9468d4e0
-Step 5/10 : COPY scripts/ /lab/
- ---> Using cache
- ---> 16809f44f3cc
-Step 6/10 : COPY dnsmasq/ /etc/dnsmasq/
- ---> Using cache
- ---> 16809f44f3cc
-Step 6/10 : COPY dnsmasq/ /etc/dnsmasq/
- ---> Using cache
- ---> 16809f44f3cc
-Step 6/10 : COPY dnsmasq/ /etc/dnsmasq/
- ---> Using cache
- ---> b8a1e2e1c5bf
-Step 7/10 : COPY entrypoint-auth.sh entrypoint-resolver.sh /
- ---> Using cache
- ---> b8a1e2e1c5bf
-Step 7/10 : COPY entrypoint-auth.sh entrypoint-resolver.sh /
- ---> Using cache
- ---> b8a1e2e1c5bf
-Step 7/10 : COPY entrypoint-auth.sh entrypoint-resolver.sh /
- ---> Using cache
- ---> 2af6e951f231
-Step 8/10 : RUN chmod +x /entrypoint-auth.sh /entrypoint-resolver.sh
- ---> Using cache
- ---> 2af6e951f231
-Step 8/10 : RUN chmod +x /entrypoint-auth.sh /entrypoint-resolver.sh
- ---> Using cache
- ---> 2af6e951f231
-Step 8/10 : RUN chmod +x /entrypoint-auth.sh /entrypoint-resolver.sh
- ---> Using cache
- ---> 435e54b32cf5
-Step 9/10 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> 435e54b32cf5
-Step 9/10 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> 435e54b32cf5
-Step 9/10 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> ec331265856a
-Step 10/10 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> ec331265856a
-Step 10/10 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> ec331265856a
-Step 10/10 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> 0ed63f5f111c
- ---> Using cache
- ---> 0ed63f5f111c
-Successfully built 0ed63f5f111c
- ---> Using cache
- ---> 0ed63f5f111c
-Successfully built 0ed63f5f111c
-Successfully built 0ed63f5f111c
-Successfully tagged p06v-resolver:latest
- Image p06v-resolver Built 
- Image p06v-resolver Built 
-Successfully tagged p06v-atacante:latest
- Image p06v-atacante Built 
- Image p06v-atacante Built 
-Successfully tagged p06v-auth:latest
- Image p06v-auth Built 
- Image p06v-auth Built 
- Network p06v_labnet Creating 
- Network p06v_labnet Created 
- Container p06v-auth-1 Creating 
- Container p06v-resolver-1 Creating 
- Container p06v-atacante-1 Creating 
- Container p06v-atacante-1 Created 
- Container p06v-auth-1 Created 
- Container p06v-resolver-1 Created 
- Container p06v-auth-1 Starting 
- Container p06v-resolver-1 Starting 
- Container p06v-atacante-1 Starting 
- Container p06v-resolver-1 Started 
- Container p06v-auth-1 Started 
- Container p06v-atacante-1 Started 
-[*] Consulta legítima inicial:
+
+╔══════════════════════════════════════════════════════════════╗
+║  Taller 2 — Punto 06 — DNS CACHE POISONING          ║
+║  Modo: VULNERABLE                                            ║
+╚══════════════════════════════════════════════════════════════╝
+
+oscar@lab $ [ATACANTE 10.9.0.153]
+dig @10.9.0.53 test.ejemplo.com +short  # consulta legítima
 10.10.10.10
-[*] Lanzando consulta recursiva + envenenamiento...
+
+oscar@lab $ [ATACANTE 10.9.0.153]
+python3 /lab/dns_poison.py rand001 100
 [*] Inundando resolvedor con respuestas forjadas para rand001.ejemplo.com.
-[+] Sonda inyectada: Puerto_Destino=44430 | TXID=34651
-[+] Sonda inyectada: Puerto_Destino=10655 | TXID=45882
-[+] Sonda inyectada: Puerto_Destino=39770 | TXID=12903
-[+] Sonda inyectada: Puerto_Destino=34519 | TXID=15539
-[+] Sonda inyectada: Puerto_Destino=40881 | TXID=22597
-[+] Sonda inyectada: Puerto_Destino=49108 | TXID=21344
-[+] Sonda inyectada: Puerto_Destino=41364 | TXID=25988
-[+] Sonda inyectada: Puerto_Destino=63003 | TXID=48128
-[+] Sonda inyectada: Puerto_Destino=33712 | TXID=49977
-[+] Sonda inyectada: Puerto_Destino=33089 | TXID=25532
-[+] Sonda inyectada: Puerto_Destino=46137 | TXID=22885
-[+] Sonda inyectada: Puerto_Destino=24191 | TXID=46951
-[+] Sonda inyectada: Puerto_Destino=19244 | TXID=35791
-[+] Sonda inyectada: Puerto_Destino=1443 | TXID=50110
-[+] Sonda inyectada: Puerto_Destino=55926 | TXID=43601
-[+] Sonda inyectada: Puerto_Destino=51438 | TXID=57910
-[+] Sonda inyectada: Puerto_Destino=30432 | TXID=25484
-[+] Sonda inyectada: Puerto_Destino=1956 | TXID=35886
-[+] Sonda inyectada: Puerto_Destino=16799 | TXID=56545
-[+] Sonda inyectada: Puerto_Destino=42350 | TXID=26614
-[+] Sonda inyectada: Puerto_Destino=9051 | TXID=43640
-[+] Sonda inyectada: Puerto_Destino=4739 | TXID=47427
-[+] Sonda inyectada: Puerto_Destino=59416 | TXID=61800
-[+] Sonda inyectada: Puerto_Destino=8383 | TXID=17485
-[+] Sonda inyectada: Puerto_Destino=24093 | TXID=1322
-[+] Sonda inyectada: Puerto_Destino=9371 | TXID=56126
-[+] Sonda inyectada: Puerto_Destino=36402 | TXID=35594
-[+] Sonda inyectada: Puerto_Destino=58523 | TXID=57487
-[+] Sonda inyectada: Puerto_Destino=59743 | TXID=25097
-[+] Sonda inyectada: Puerto_Destino=12235 | TXID=49840
-[+] Sonda inyectada: Puerto_Destino=42829 | TXID=35401
-[+] Sonda inyectada: Puerto_Destino=2922 | TXID=4804
-[+] Sonda inyectada: Puerto_Destino=20226 | TXID=17895
-[+] Sonda inyectada: Puerto_Destino=58169 | TXID=35373
-[+] Sonda inyectada: Puerto_Destino=51402 | TXID=33149
-[+] Sonda inyectada: Puerto_Destino=15566 | TXID=20963
-[+] Sonda inyectada: Puerto_Destino=19877 | TXID=27271
-[+] Sonda inyectada: Puerto_Destino=35854 | TXID=65440
-[+] Sonda inyectada: Puerto_Destino=34374 | TXID=57481
-[+] Sonda inyectada: Puerto_Destino=11938 | TXID=25032
-[+] Sonda inyectada: Puerto_Destino=19350 | TXID=31909
-[+] Sonda inyectada: Puerto_Destino=44679 | TXID=44344
-[+] Sonda inyectada: Puerto_Destino=59710 | TXID=2216
-[+] Sonda inyectada: Puerto_Destino=17212 | TXID=36151
-[+] Sonda inyectada: Puerto_Destino=10094 | TXID=51160
-[+] Sonda inyectada: Puerto_Destino=2133 | TXID=50409
-[+] Sonda inyectada: Puerto_Destino=12301 | TXID=22295
-[+] Sonda inyectada: Puerto_Destino=5045 | TXID=49048
-[+] Sonda inyectada: Puerto_Destino=5737 | TXID=17080
-[+] Sonda inyectada: Puerto_Destino=41358 | TXID=31358
-[+] Sonda inyectada: Puerto_Destino=10916 | TXID=14120
-[+] Sonda inyectada: Puerto_Destino=63155 | TXID=33548
-[+] Sonda inyectada: Puerto_Destino=64495 | TXID=57145
-[+] Sonda inyectada: Puerto_Destino=51985 | TXID=39961
-[+] Sonda inyectada: Puerto_Destino=5111 | TXID=5041
-[+] Sonda inyectada: Puerto_Destino=23635 | TXID=40119
-[+] Sonda inyectada: Puerto_Destino=51028 | TXID=53472
-[+] Sonda inyectada: Puerto_Destino=35875 | TXID=7845
-[+] Sonda inyectada: Puerto_Destino=4926 | TXID=55717
-[+] Sonda inyectada: Puerto_Destino=26848 | TXID=37738
-[+] Sonda inyectada: Puerto_Destino=34095 | TXID=15413
-[+] Sonda inyectada: Puerto_Destino=49956 | TXID=38001
-[+] Sonda inyectada: Puerto_Destino=35610 | TXID=4422
-[+] Sonda inyectada: Puerto_Destino=40978 | TXID=2277
-[+] Sonda inyectada: Puerto_Destino=34962 | TXID=50275
-[+] Sonda inyectada: Puerto_Destino=4487 | TXID=32
-[+] Sonda inyectada: Puerto_Destino=47539 | TXID=59536
-[+] Sonda inyectada: Puerto_Destino=41445 | TXID=4509
-[+] Sonda inyectada: Puerto_Destino=51463 | TXID=34513
-[+] Sonda inyectada: Puerto_Destino=32681 | TXID=53019
-[+] Sonda inyectada: Puerto_Destino=42788 | TXID=4567
-[+] Sonda inyectada: Puerto_Destino=21068 | TXID=4350
-[+] Sonda inyectada: Puerto_Destino=9482 | TXID=13416
-[+] Sonda inyectada: Puerto_Destino=45155 | TXID=64225
-[+] Sonda inyectada: Puerto_Destino=32681 | TXID=41212
-[+] Sonda inyectada: Puerto_Destino=29121 | TXID=1607
-[+] Sonda inyectada: Puerto_Destino=30811 | TXID=44150
-[+] Sonda inyectada: Puerto_Destino=24353 | TXID=11144
-[+] Sonda inyectada: Puerto_Destino=47011 | TXID=12000
-[+] Sonda inyectada: Puerto_Destino=50389 | TXID=47331
-[+] Sonda inyectada: Puerto_Destino=59235 | TXID=65162
-[+] Sonda inyectada: Puerto_Destino=30619 | TXID=29669
-[+] Sonda inyectada: Puerto_Destino=49601 | TXID=8430
-[+] Sonda inyectada: Puerto_Destino=59394 | TXID=38853
-[+] Sonda inyectada: Puerto_Destino=41010 | TXID=21621
-[+] Sonda inyectada: Puerto_Destino=46239 | TXID=26430
-[+] Sonda inyectada: Puerto_Destino=49190 | TXID=45269
-[+] Sonda inyectada: Puerto_Destino=32491 | TXID=24027
-[+] Sonda inyectada: Puerto_Destino=53089 | TXID=6111
-[+] Sonda inyectada: Puerto_Destino=24557 | TXID=23993
-[+] Sonda inyectada: Puerto_Destino=25542 | TXID=54942
-[+] Sonda inyectada: Puerto_Destino=53944 | TXID=9055
-[+] Sonda inyectada: Puerto_Destino=58147 | TXID=25655
-[+] Sonda inyectada: Puerto_Destino=58317 | TXID=14172
-[+] Sonda inyectada: Puerto_Destino=20252 | TXID=10267
-[+] Sonda inyectada: Puerto_Destino=55458 | TXID=9562
-[+] Sonda inyectada: Puerto_Destino=31175 | TXID=28088
-[+] Sonda inyectada: Puerto_Destino=29043 | TXID=32774
-[+] Sonda inyectada: Puerto_Destino=28931 | TXID=3496
-[+] Sonda inyectada: Puerto_Destino=11854 | TXID=48500
+[+] Sonda inyectada: Puerto_Destino=22234 | TXID=61573
+[+] Sonda inyectada: Puerto_Destino=55163 | TXID=56884
+[+] Sonda inyectada: Puerto_Destino=58196 | TXID=3023
+[+] Sonda inyectada: Puerto_Destino=46526 | TXID=2108
+[+] Sonda inyectada: Puerto_Destino=7679 | TXID=1769
+[+] Sonda inyectada: Puerto_Destino=8250 | TXID=58908
+[+] Sonda inyectada: Puerto_Destino=57807 | TXID=22064
+[+] Sonda inyectada: Puerto_Destino=54960 | TXID=56724
+[+] Sonda inyectada: Puerto_Destino=13293 | TXID=53480
+[+] Sonda inyectada: Puerto_Destino=62477 | TXID=49911
+[+] Sonda inyectada: Puerto_Destino=5406 | TXID=16349
+[+] Sonda inyectada: Puerto_Destino=17301 | TXID=20183
+[+] Sonda inyectada: Puerto_Destino=65380 | TXID=41893
+[+] Sonda inyectada: Puerto_Destino=64255 | TXID=23120
+[+] Sonda inyectada: Puerto_Destino=36177 | TXID=5583
+[+] Sonda inyectada: Puerto_Destino=14055 | TXID=50851
+[+] Sonda inyectada: Puerto_Destino=7509 | TXID=16964
+[+] Sonda inyectada: Puerto_Destino=15860 | TXID=61905
+[+] Sonda inyectada: Puerto_Destino=8764 | TXID=55872
+[+] Sonda inyectada: Puerto_Destino=44974 | TXID=41996
+[+] Sonda inyectada: Puerto_Destino=35531 | TXID=16983
+[+] Sonda inyectada: Puerto_Destino=4816 | TXID=53335
+[+] Sonda inyectada: Puerto_Destino=39270 | TXID=52495
+[+] Sonda inyectada: Puerto_Destino=35108 | TXID=27690
+[+] Sonda inyectada: Puerto_Destino=8748 | TXID=52166
+[+] Sonda inyectada: Puerto_Destino=55843 | TXID=56848
+[+] Sonda inyectada: Puerto_Destino=22437 | TXID=25349
+[+] Sonda inyectada: Puerto_Destino=27850 | TXID=27019
+[+] Sonda inyectada: Puerto_Destino=22492 | TXID=4441
+[+] Sonda inyectada: Puerto_Destino=52770 | TXID=2120
+[+] Sonda inyectada: Puerto_Destino=18839 | TXID=11722
+[+] Sonda inyectada: Puerto_Destino=37724 | TXID=374
+[+] Sonda inyectada: Puerto_Destino=15511 | TXID=2389
+[+] Sonda inyectada: Puerto_Destino=31500 | TXID=13144
+[+] Sonda inyectada: Puerto_Destino=54805 | TXID=36001
+[+] Sonda inyectada: Puerto_Destino=20019 | TXID=8738
+[+] Sonda inyectada: Puerto_Destino=54698 | TXID=22829
+[+] Sonda inyectada: Puerto_Destino=7372 | TXID=25246
+[+] Sonda inyectada: Puerto_Destino=56286 | TXID=49068
+[+] Sonda inyectada: Puerto_Destino=23504 | TXID=48746
+[+] Sonda inyectada: Puerto_Destino=36903 | TXID=62194
+[+] Sonda inyectada: Puerto_Destino=30567 | TXID=28446
+[+] Sonda inyectada: Puerto_Destino=55126 | TXID=20559
+[+] Sonda inyectada: Puerto_Destino=46982 | TXID=44790
+[+] Sonda inyectada: Puerto_Destino=48609 | TXID=45546
+[+] Sonda inyectada: Puerto_Destino=15248 | TXID=3540
+[+] Sonda inyectada: Puerto_Destino=14116 | TXID=20325
+[+] Sonda inyectada: Puerto_Destino=11825 | TXID=35175
+[+] Sonda inyectada: Puerto_Destino=26815 | TXID=18715
+[+] Sonda inyectada: Puerto_Destino=62735 | TXID=4699
+[+] Sonda inyectada: Puerto_Destino=9065 | TXID=38657
+[+] Sonda inyectada: Puerto_Destino=48656 | TXID=61126
+[+] Sonda inyectada: Puerto_Destino=50531 | TXID=41483
+[+] Sonda inyectada: Puerto_Destino=11783 | TXID=751
+[+] Sonda inyectada: Puerto_Destino=27515 | TXID=30108
+[+] Sonda inyectada: Puerto_Destino=11251 | TXID=55707
+[+] Sonda inyectada: Puerto_Destino=9002 | TXID=19210
+[+] Sonda inyectada: Puerto_Destino=23031 | TXID=1749
+[+] Sonda inyectada: Puerto_Destino=11659 | TXID=65223
+[+] Sonda inyectada: Puerto_Destino=45117 | TXID=46022
+[+] Sonda inyectada: Puerto_Destino=10021 | TXID=38807
+[+] Sonda inyectada: Puerto_Destino=39046 | TXID=42250
+[+] Sonda inyectada: Puerto_Destino=39786 | TXID=49447
+[+] Sonda inyectada: Puerto_Destino=58082 | TXID=6448
+[+] Sonda inyectada: Puerto_Destino=4046 | TXID=1802
+[+] Sonda inyectada: Puerto_Destino=36227 | TXID=2801
+[+] Sonda inyectada: Puerto_Destino=27702 | TXID=58028
+[+] Sonda inyectada: Puerto_Destino=46265 | TXID=34799
+[+] Sonda inyectada: Puerto_Destino=51869 | TXID=42978
+[+] Sonda inyectada: Puerto_Destino=38062 | TXID=35799
+[+] Sonda inyectada: Puerto_Destino=49481 | TXID=53419
+[+] Sonda inyectada: Puerto_Destino=21346 | TXID=17136
+[+] Sonda inyectada: Puerto_Destino=50978 | TXID=48363
+[+] Sonda inyectada: Puerto_Destino=17190 | TXID=22287
+[+] Sonda inyectada: Puerto_Destino=3046 | TXID=17165
+[+] Sonda inyectada: Puerto_Destino=21320 | TXID=26269
+[+] Sonda inyectada: Puerto_Destino=49386 | TXID=4585
+[+] Sonda inyectada: Puerto_Destino=33010 | TXID=59940
+[+] Sonda inyectada: Puerto_Destino=64516 | TXID=14828
+[+] Sonda inyectada: Puerto_Destino=54964 | TXID=22533
+[+] Sonda inyectada: Puerto_Destino=25703 | TXID=64341
+[+] Sonda inyectada: Puerto_Destino=14301 | TXID=32592
+[+] Sonda inyectada: Puerto_Destino=42567 | TXID=52415
+[+] Sonda inyectada: Puerto_Destino=47830 | TXID=63763
+[+] Sonda inyectada: Puerto_Destino=47421 | TXID=45536
+[+] Sonda inyectada: Puerto_Destino=6654 | TXID=17568
+[+] Sonda inyectada: Puerto_Destino=37890 | TXID=64680
+[+] Sonda inyectada: Puerto_Destino=9100 | TXID=32743
+[+] Sonda inyectada: Puerto_Destino=29747 | TXID=22548
+[+] Sonda inyectada: Puerto_Destino=34285 | TXID=51541
+[+] Sonda inyectada: Puerto_Destino=15320 | TXID=33635
+[+] Sonda inyectada: Puerto_Destino=14243 | TXID=56424
+[+] Sonda inyectada: Puerto_Destino=57235 | TXID=32358
+[+] Sonda inyectada: Puerto_Destino=30725 | TXID=1755
+[+] Sonda inyectada: Puerto_Destino=24499 | TXID=64205
+[+] Sonda inyectada: Puerto_Destino=42300 | TXID=49342
+[+] Sonda inyectada: Puerto_Destino=10897 | TXID=57873
+[+] Sonda inyectada: Puerto_Destino=44733 | TXID=48203
+[+] Sonda inyectada: Puerto_Destino=19818 | TXID=26678
+[+] Sonda inyectada: Puerto_Destino=23798 | TXID=1758
 [*] Inundando resolvedor con respuestas forjadas para test.ejemplo.com.
-[+] Sonda inyectada: Puerto_Destino=24049 | TXID=27092
-[+] Sonda inyectada: Puerto_Destino=63635 | TXID=10219
-[+] Sonda inyectada: Puerto_Destino=63764 | TXID=55290
-[+] Sonda inyectada: Puerto_Destino=9088 | TXID=35326
-[+] Sonda inyectada: Puerto_Destino=58276 | TXID=14864
-[+] Sonda inyectada: Puerto_Destino=26902 | TXID=61339
-[+] Sonda inyectada: Puerto_Destino=40071 | TXID=62718
-[+] Sonda inyectada: Puerto_Destino=48522 | TXID=14731
-[+] Sonda inyectada: Puerto_Destino=61054 | TXID=18906
-[+] Sonda inyectada: Puerto_Destino=8865 | TXID=34509
-[+] Sonda inyectada: Puerto_Destino=19875 | TXID=60980
-[+] Sonda inyectada: Puerto_Destino=10672 | TXID=13406
-[+] Sonda inyectada: Puerto_Destino=31376 | TXID=55366
-[+] Sonda inyectada: Puerto_Destino=16377 | TXID=50568
-[+] Sonda inyectada: Puerto_Destino=64034 | TXID=32539
-[+] Sonda inyectada: Puerto_Destino=15045 | TXID=33674
-[+] Sonda inyectada: Puerto_Destino=63551 | TXID=60322
-[+] Sonda inyectada: Puerto_Destino=43634 | TXID=49893
-[+] Sonda inyectada: Puerto_Destino=51590 | TXID=1979
-[+] Sonda inyectada: Puerto_Destino=14473 | TXID=53936
-[+] Sonda inyectada: Puerto_Destino=47759 | TXID=57647
-[+] Sonda inyectada: Puerto_Destino=18935 | TXID=64346
-[+] Sonda inyectada: Puerto_Destino=16583 | TXID=49295
-[+] Sonda inyectada: Puerto_Destino=1743 | TXID=18973
-[+] Sonda inyectada: Puerto_Destino=35184 | TXID=33276
-[+] Sonda inyectada: Puerto_Destino=3046 | TXID=13319
-[+] Sonda inyectada: Puerto_Destino=53752 | TXID=45464
-[+] Sonda inyectada: Puerto_Destino=51811 | TXID=29145
-[+] Sonda inyectada: Puerto_Destino=21397 | TXID=23180
-[+] Sonda inyectada: Puerto_Destino=35447 | TXID=29068
-[+] Sonda inyectada: Puerto_Destino=25731 | TXID=8705
-[+] Sonda inyectada: Puerto_Destino=43407 | TXID=19461
-[+] Sonda inyectada: Puerto_Destino=39959 | TXID=42320
-[+] Sonda inyectada: Puerto_Destino=32240 | TXID=11435
-[+] Sonda inyectada: Puerto_Destino=60497 | TXID=49062
-[+] Sonda inyectada: Puerto_Destino=40358 | TXID=22777
-[+] Sonda inyectada: Puerto_Destino=44216 | TXID=42755
-[+] Sonda inyectada: Puerto_Destino=51337 | TXID=44607
-[+] Sonda inyectada: Puerto_Destino=26882 | TXID=34646
-[+] Sonda inyectada: Puerto_Destino=3692 | TXID=39132
-[*] Consulta tras ataque:
+[+] Sonda inyectada: Puerto_Destino=43074 | TXID=48652
+[+] Sonda inyectada: Puerto_Destino=11214 | TXID=5683
+[+] Sonda inyectada: Puerto_Destino=2810 | TXID=12225
+[+] Sonda inyectada: Puerto_Destino=28712 | TXID=41464
+[+] Sonda inyectada: Puerto_Destino=60664 | TXID=46571
+[+] Sonda inyectada: Puerto_Destino=14041 | TXID=37743
+[+] Sonda inyectada: Puerto_Destino=21367 | TXID=64679
+[+] Sonda inyectada: Puerto_Destino=34956 | TXID=40748
+[+] Sonda inyectada: Puerto_Destino=19411 | TXID=47569
+[+] Sonda inyectada: Puerto_Destino=50689 | TXID=18299
+[+] Sonda inyectada: Puerto_Destino=5720 | TXID=21941
+[+] Sonda inyectada: Puerto_Destino=9590 | TXID=50316
+[+] Sonda inyectada: Puerto_Destino=18429 | TXID=15717
+[+] Sonda inyectada: Puerto_Destino=43126 | TXID=28816
+[+] Sonda inyectada: Puerto_Destino=10105 | TXID=51590
+[+] Sonda inyectada: Puerto_Destino=23901 | TXID=59531
+[+] Sonda inyectada: Puerto_Destino=13087 | TXID=58132
+[+] Sonda inyectada: Puerto_Destino=22233 | TXID=46769
+[+] Sonda inyectada: Puerto_Destino=12858 | TXID=6739
+[+] Sonda inyectada: Puerto_Destino=17593 | TXID=15879
+[+] Sonda inyectada: Puerto_Destino=6978 | TXID=126
+[+] Sonda inyectada: Puerto_Destino=9965 | TXID=32472
+[+] Sonda inyectada: Puerto_Destino=22214 | TXID=39666
+[+] Sonda inyectada: Puerto_Destino=40778 | TXID=21158
+[+] Sonda inyectada: Puerto_Destino=56524 | TXID=63045
+[+] Sonda inyectada: Puerto_Destino=8316 | TXID=1987
+[+] Sonda inyectada: Puerto_Destino=33165 | TXID=30827
+[+] Sonda inyectada: Puerto_Destino=8001 | TXID=41181
+[+] Sonda inyectada: Puerto_Destino=13199 | TXID=11489
+[+] Sonda inyectada: Puerto_Destino=38221 | TXID=18961
+[+] Sonda inyectada: Puerto_Destino=38129 | TXID=12765
+[+] Sonda inyectada: Puerto_Destino=48094 | TXID=44069
+[+] Sonda inyectada: Puerto_Destino=48319 | TXID=63965
+[+] Sonda inyectada: Puerto_Destino=33899 | TXID=57427
+[+] Sonda inyectada: Puerto_Destino=52294 | TXID=37458
+[+] Sonda inyectada: Puerto_Destino=26767 | TXID=39324
+[+] Sonda inyectada: Puerto_Destino=65492 | TXID=28706
+[+] Sonda inyectada: Puerto_Destino=49509 | TXID=47127
+[+] Sonda inyectada: Puerto_Destino=18300 | TXID=35801
+[+] Sonda inyectada: Puerto_Destino=20040 | TXID=47570
+
+oscar@lab # [SERVIDOR/VÍCTIMA 10.9.0.53]
+dig @10.9.0.53 test.ejemplo.com +short  # tras envenenamiento
 10.10.10.10
- Container p06v-auth-1 Stopping 
- Container p06v-atacante-1 Stopping 
- Container p06v-resolver-1 Stopping 
- Container p06v-auth-1 Stopped 
- Container p06v-auth-1 Removing 
- Container p06v-resolver-1 Stopped 
- Container p06v-resolver-1 Removing 
- Container p06v-auth-1 Removed 
- Container p06v-resolver-1 Removed 
- Container p06v-atacante-1 Stopped 
- Container p06v-atacante-1 Removing 
- Container p06v-atacante-1 Removed 
- Network p06v_labnet Removing 
- Network p06v_labnet Removed 

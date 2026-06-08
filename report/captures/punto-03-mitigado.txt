@@ -1,118 +1,11 @@
-========== PUNTO 03 — TCP SESSION HIJACKING [MITIGADO] ==========
-time="2026-06-08T12:53:28-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
- Image p03m-cliente Building 
- Image p03m-servidor Building 
- Image p03m-atacante Building 
- Image p03m-servidor Building 
- Image p03m-cliente Building 
- Image p03m-atacante Building 
-Sending build context to Docker daemon  1.782kB
-Sending build context to Docker daemon  1.782kB
-Sending build context to Docker daemon  1.782kB
-Step 1/9 : FROM python:3.11-slim-bookworm
-Step 1/9 : FROM python:3.11-slim-bookworm
-Step 1/9 : FROM python:3.11-slim-bookworm
- ---> 8dca233de9f3
-Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
- ---> 8dca233de9f3
-Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
- ---> 8dca233de9f3
-Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
- ---> Using cache
- ---> 551abecf4c8e
-Step 3/9 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 551abecf4c8e
-Step 3/9 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 551abecf4c8e
-Step 3/9 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> ca9d77492528
-Step 4/9 : WORKDIR /lab
- ---> Using cache
- ---> ca9d77492528
-Step 4/9 : WORKDIR /lab
- ---> Using cache
- ---> ca9d77492528
-Step 4/9 : WORKDIR /lab
- ---> Using cache
- ---> be596dfdf20a
-Step 5/9 : COPY scripts/ /lab/
- ---> Using cache
- ---> be596dfdf20a
-Step 5/9 : COPY scripts/ /lab/
- ---> Using cache
- ---> be596dfdf20a
-Step 5/9 : COPY scripts/ /lab/
- ---> Using cache
- ---> 612885b96131
-Step 6/9 : COPY entrypoint-server.sh /entrypoint-server.sh
- ---> Using cache
- ---> 612885b96131
-Step 6/9 : COPY entrypoint-server.sh /entrypoint-server.sh
- ---> Using cache
- ---> 612885b96131
-Step 6/9 : COPY entrypoint-server.sh /entrypoint-server.sh
- ---> Using cache
- ---> ab286141c748
-Step 7/9 : RUN chmod +x /entrypoint-server.sh
- ---> Using cache
- ---> ab286141c748
-Step 7/9 : RUN chmod +x /entrypoint-server.sh
- ---> Using cache
- ---> ab286141c748
-Step 7/9 : RUN chmod +x /entrypoint-server.sh
- ---> Using cache
- ---> be622df89a02
-Step 8/9 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> be622df89a02
-Step 8/9 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> be622df89a02
-Step 8/9 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> 23ce6c179a98
-Step 9/9 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> 23ce6c179a98
-Step 9/9 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> 23ce6c179a98
-Step 9/9 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> aba53bff15a4
- ---> Using cache
- ---> aba53bff15a4
-Successfully built aba53bff15a4
- ---> Using cache
- ---> aba53bff15a4
-Successfully built aba53bff15a4
-Successfully built aba53bff15a4
-Successfully tagged p03m-servidor:latest
- Image p03m-servidor Built 
- Image p03m-servidor Built 
-Successfully tagged p03m-cliente:latest
- Image p03m-cliente Built 
- Image p03m-cliente Built 
-Successfully tagged p03m-atacante:latest
- Image p03m-atacante Built 
- Image p03m-atacante Built 
- Network p03m_labnet Creating 
- Network p03m_labnet Created 
- Container p03m-cliente-1 Creating 
- Container p03m-atacante-1 Creating 
- Container p03m-servidor-1 Creating 
- Container p03m-servidor-1 Created 
- Container p03m-atacante-1 Created 
- Container p03m-cliente-1 Created 
- Container p03m-atacante-1 Starting 
- Container p03m-servidor-1 Starting 
- Container p03m-cliente-1 Starting 
- Container p03m-atacante-1 Started 
- Container p03m-cliente-1 Started 
- Container p03m-servidor-1 Started 
+
+╔══════════════════════════════════════════════════════════════╗
+║  Taller 2 — Punto 03 — TCP SESSION HIJACKING        ║
+║  Modo: MITIGADO                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+oscar@lab $ [ATACANTE 10.9.0.7]
+python3 /lab/challenge_ack_probe.py 10.9.0.5 10.9.0.6
 [*] Side-channel Challenge ACK — servidor=10.9.0.5 cliente=10.9.0.6
 [*] Sesión TCP activa en puerto 9999; enviando SYN fuera de ventana...
     seq=   1000 -> ACK
@@ -123,17 +16,7 @@ Successfully tagged p03m-atacante:latest
     seq= 900000 -> ACK
 [+] Distribución de respuestas: {'ACK': 6}
 [+] Respuestas uniformes — side-channel mitigado
- Container p03m-atacante-1 Stopping 
- Container p03m-cliente-1 Stopping 
- Container p03m-servidor-1 Stopping 
- Container p03m-servidor-1 Stopped 
- Container p03m-servidor-1 Removing 
- Container p03m-atacante-1 Stopped 
- Container p03m-atacante-1 Removing 
- Container p03m-cliente-1 Stopped 
- Container p03m-cliente-1 Removing 
- Container p03m-servidor-1 Removed 
- Container p03m-cliente-1 Removed 
- Container p03m-atacante-1 Removed 
- Network p03m_labnet Removing 
- Network p03m_labnet Removed 
+
+oscar@lab # [SERVIDOR/VÍCTIMA 10.9.0.5]
+# tcp_challenge_ack_limit=2147483647
+[+] Respuestas uniformes — canal colateral neutralizado

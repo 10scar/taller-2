@@ -1,0 +1,2911 @@
+
+=== 2026-06-08 13:29:35 p05v ===
+time="2026-06-08T13:29:35-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p05v-emisor Building 
+ Image p05v-receptor Building 
+ Image p05v-emisor Building 
+ Image p05v-receptor Building 
+Sending build context to Docker daemon  1.581kB
+Sending build context to Docker daemon  1.581kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 7964307b8cd4
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 7964307b8cd4
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> f6e1728fe5c5
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> f6e1728fe5c5
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2f7a9664276f
+Successfully built 2f7a9664276f
+ ---> Using cache
+ ---> 2f7a9664276f
+Successfully built 2f7a9664276f
+Successfully tagged p05v-emisor:latest
+ Image p05v-emisor Built 
+ Image p05v-emisor Built 
+Successfully tagged p05v-receptor:latest
+ Image p05v-receptor Built 
+ Image p05v-receptor Built 
+ Network p05v_labnet Creating 
+ Network p05v_labnet Created 
+ Container p05v-receptor-1 Creating 
+ Container p05v-emisor-1 Creating 
+ Container p05v-emisor-1 Created 
+ Container p05v-receptor-1 Created 
+ Container p05v-receptor-1 Starting 
+ Container p05v-emisor-1 Starting 
+ Container p05v-emisor-1 Started 
+ Container p05v-receptor-1 Started 
+ Container p05v-receptor-1 Stopping 
+ Container p05v-emisor-1 Stopping 
+ Container p05v-emisor-1 Stopped 
+ Container p05v-emisor-1 Removing 
+ Container p05v-receptor-1 Stopped 
+ Container p05v-receptor-1 Removing 
+ Container p05v-emisor-1 Removed 
+ Container p05v-receptor-1 Removed 
+ Network p05v_labnet Removing 
+ Network p05v_labnet Removed 
+
+=== 2026-06-08 13:30:06 p01v ===
+time="2026-06-08T13:30:06-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p01v-emisor Building 
+ Image p01v-receptor Building 
+ Image p01v-emisor Building 
+ Image p01v-receptor Building 
+Sending build context to Docker daemon  1.678kB
+Sending build context to Docker daemon  1.678kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends iproute2 iputils-ping tcpdump     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends iproute2 iputils-ping tcpdump     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> e0653d27dc15
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> e0653d27dc15
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> d6282b869187
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> d6282b869187
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 21c271cf650f
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 21c271cf650f
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 9cbba98b6973
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 9cbba98b6973
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> d2f88e3b0bcf
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> d2f88e3b0bcf
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 59dfd6c89fe0
+ ---> Using cache
+ ---> 59dfd6c89fe0
+Successfully built 59dfd6c89fe0
+Successfully built 59dfd6c89fe0
+Successfully tagged p01v-receptor:latest
+ Image p01v-receptor Built 
+ Image p01v-receptor Built 
+Successfully tagged p01v-emisor:latest
+ Image p01v-emisor Built 
+ Image p01v-emisor Built 
+ Network p01v_labnet Creating 
+ Network p01v_labnet Created 
+ Container p01v-receptor-1 Creating 
+ Container p01v-emisor-1 Creating 
+ Container p01v-emisor-1 Created 
+ Container p01v-receptor-1 Created 
+ Container p01v-emisor-1 Starting 
+ Container p01v-receptor-1 Starting 
+ Container p01v-receptor-1 Started 
+ Container p01v-emisor-1 Started 
+ Container p01v-receptor-1 Stopping 
+ Container p01v-emisor-1 Stopping 
+ Container p01v-emisor-1 Stopped 
+ Container p01v-emisor-1 Removing 
+ Container p01v-receptor-1 Stopped 
+ Container p01v-receptor-1 Removing 
+ Container p01v-emisor-1 Removed 
+ Container p01v-receptor-1 Removed 
+ Network p01v_labnet Removing 
+ Network p01v_labnet Removed 
+
+=== 2026-06-08 13:30:26 p01m ===
+time="2026-06-08T13:30:27-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p01m-receptor Building 
+ Image p01m-emisor Building 
+ Image p01m-emisor Building 
+ Image p01m-receptor Building 
+Sending build context to Docker daemon  1.887kB
+Sending build context to Docker daemon  1.887kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends iproute2 iputils-ping tcpdump     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends iproute2 iputils-ping tcpdump     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> e0653d27dc15
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> e0653d27dc15
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> d6282b869187
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> d6282b869187
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 21c271cf650f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 21c271cf650f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> ca4d475b2392
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> ca4d475b2392
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> d6b5d4756154
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> d6b5d4756154
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> dbb47cb922c9
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> dbb47cb922c9
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 3c36382330ee
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 3c36382330ee
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 1f49b1d4af6d
+ ---> Using cache
+ ---> 1f49b1d4af6d
+Successfully built 1f49b1d4af6d
+Successfully built 1f49b1d4af6d
+Successfully tagged p01m-receptor:latest
+ Image p01m-receptor Built 
+ Image p01m-receptor Built 
+Successfully tagged p01m-emisor:latest
+ Image p01m-emisor Built 
+ Image p01m-emisor Built 
+ Network p01m_labnet Creating 
+ Network p01m_labnet Created 
+ Container p01m-receptor-1 Creating 
+ Container p01m-emisor-1 Creating 
+ Container p01m-receptor-1 Created 
+ Container p01m-emisor-1 Created 
+ Container p01m-emisor-1 Starting 
+ Container p01m-receptor-1 Starting 
+ Container p01m-emisor-1 Started 
+ Container p01m-receptor-1 Started 
+ Container p01m-emisor-1 Stopping 
+ Container p01m-receptor-1 Stopping 
+ Container p01m-receptor-1 Stopped 
+ Container p01m-receptor-1 Removing 
+ Container p01m-emisor-1 Stopped 
+ Container p01m-emisor-1 Removing 
+ Container p01m-receptor-1 Removed 
+ Container p01m-emisor-1 Removed 
+ Network p01m_labnet Removing 
+ Network p01m_labnet Removed 
+
+=== 2026-06-08 13:30:47 p02v ===
+time="2026-06-08T13:30:47-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p02v-receptor Building 
+ Image p02v-emisor Building 
+ Image p02v-receptor Building 
+ Image p02v-emisor Building 
+Sending build context to Docker daemon  1.941kB
+Sending build context to Docker daemon  1.941kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> dff87a52be11
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> dff87a52be11
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 2cd9f33c5292
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2cd9f33c5292
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> ee05f1ebc0f0
+ ---> Using cache
+ ---> ee05f1ebc0f0
+Successfully built ee05f1ebc0f0
+Successfully built ee05f1ebc0f0
+Successfully tagged p02v-receptor:latest
+ Image p02v-receptor Built 
+ Image p02v-receptor Built 
+Successfully tagged p02v-emisor:latest
+ Image p02v-emisor Built 
+ Image p02v-emisor Built 
+ Network p02v_labnet Creating 
+ Network p02v_labnet Created 
+ Container p02v-emisor-1 Creating 
+ Container p02v-receptor-1 Creating 
+ Container p02v-emisor-1 Created 
+ Container p02v-receptor-1 Created 
+ Container p02v-emisor-1 Starting 
+ Container p02v-receptor-1 Starting 
+ Container p02v-receptor-1 Started 
+ Container p02v-emisor-1 Started 
+ Container p02v-receptor-1 Stopping 
+ Container p02v-emisor-1 Stopping 
+ Container p02v-emisor-1 Stopped 
+ Container p02v-emisor-1 Removing 
+ Container p02v-receptor-1 Stopped 
+ Container p02v-receptor-1 Removing 
+ Container p02v-emisor-1 Removed 
+ Container p02v-receptor-1 Removed 
+ Network p02v_labnet Removing 
+ Network p02v_labnet Removed 
+
+=== 2026-06-08 13:31:12 p02m ===
+time="2026-06-08T13:31:12-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p02m-gateway Building 
+ Image p02m-gateway Building 
+Sending build context to Docker daemon   2.42kB
+Step 1/6 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/6 : RUN apt-get update && apt-get install -y --no-install-recommends iproute2 procps     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> f24df9b56457
+Step 3/6 : COPY entrypoint-gateway.sh /entrypoint-gateway.sh
+ ---> Using cache
+ ---> 5f47e50d4f88
+Step 4/6 : RUN chmod +x /entrypoint-gateway.sh
+ ---> Using cache
+ ---> e621cf56ff83
+Step 5/6 : ENTRYPOINT ["/entrypoint-gateway.sh"]
+ ---> Using cache
+ ---> 1a2fb77c9ea1
+Step 6/6 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2bacf6d37afc
+Successfully built 2bacf6d37afc
+Successfully tagged p02m-gateway:latest
+ Image p02m-gateway Built 
+ Image p02m-gateway Built 
+ Image p02m-emisor Building 
+ Image p02m-receptor Building 
+ Image p02m-emisor Building 
+ Image p02m-receptor Building 
+Sending build context to Docker daemon   2.42kB
+Sending build context to Docker daemon   2.42kB
+Step 1/7 : FROM python:3.11-slim-bookwormStep 1/7 : FROM python:3.11-slim-bookworm
+
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> dff87a52be11
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> dff87a52be11
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 2cd9f33c5292
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2cd9f33c5292
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> ee05f1ebc0f0
+ ---> Using cache
+ ---> ee05f1ebc0f0
+Successfully built ee05f1ebc0f0
+Successfully built ee05f1ebc0f0
+Successfully tagged p02m-receptor:latest
+ Image p02m-receptor Built 
+ Image p02m-receptor Built 
+Successfully tagged p02m-emisor:latest
+ Image p02m-emisor Built 
+ Image p02m-emisor Built 
+ Network p02m_labnet Creating 
+ Network p02m_labnet Created 
+ Container p02m-gateway-1 Creating 
+ Container p02m-gateway-1 Created 
+ Container p02m-receptor-1 Creating 
+ Container p02m-emisor-1 Creating 
+ Container p02m-receptor-1 Created 
+ Container p02m-emisor-1 Created 
+ Container p02m-gateway-1 Starting 
+ Container p02m-gateway-1 Started 
+ Container p02m-receptor-1 Starting 
+ Container p02m-emisor-1 Starting 
+ Container p02m-receptor-1 Started 
+ Container p02m-emisor-1 Started 
+ Container p02m-receptor-1 Stopping 
+ Container p02m-emisor-1 Stopping 
+ Container p02m-emisor-1 Stopped 
+ Container p02m-emisor-1 Removing 
+ Container p02m-receptor-1 Stopped 
+ Container p02m-receptor-1 Removing 
+ Container p02m-emisor-1 Removed 
+ Container p02m-receptor-1 Removed 
+ Container p02m-gateway-1 Stopping 
+ Container p02m-gateway-1 Stopped 
+ Container p02m-gateway-1 Removing 
+ Container p02m-gateway-1 Removed 
+ Network p02m_labnet Removing 
+ Network p02m_labnet Removed 
+
+=== 2026-06-08 13:31:48 p03v ===
+time="2026-06-08T13:31:48-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p03v-cliente Building 
+ Image p03v-atacante Building 
+ Image p03v-servidor Building 
+ Image p03v-cliente Building 
+ Image p03v-atacante Building 
+ Image p03v-servidor Building 
+Sending build context to Docker daemon   1.95kB
+Sending build context to Docker daemon   1.95kB
+Sending build context to Docker daemon   1.95kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 612885b96131
+Step 6/9 : COPY entrypoint-server.sh /entrypoint-server.sh
+ ---> Using cache
+ ---> 612885b96131
+Step 6/9 : COPY entrypoint-server.sh /entrypoint-server.sh
+ ---> Using cache
+ ---> 612885b96131
+Step 6/9 : COPY entrypoint-server.sh /entrypoint-server.sh
+ ---> Using cache
+ ---> 3853cb3d5519
+Step 7/9 : RUN chmod +x /entrypoint-server.sh
+ ---> Using cache
+ ---> 3853cb3d5519
+Step 7/9 : RUN chmod +x /entrypoint-server.sh
+ ---> Using cache
+ ---> 3853cb3d5519
+Step 7/9 : RUN chmod +x /entrypoint-server.sh
+ ---> Using cache
+ ---> 7119198a1eaa
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 7119198a1eaa
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 7119198a1eaa
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 07e7eed1be01
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 07e7eed1be01
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 07e7eed1be01
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 319f1294fbac
+ ---> Using cache
+ ---> 319f1294fbac
+ ---> Using cache
+ ---> 319f1294fbac
+Successfully built 319f1294fbac
+Successfully built 319f1294fbac
+Successfully built 319f1294fbac
+Successfully tagged p03v-servidor:latest
+ Image p03v-servidor Built 
+Successfully tagged p03v-atacante:latest
+ Image p03v-servidor Built 
+ Image p03v-atacante Built 
+ Image p03v-atacante Built 
+Successfully tagged p03v-cliente:latest
+ Image p03v-cliente Built 
+ Image p03v-cliente Built 
+ Network p03v_labnet Creating 
+ Network p03v_labnet Created 
+ Container p03v-servidor-1 Creating 
+ Container p03v-atacante-1 Creating 
+ Container p03v-cliente-1 Creating 
+ Container p03v-servidor-1 Created 
+ Container p03v-cliente-1 Created 
+ Container p03v-atacante-1 Created 
+ Container p03v-atacante-1 Starting 
+ Container p03v-servidor-1 Starting 
+ Container p03v-cliente-1 Starting 
+ Container p03v-atacante-1 Started 
+ Container p03v-cliente-1 Started 
+ Container p03v-servidor-1 Started 
+ Container p03v-servidor-1 Stopping 
+ Container p03v-atacante-1 Stopping 
+ Container p03v-cliente-1 Stopping 
+ Container p03v-cliente-1 Stopped 
+ Container p03v-cliente-1 Removing 
+ Container p03v-servidor-1 Stopped 
+ Container p03v-servidor-1 Removing 
+ Container p03v-atacante-1 Stopped 
+ Container p03v-atacante-1 Removing 
+ Container p03v-cliente-1 Removed 
+ Container p03v-servidor-1 Removed 
+ Container p03v-atacante-1 Removed 
+ Network p03v_labnet Removing 
+ Network p03v_labnet Removed 
+
+=== 2026-06-08 13:32:03 p03m ===
+time="2026-06-08T13:32:03-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p03m-servidor Building 
+ Image p03m-atacante Building 
+ Image p03m-cliente Building 
+ Image p03m-atacante Building 
+ Image p03m-servidor Building 
+ Image p03m-cliente Building 
+Sending build context to Docker daemon  1.924kB
+Sending build context to Docker daemon  1.924kB
+Sending build context to Docker daemon  1.924kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookwormStep 1/9 : FROM python:3.11-slim-bookworm
+
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 612885b96131
+Step 6/9 : COPY entrypoint-server.sh /entrypoint-server.sh
+ ---> Using cache
+ ---> 612885b96131
+Step 6/9 : COPY entrypoint-server.sh /entrypoint-server.sh
+ ---> Using cache
+ ---> 612885b96131
+Step 6/9 : COPY entrypoint-server.sh /entrypoint-server.sh
+ ---> Using cache
+ ---> ab286141c748
+Step 7/9 : RUN chmod +x /entrypoint-server.sh
+ ---> Using cache
+ ---> ab286141c748
+Step 7/9 : RUN chmod +x /entrypoint-server.sh
+ ---> Using cache
+ ---> ab286141c748
+Step 7/9 : RUN chmod +x /entrypoint-server.sh
+ ---> Using cache
+ ---> be622df89a02
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> be622df89a02
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> be622df89a02
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 23ce6c179a98
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 23ce6c179a98
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 23ce6c179a98
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> aba53bff15a4
+ ---> Using cache
+ ---> aba53bff15a4
+ ---> Using cache
+ ---> aba53bff15a4
+Successfully built aba53bff15a4
+Successfully built aba53bff15a4
+Successfully built aba53bff15a4
+Successfully tagged p03m-servidor:latest
+ Image p03m-servidor Built 
+Successfully tagged p03m-cliente:latest
+ Image p03m-servidor Built 
+ Image p03m-cliente Built 
+ Image p03m-cliente Built 
+Successfully tagged p03m-atacante:latest
+ Image p03m-atacante Built 
+ Image p03m-atacante Built 
+ Network p03m_labnet Creating 
+ Network p03m_labnet Created 
+ Container p03m-atacante-1 Creating 
+ Container p03m-servidor-1 Creating 
+ Container p03m-cliente-1 Creating 
+ Container p03m-servidor-1 Created 
+ Container p03m-cliente-1 Created 
+ Container p03m-atacante-1 Created 
+ Container p03m-servidor-1 Starting 
+ Container p03m-cliente-1 Starting 
+ Container p03m-atacante-1 Starting 
+ Container p03m-atacante-1 Started 
+ Container p03m-cliente-1 Started 
+ Container p03m-servidor-1 Started 
+ Container p03m-atacante-1 Stopping 
+ Container p03m-servidor-1 Stopping 
+ Container p03m-cliente-1 Stopping 
+ Container p03m-atacante-1 Stopped 
+ Container p03m-atacante-1 Removing 
+ Container p03m-servidor-1 Stopped 
+ Container p03m-servidor-1 Removing 
+ Container p03m-cliente-1 Stopped 
+ Container p03m-cliente-1 Removing 
+ Container p03m-atacante-1 Removed 
+ Container p03m-servidor-1 Removed 
+ Container p03m-cliente-1 Removed 
+ Network p03m_labnet Removing 
+ Network p03m_labnet Removed 
+
+=== 2026-06-08 13:32:19 p04v ===
+time="2026-06-08T13:32:19-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p04v-zombie Building 
+ Image p04v-objetivo Building 
+ Image p04v-atacante Building 
+ Image p04v-objetivo Building 
+ Image p04v-zombie Building 
+ Image p04v-atacante Building 
+Sending build context to Docker daemon  2.056kB
+Sending build context to Docker daemon  2.056kB
+Sending build context to Docker daemon  2.056kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 1d89b6d35e2c
+Step 6/9 : COPY entrypoint-target.sh /entrypoint-target.sh
+ ---> Using cache
+ ---> 1d89b6d35e2c
+Step 6/9 : COPY entrypoint-target.sh /entrypoint-target.sh
+ ---> Using cache
+ ---> 1d89b6d35e2c
+Step 6/9 : COPY entrypoint-target.sh /entrypoint-target.sh
+ ---> Using cache
+ ---> 72d13c582c04
+Step 7/9 : RUN chmod +x /entrypoint-target.sh
+ ---> Using cache
+ ---> 72d13c582c04
+Step 7/9 : RUN chmod +x /entrypoint-target.sh
+ ---> Using cache
+ ---> 72d13c582c04
+Step 7/9 : RUN chmod +x /entrypoint-target.sh
+ ---> Using cache
+ ---> 2b49a74d21af
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 2b49a74d21af
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 2b49a74d21af
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 8b68bc3f6829
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 8b68bc3f6829
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 8b68bc3f6829
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> b36231048dbf
+Successfully built b36231048dbf
+ ---> Using cache
+ ---> b36231048dbf
+ ---> Using cache
+ ---> b36231048dbf
+Successfully tagged p04v-objetivo:latest
+ Image p04v-objetivo Built 
+ Image p04v-objetivo Built 
+Successfully built b36231048dbf
+Successfully built b36231048dbf
+Successfully tagged p04v-atacante:latest
+ Image p04v-atacante Built 
+ Image p04v-atacante Built 
+Successfully tagged p04v-zombie:latest
+ Image p04v-zombie Built 
+ Image p04v-zombie Built 
+ Network p04v_labnet Creating 
+ Network p04v_labnet Created 
+ Container p04v-atacante-1 Creating 
+ Container p04v-zombie-1 Creating 
+ Container p04v-objetivo-1 Creating 
+ Container p04v-atacante-1 Created 
+ Container p04v-zombie-1 Created 
+ Container p04v-objetivo-1 Created 
+ Container p04v-objetivo-1 Starting 
+ Container p04v-atacante-1 Starting 
+ Container p04v-zombie-1 Starting 
+ Container p04v-zombie-1 Started 
+ Container p04v-objetivo-1 Started 
+ Container p04v-atacante-1 Started 
+ Container p04v-zombie-1 Stopping 
+ Container p04v-atacante-1 Stopping 
+ Container p04v-objetivo-1 Stopping 
+ Container p04v-objetivo-1 Stopped 
+ Container p04v-objetivo-1 Removing 
+ Container p04v-atacante-1 Stopped 
+ Container p04v-atacante-1 Removing 
+ Container p04v-zombie-1 Stopped 
+ Container p04v-zombie-1 Removing 
+ Container p04v-atacante-1 Removed 
+ Container p04v-zombie-1 Removed 
+ Container p04v-objetivo-1 Removed 
+ Network p04v_labnet Removing 
+ Network p04v_labnet Removed 
+
+=== 2026-06-08 13:32:35 p04m ===
+time="2026-06-08T13:32:35-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p04m-atacante Building 
+ Image p04m-objetivo Building 
+ Image p04m-objetivo Building 
+ Image p04m-atacante Building 
+ Image p04m-zombie Building 
+ Image p04m-zombie Building 
+Sending build context to Docker daemon  2.106kB
+Sending build context to Docker daemon  2.106kB
+Sending build context to Docker daemon  2.106kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 1d89b6d35e2c
+ ---> Using cache
+ ---> 1d89b6d35e2c
+Step 6/9 : COPY entrypoint-target.sh /entrypoint-target.sh
+Step 6/9 : COPY entrypoint-target.sh /entrypoint-target.sh
+ ---> Using cache
+ ---> 1d89b6d35e2c
+Step 6/9 : COPY entrypoint-target.sh /entrypoint-target.sh
+ ---> Using cache
+ ---> c2b2ead90b0a
+Step 7/9 : RUN chmod +x /entrypoint-target.sh
+ ---> Using cache
+ ---> c2b2ead90b0a
+Step 7/9 : RUN chmod +x /entrypoint-target.sh
+ ---> Using cache
+ ---> c2b2ead90b0a
+Step 7/9 : RUN chmod +x /entrypoint-target.sh
+ ---> Using cache
+ ---> 1a944fb59cda
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 1a944fb59cda
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 1a944fb59cda
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 2ca53de0cae6
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2ca53de0cae6
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2ca53de0cae6
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> b5356beff7f7
+ ---> Using cache
+ ---> b5356beff7f7
+Successfully built b5356beff7f7
+ ---> Using cache
+ ---> b5356beff7f7
+Successfully built b5356beff7f7
+Successfully built b5356beff7f7
+Successfully tagged p04m-atacante:latest
+ Image p04m-atacante Built 
+ Image p04m-atacante Built 
+Successfully tagged p04m-objetivo:latest
+ Image p04m-objetivo Built 
+ Image p04m-objetivo Built 
+Successfully tagged p04m-zombie:latest
+ Image p04m-zombie Built 
+ Image p04m-zombie Built 
+ Network p04m_labnet Creating 
+ Network p04m_labnet Created 
+ Container p04m-atacante-1 Creating 
+ Container p04m-zombie-1 Creating 
+ Container p04m-objetivo-1 Creating 
+ Container p04m-objetivo-1 Created 
+ Container p04m-atacante-1 Created 
+ Container p04m-zombie-1 Created 
+ Container p04m-atacante-1 Starting 
+ Container p04m-zombie-1 Starting 
+ Container p04m-objetivo-1 Starting 
+ Container p04m-zombie-1 Started 
+ Container p04m-atacante-1 Started 
+ Container p04m-objetivo-1 Started 
+ Container p04m-zombie-1 Stopping 
+ Container p04m-objetivo-1 Stopping 
+ Container p04m-atacante-1 Stopping 
+ Container p04m-objetivo-1 Stopped 
+ Container p04m-objetivo-1 Removing 
+ Container p04m-atacante-1 Stopped 
+ Container p04m-atacante-1 Removing 
+ Container p04m-zombie-1 Stopped 
+ Container p04m-zombie-1 Removing 
+ Container p04m-objetivo-1 Removed 
+ Container p04m-atacante-1 Removed 
+ Container p04m-zombie-1 Removed 
+ Network p04m_labnet Removing 
+ Network p04m_labnet Removed 
+
+=== 2026-06-08 13:32:52 p05v ===
+time="2026-06-08T13:32:52-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p05v-receptor Building 
+ Image p05v-emisor Building 
+ Image p05v-receptor Building 
+ Image p05v-emisor Building 
+Sending build context to Docker daemon  1.581kB
+Sending build context to Docker daemon  1.581kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 7964307b8cd4
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 7964307b8cd4
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> f6e1728fe5c5
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> f6e1728fe5c5
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2f7a9664276f
+Successfully built 2f7a9664276f
+ ---> Using cache
+ ---> 2f7a9664276f
+Successfully built 2f7a9664276f
+Successfully tagged p05v-receptor:latest
+ Image p05v-receptor Built 
+ Image p05v-receptor Built 
+Successfully tagged p05v-emisor:latest
+ Image p05v-emisor Built 
+ Image p05v-emisor Built 
+ Network p05v_labnet Creating 
+ Network p05v_labnet Created 
+ Container p05v-receptor-1 Creating 
+ Container p05v-emisor-1 Creating 
+ Container p05v-emisor-1 Created 
+ Container p05v-receptor-1 Created 
+ Container p05v-receptor-1 Starting 
+ Container p05v-emisor-1 Starting 
+ Container p05v-emisor-1 Started 
+ Container p05v-receptor-1 Started 
+ Container p05v-receptor-1 Stopping 
+ Container p05v-emisor-1 Stopping 
+ Container p05v-emisor-1 Stopped 
+ Container p05v-emisor-1 Removing 
+ Container p05v-receptor-1 Stopped 
+ Container p05v-receptor-1 Removing 
+ Container p05v-receptor-1 Removed 
+ Container p05v-emisor-1 Removed 
+ Network p05v_labnet Removing 
+ Network p05v_labnet Removed 
+
+=== 2026-06-08 13:33:13 p05m ===
+time="2026-06-08T13:33:13-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p05m-receptor Building 
+ Image p05m-emisor Building 
+ Image p05m-receptor Building 
+ Image p05m-emisor Building 
+Sending build context to Docker daemon  1.812kB
+Sending build context to Docker daemon  1.812kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps iptables     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps iptables     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 06817ba592ab
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 06817ba592ab
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> b60195a72967
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> b60195a72967
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 2dfa54ae60df
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 2dfa54ae60df
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 27201f824dcd
+Step 6/9 : COPY entrypoint-receptor.sh /entrypoint-receptor.sh
+ ---> Using cache
+ ---> 27201f824dcd
+Step 6/9 : COPY entrypoint-receptor.sh /entrypoint-receptor.sh
+ ---> Using cache
+ ---> 6825ba2585f5
+Step 7/9 : RUN chmod +x /entrypoint-receptor.sh
+ ---> Using cache
+ ---> 6825ba2585f5
+Step 7/9 : RUN chmod +x /entrypoint-receptor.sh
+ ---> Using cache
+ ---> 19e5b18c3954
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 19e5b18c3954
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 02626aec7f64
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 02626aec7f64
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> cf8ab6a92529
+Successfully built cf8ab6a92529
+ ---> Using cache
+ ---> cf8ab6a92529
+Successfully built cf8ab6a92529
+Successfully tagged p05m-emisor:latest
+ Image p05m-emisor Built 
+ Image p05m-emisor Built 
+Successfully tagged p05m-receptor:latest
+ Image p05m-receptor Built 
+ Image p05m-receptor Built 
+ Network p05m_labnet Creating 
+ Network p05m_labnet Created 
+ Container p05m-emisor-1 Creating 
+ Container p05m-receptor-1 Creating 
+ Container p05m-receptor-1 Created 
+ Container p05m-emisor-1 Created 
+ Container p05m-emisor-1 Starting 
+ Container p05m-receptor-1 Starting 
+ Container p05m-emisor-1 Started 
+ Container p05m-receptor-1 Started 
+ Container p05m-emisor-1 Stopping 
+ Container p05m-receptor-1 Stopping 
+ Container p05m-emisor-1 Stopped 
+ Container p05m-emisor-1 Removing 
+ Container p05m-receptor-1 Stopped 
+ Container p05m-receptor-1 Removing 
+ Container p05m-emisor-1 Removed 
+ Container p05m-receptor-1 Removed 
+ Network p05m_labnet Removing 
+ Network p05m_labnet Removed 
+
+=== 2026-06-08 13:33:33 p06v ===
+time="2026-06-08T13:33:33-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p06v-atacante Building 
+ Image p06v-resolver Building 
+ Image p06v-auth Building 
+ Image p06v-atacante Building 
+ Image p06v-resolver Building 
+ Image p06v-auth Building 
+Sending build context to Docker daemon  2.096kB
+Sending build context to Docker daemon  2.096kB
+Sending build context to Docker daemon  2.096kB
+Step 1/10 : FROM python:3.11-slim-bookworm
+Step 1/10 : FROM python:3.11-slim-bookworm
+Step 1/10 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/10 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump procps dnsmasq dnsutils     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/10 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump procps dnsmasq dnsutils     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/10 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump procps dnsmasq dnsutils     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 5ead2bc03aaf
+Step 3/10 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 5ead2bc03aaf
+Step 3/10 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 5ead2bc03aaf
+Step 3/10 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 31d58a7d52dd
+Step 4/10 : WORKDIR /lab
+ ---> Using cache
+ ---> 31d58a7d52dd
+Step 4/10 : WORKDIR /lab
+ ---> Using cache
+ ---> 31d58a7d52dd
+Step 4/10 : WORKDIR /lab
+ ---> Using cache
+ ---> 65ff9468d4e0
+Step 5/10 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 65ff9468d4e0
+Step 5/10 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 65ff9468d4e0
+Step 5/10 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 16809f44f3cc
+Step 6/10 : COPY dnsmasq/ /etc/dnsmasq/
+ ---> Using cache
+ ---> 16809f44f3cc
+Step 6/10 : COPY dnsmasq/ /etc/dnsmasq/
+ ---> Using cache
+ ---> 16809f44f3cc
+Step 6/10 : COPY dnsmasq/ /etc/dnsmasq/
+ ---> Using cache
+ ---> b8a1e2e1c5bf
+Step 7/10 : COPY entrypoint-auth.sh entrypoint-resolver.sh /
+ ---> Using cache
+ ---> b8a1e2e1c5bf
+Step 7/10 : COPY entrypoint-auth.sh entrypoint-resolver.sh /
+ ---> Using cache
+ ---> b8a1e2e1c5bf
+Step 7/10 : COPY entrypoint-auth.sh entrypoint-resolver.sh /
+ ---> Using cache
+ ---> 2af6e951f231
+Step 8/10 : RUN chmod +x /entrypoint-auth.sh /entrypoint-resolver.sh
+ ---> Using cache
+ ---> 2af6e951f231
+Step 8/10 : RUN chmod +x /entrypoint-auth.sh /entrypoint-resolver.sh
+ ---> Using cache
+ ---> 2af6e951f231
+Step 8/10 : RUN chmod +x /entrypoint-auth.sh /entrypoint-resolver.sh
+ ---> Using cache
+ ---> 435e54b32cf5
+Step 9/10 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 435e54b32cf5
+Step 9/10 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 435e54b32cf5
+Step 9/10 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> ec331265856a
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> ec331265856a
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> ec331265856a
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 0ed63f5f111c
+ ---> Using cache
+ ---> 0ed63f5f111c
+ ---> Using cache
+ ---> 0ed63f5f111c
+Successfully built 0ed63f5f111c
+Successfully built 0ed63f5f111c
+Successfully built 0ed63f5f111c
+Successfully tagged p06v-resolver:latest
+ Image p06v-resolver Built 
+ Image p06v-resolver Built 
+Successfully tagged p06v-auth:latest
+ Image p06v-auth Built 
+ Image p06v-auth Built 
+Successfully tagged p06v-atacante:latest
+ Image p06v-atacante Built 
+ Image p06v-atacante Built 
+ Network p06v_labnet Creating 
+ Network p06v_labnet Created 
+ Container p06v-atacante-1 Creating 
+ Container p06v-auth-1 Creating 
+ Container p06v-resolver-1 Creating 
+ Container p06v-resolver-1 Created 
+ Container p06v-auth-1 Created 
+ Container p06v-atacante-1 Created 
+ Container p06v-atacante-1 Starting 
+ Container p06v-auth-1 Starting 
+ Container p06v-resolver-1 Starting 
+ Container p06v-auth-1 Started 
+ Container p06v-resolver-1 Started 
+ Container p06v-atacante-1 Started 
+ Container p06v-auth-1 Stopping 
+ Container p06v-resolver-1 Stopping 
+ Container p06v-atacante-1 Stopping 
+ Container p06v-auth-1 Stopped 
+ Container p06v-auth-1 Removing 
+ Container p06v-resolver-1 Stopped 
+ Container p06v-resolver-1 Removing 
+ Container p06v-auth-1 Removed 
+ Container p06v-resolver-1 Removed 
+ Container p06v-atacante-1 Stopped 
+ Container p06v-atacante-1 Removing 
+ Container p06v-atacante-1 Removed 
+ Network p06v_labnet Removing 
+ Network p06v_labnet Removed 
+
+=== 2026-06-08 13:33:57 p06m ===
+time="2026-06-08T13:33:57-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p06m-auth Building 
+ Image p06m-resolver Building 
+ Image p06m-atacante Building 
+ Image p06m-auth Building 
+ Image p06m-atacante Building 
+ Image p06m-resolver Building 
+Sending build context to Docker daemon  2.231kB
+Sending build context to Docker daemon  2.231kB
+Sending build context to Docker daemon  2.231kB
+Step 1/10 : FROM python:3.11-slim-bookworm
+Step 1/10 : FROM python:3.11-slim-bookworm
+Step 1/10 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/10 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump procps dnsmasq dnsutils     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/10 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump procps dnsmasq dnsutils     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/10 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump procps dnsmasq dnsutils     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 5ead2bc03aaf
+ ---> Using cache
+ ---> 5ead2bc03aaf
+Step 3/10 : RUN pip install --no-cache-dir scapy
+Step 3/10 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 5ead2bc03aaf
+Step 3/10 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 31d58a7d52dd
+Step 4/10 : WORKDIR /lab
+ ---> Using cache
+ ---> 31d58a7d52dd
+Step 4/10 : WORKDIR /lab
+ ---> Using cache
+ ---> 31d58a7d52dd
+Step 4/10 : WORKDIR /lab
+ ---> Using cache
+ ---> 65ff9468d4e0
+Step 5/10 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 65ff9468d4e0
+Step 5/10 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 65ff9468d4e0
+Step 5/10 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 16809f44f3cc
+Step 6/10 : COPY dnsmasq/ /etc/dnsmasq/
+ ---> Using cache
+ ---> 16809f44f3cc
+Step 6/10 : COPY dnsmasq/ /etc/dnsmasq/
+ ---> Using cache
+ ---> 16809f44f3cc
+Step 6/10 : COPY dnsmasq/ /etc/dnsmasq/
+ ---> Using cache
+ ---> b8a1e2e1c5bf
+Step 7/10 : COPY entrypoint-auth.sh entrypoint-resolver.sh /
+ ---> Using cache
+ ---> b8a1e2e1c5bf
+Step 7/10 : COPY entrypoint-auth.sh entrypoint-resolver.sh /
+ ---> Using cache
+ ---> b8a1e2e1c5bf
+Step 7/10 : COPY entrypoint-auth.sh entrypoint-resolver.sh /
+ ---> Using cache
+ ---> b233f200a684
+Step 8/10 : RUN chmod +x /entrypoint-auth.sh /entrypoint-resolver.sh
+ ---> Using cache
+ ---> b233f200a684
+Step 8/10 : RUN chmod +x /entrypoint-auth.sh /entrypoint-resolver.sh
+ ---> Using cache
+ ---> b233f200a684
+Step 8/10 : RUN chmod +x /entrypoint-auth.sh /entrypoint-resolver.sh
+ ---> Using cache
+ ---> 0e6d260a6836
+Step 9/10 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 0e6d260a6836
+Step 9/10 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 0e6d260a6836
+Step 9/10 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 4b69f61d4fe6
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 4b69f61d4fe6
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 4b69f61d4fe6
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 452a6c0f5caf
+ ---> Using cache
+ ---> 452a6c0f5caf
+ ---> Using cache
+ ---> 452a6c0f5caf
+Successfully built 452a6c0f5caf
+Successfully built 452a6c0f5caf
+Successfully built 452a6c0f5caf
+Successfully tagged p06m-atacante:latest
+ Image p06m-atacante Built 
+ Image p06m-atacante Built 
+Successfully tagged p06m-auth:latest
+ Image p06m-auth Built 
+ Image p06m-auth Built 
+Successfully tagged p06m-resolver:latest
+ Image p06m-resolver Built 
+ Image p06m-resolver Built 
+ Network p06m_labnet Creating 
+ Network p06m_labnet Created 
+ Container p06m-auth-1 Creating 
+ Container p06m-resolver-1 Creating 
+ Container p06m-atacante-1 Creating 
+ Container p06m-auth-1 Created 
+ Container p06m-resolver-1 Created 
+ Container p06m-atacante-1 Created 
+ Container p06m-atacante-1 Starting 
+ Container p06m-auth-1 Starting 
+ Container p06m-resolver-1 Starting 
+ Container p06m-auth-1 Started 
+ Container p06m-resolver-1 Started 
+ Container p06m-atacante-1 Started 
+ Container p06m-resolver-1 Stopping 
+ Container p06m-auth-1 Stopping 
+ Container p06m-atacante-1 Stopping 
+ Container p06m-auth-1 Stopped 
+ Container p06m-auth-1 Removing 
+ Container p06m-resolver-1 Stopped 
+ Container p06m-resolver-1 Removing 
+ Container p06m-auth-1 Removed 
+ Container p06m-resolver-1 Removed 
+ Container p06m-atacante-1 Stopped 
+ Container p06m-atacante-1 Removing 
+ Container p06m-atacante-1 Removed 
+ Network p06m_labnet Removing 
+ Network p06m_labnet Removed 
+
+=== 2026-06-08 13:34:21 p07v ===
+time="2026-06-08T13:34:21-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p07v-atacante Building 
+ Image p07v-objetivo Building 
+ Image p07v-atacante Building 
+ Image p07v-objetivo Building 
+Sending build context to Docker daemon  1.821kB
+Sending build context to Docker daemon  1.821kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> ce8021aaf169
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> ce8021aaf169
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 14f51145fa8a
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 14f51145fa8a
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 64c502339872
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 64c502339872
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 1ce78eaec4f0
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 1ce78eaec4f0
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> e5d124cdbfe1
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> e5d124cdbfe1
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 251b06a421a7
+ ---> Using cache
+ ---> 251b06a421a7
+Successfully built 251b06a421a7
+Successfully built 251b06a421a7
+Successfully tagged p07v-objetivo:latest
+ Image p07v-objetivo Built 
+ Image p07v-objetivo Built 
+Successfully tagged p07v-atacante:latest
+ Image p07v-atacante Built 
+ Image p07v-atacante Built 
+ Network p07v_labnet Creating 
+ Network p07v_labnet Created 
+ Container p07v-atacante-1 Creating 
+ Container p07v-objetivo-1 Creating 
+ Container p07v-atacante-1 Created 
+ Container p07v-objetivo-1 Created 
+ Container p07v-objetivo-1 Starting 
+ Container p07v-atacante-1 Starting 
+ Container p07v-atacante-1 Started 
+ Container p07v-objetivo-1 Started 
+ Container p07v-atacante-1 Stopping 
+ Container p07v-objetivo-1 Stopping 
+ Container p07v-objetivo-1 Stopped 
+ Container p07v-objetivo-1 Removing 
+ Container p07v-atacante-1 Stopped 
+ Container p07v-atacante-1 Removing 
+ Container p07v-objetivo-1 Removed 
+ Container p07v-atacante-1 Removed 
+ Network p07v_labnet Removing 
+ Network p07v_labnet Removed 
+
+=== 2026-06-08 13:34:40 p07m ===
+time="2026-06-08T13:34:40-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p07m-objetivo Building 
+ Image p07m-atacante Building 
+ Image p07m-objetivo Building 
+ Image p07m-atacante Building 
+Sending build context to Docker daemon  1.982kB
+Sending build context to Docker daemon  1.982kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> ce8021aaf169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> ce8021aaf169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 14f51145fa8a
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 14f51145fa8a
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 64c502339872
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 64c502339872
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 1ce78eaec4f0
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 1ce78eaec4f0
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 852be52df688
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 852be52df688
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> c03972a2ea95
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> c03972a2ea95
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 2ae632a09e83
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2ae632a09e83
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 28438611df37
+Successfully built 28438611df37
+ ---> Using cache
+ ---> 28438611df37
+Successfully tagged p07m-objetivo:latest
+ Image p07m-objetivo Built 
+ Image p07m-objetivo Built 
+Successfully built 28438611df37
+Successfully tagged p07m-atacante:latest
+ Image p07m-atacante Built 
+ Image p07m-atacante Built 
+ Network p07m_labnet Creating 
+ Network p07m_labnet Created 
+ Container p07m-atacante-1 Creating 
+ Container p07m-objetivo-1 Creating 
+ Container p07m-objetivo-1 Created 
+ Container p07m-atacante-1 Created 
+ Container p07m-atacante-1 Starting 
+ Container p07m-objetivo-1 Starting 
+ Container p07m-atacante-1 Started 
+ Container p07m-objetivo-1 Started 
+ Container p07m-objetivo-1 Stopping 
+ Container p07m-atacante-1 Stopping 
+ Container p07m-atacante-1 Stopped 
+ Container p07m-atacante-1 Removing 
+ Container p07m-objetivo-1 Stopped 
+ Container p07m-objetivo-1 Removing 
+ Container p07m-objetivo-1 Removed 
+ Container p07m-atacante-1 Removed 
+ Network p07m_labnet Removing 
+ Network p07m_labnet Removed 
+
+=== 2026-06-08 13:34:58 p08v ===
+time="2026-06-08T13:34:58-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p08v-atacante Building 
+ Image p08v-servidor Building 
+ Image p08v-victima Building 
+ Image p08v-atacante Building 
+ Image p08v-servidor Building 
+ Image p08v-victima Building 
+Sending build context to Docker daemon  2.607kB
+Sending build context to Docker daemon  2.607kB
+Sending build context to Docker daemon  2.607kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3 dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3 dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3 dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 05ff0023ce52
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 05ff0023ce52
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 05ff0023ce52
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> e49a1ecc8b12
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> e49a1ecc8b12
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> e49a1ecc8b12
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> d3f854e2f9e4
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> d3f854e2f9e4
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> d3f854e2f9e4
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> d858fb9f3c0e
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> d858fb9f3c0e
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> d858fb9f3c0e
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 4fa7939f12a2
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 4fa7939f12a2
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 4fa7939f12a2
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 9859a745eac8
+Successfully built 9859a745eac8
+ ---> Using cache
+ ---> 9859a745eac8
+Successfully built 9859a745eac8
+ ---> Using cache
+ ---> 9859a745eac8
+Successfully tagged p08v-atacante:latest
+ Image p08v-atacante Built 
+ Image p08v-atacante Built 
+Successfully built 9859a745eac8
+Successfully tagged p08v-servidor:latest
+ Image p08v-servidor Built 
+ Image p08v-servidor Built 
+Successfully tagged p08v-victima:latest
+ Image p08v-victima Built 
+ Image p08v-victima Built 
+ Network p08v_labnet Creating 
+ Network p08v_labnet Created 
+ Container p08v-atacante-1 Creating 
+ Container p08v-victima-1 Creating 
+ Container p08v-servidor-1 Creating 
+ Container p08v-victima-1 Created 
+ Container p08v-servidor-1 Created 
+ Container p08v-atacante-1 Created 
+ Container p08v-victima-1 Starting 
+ Container p08v-atacante-1 Starting 
+ Container p08v-servidor-1 Starting 
+ Container p08v-atacante-1 Started 
+ Container p08v-servidor-1 Started 
+ Container p08v-victima-1 Started 
+ Container p08v-atacante-1 Stopping 
+ Container p08v-servidor-1 Stopping 
+ Container p08v-victima-1 Stopping 
+ Container p08v-servidor-1 Stopped 
+ Container p08v-servidor-1 Removing 
+ Container p08v-victima-1 Stopped 
+ Container p08v-victima-1 Removing 
+ Container p08v-atacante-1 Stopped 
+ Container p08v-atacante-1 Removing 
+ Container p08v-servidor-1 Removed 
+ Container p08v-victima-1 Removed 
+ Container p08v-atacante-1 Removed 
+ Network p08v_labnet Removing 
+ Network p08v_labnet Removed 
+
+=== 2026-06-08 13:35:16 p08m ===
+time="2026-06-08T13:35:16-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p08m-atacante Building 
+ Image p08m-servidor Building 
+ Image p08m-victima Building 
+ Image p08m-atacante Building 
+ Image p08m-servidor Building 
+ Image p08m-victima Building 
+Sending build context to Docker daemon   2.83kB
+Sending build context to Docker daemon   2.83kB
+Sending build context to Docker daemon   2.83kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3 dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3 dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3 dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 05ff0023ce52
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 05ff0023ce52
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> e49a1ecc8b12
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 05ff0023ce52
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> e49a1ecc8b12
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> d3f854e2f9e4
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> e49a1ecc8b12
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> d3f854e2f9e4
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> d3f854e2f9e4
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 799086513bdb
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 799086513bdb
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> d17ac76d7e6f
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 799086513bdb
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> d17ac76d7e6f
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 1ab5747ca832
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> d17ac76d7e6f
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 1ab5747ca832
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 4bc8667226b3
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 1ab5747ca832
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 4bc8667226b3
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 4bc8667226b3
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> a7800df76452
+Successfully built a7800df76452
+ ---> Using cache
+ ---> a7800df76452
+Successfully built a7800df76452
+ ---> Using cache
+ ---> a7800df76452
+Successfully tagged p08m-servidor:latest
+ Image p08m-servidor Built 
+ Image p08m-servidor Built 
+Successfully tagged p08m-atacante:latest
+ Image p08m-atacante Built 
+ Image p08m-atacante Built 
+Successfully built a7800df76452
+Successfully tagged p08m-victima:latest
+ Image p08m-victima Built 
+ Image p08m-victima Built 
+ Network p08m_labnet Creating 
+ Network p08m_labnet Created 
+ Container p08m-victima-1 Creating 
+ Container p08m-servidor-1 Creating 
+ Container p08m-atacante-1 Creating 
+ Container p08m-atacante-1 Created 
+ Container p08m-victima-1 Created 
+ Container p08m-servidor-1 Created 
+ Container p08m-servidor-1 Starting 
+ Container p08m-atacante-1 Starting 
+ Container p08m-victima-1 Starting 
+ Container p08m-servidor-1 Started 
+ Container p08m-victima-1 Started 
+ Container p08m-atacante-1 Started 
+ Container p08m-servidor-1 Stopping 
+ Container p08m-victima-1 Stopping 
+ Container p08m-atacante-1 Stopping 
+ Container p08m-atacante-1 Stopped 
+ Container p08m-atacante-1 Removing 
+ Container p08m-victima-1 Stopped 
+ Container p08m-victima-1 Removing 
+ Container p08m-servidor-1 Stopped 
+ Container p08m-servidor-1 Removing 
+ Container p08m-atacante-1 Removed 
+ Container p08m-servidor-1 Removed 
+ Container p08m-victima-1 Removed 
+ Network p08m_labnet Removing 
+ Network p08m_labnet Removed 
+
+=== 2026-06-08 13:35:34 p09v ===
+time="2026-06-08T13:35:34-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p09v-servidor Building 
+ Image p09v-cliente Building 
+ Image p09v-atacante Building 
+ Image p09v-servidor Building 
+ Image p09v-cliente Building 
+ Image p09v-atacante Building 
+Sending build context to Docker daemon    1.8kB
+Sending build context to Docker daemon    1.8kB
+Sending build context to Docker daemon    1.8kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 065d046522d3
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 065d046522d3
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 065d046522d3
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> c513a76b2c84
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> c513a76b2c84
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> c513a76b2c84
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 11daf28f6fdb
+Successfully built 11daf28f6fdb
+ ---> Using cache
+ ---> 11daf28f6fdb
+Successfully tagged p09v-servidor:latest
+ Image p09v-servidor Built 
+ Image p09v-servidor Built 
+Successfully built 11daf28f6fdb
+ ---> Using cache
+ ---> 11daf28f6fdb
+Successfully built 11daf28f6fdb
+Successfully tagged p09v-atacante:latest
+ Image p09v-atacante Built 
+ Image p09v-atacante Built 
+Successfully tagged p09v-cliente:latest
+ Image p09v-cliente Built 
+ Image p09v-cliente Built 
+ Network p09v_labnet Creating 
+ Network p09v_labnet Created 
+ Container p09v-atacante-1 Creating 
+ Container p09v-cliente-1 Creating 
+ Container p09v-servidor-1 Creating 
+ Container p09v-atacante-1 Created 
+ Container p09v-cliente-1 Created 
+ Container p09v-servidor-1 Created 
+ Container p09v-atacante-1 Starting 
+ Container p09v-cliente-1 Starting 
+ Container p09v-servidor-1 Starting 
+ Container p09v-atacante-1 Started 
+ Container p09v-servidor-1 Started 
+ Container p09v-cliente-1 Started 
+ Container p09v-cliente-1 Stopping 
+ Container p09v-atacante-1 Stopping 
+ Container p09v-servidor-1 Stopping 
+ Container p09v-servidor-1 Stopped 
+ Container p09v-servidor-1 Removing 
+ Container p09v-atacante-1 Stopped 
+ Container p09v-atacante-1 Removing 
+ Container p09v-cliente-1 Stopped 
+ Container p09v-cliente-1 Removing 
+ Container p09v-servidor-1 Removed 
+ Container p09v-atacante-1 Removed 
+ Container p09v-cliente-1 Removed 
+ Network p09v_labnet Removing 
+ Network p09v_labnet Removed 
+
+=== 2026-06-08 13:35:51 p09m ===
+time="2026-06-08T13:35:52-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p09m-atacante Building 
+ Image p09m-cliente Building 
+ Image p09m-servidor Building 
+ Image p09m-atacante Building 
+ Image p09m-cliente Building 
+ Image p09m-servidor Building 
+Sending build context to Docker daemon  2.014kB
+Sending build context to Docker daemon  2.014kB
+Sending build context to Docker daemon  2.014kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 065d046522d3
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 065d046522d3
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 065d046522d3
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 65816d1e7d97
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 65816d1e7d97
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 65816d1e7d97
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> ef1380e46d56
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> ef1380e46d56
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> ef1380e46d56
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> daeac32279f5
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> daeac32279f5
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> daeac32279f5
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> b9cd11623bd2
+Successfully built b9cd11623bd2
+ ---> Using cache
+ ---> b9cd11623bd2
+ ---> Using cache
+ ---> b9cd11623bd2
+Successfully built b9cd11623bd2
+Successfully built b9cd11623bd2
+Successfully tagged p09m-cliente:latest
+ Image p09m-cliente Built 
+ Image p09m-cliente Built 
+Successfully tagged p09m-atacante:latest
+ Image p09m-atacante Built 
+ Image p09m-atacante Built 
+Successfully tagged p09m-servidor:latest
+ Image p09m-servidor Built 
+ Image p09m-servidor Built 
+ Network p09m_labnet Creating 
+ Network p09m_labnet Created 
+ Container p09m-servidor-1 Creating 
+ Container p09m-cliente-1 Creating 
+ Container p09m-atacante-1 Creating 
+ Container p09m-cliente-1 Created 
+ Container p09m-servidor-1 Created 
+ Container p09m-atacante-1 Created 
+ Container p09m-servidor-1 Starting 
+ Container p09m-atacante-1 Starting 
+ Container p09m-cliente-1 Starting 
+ Container p09m-atacante-1 Started 
+ Container p09m-servidor-1 Started 
+ Container p09m-cliente-1 Started 
+ Container p09m-cliente-1 Stopping 
+ Container p09m-atacante-1 Stopping 
+ Container p09m-servidor-1 Stopping 
+ Container p09m-cliente-1 Stopped 
+ Container p09m-cliente-1 Removing 
+ Container p09m-servidor-1 Stopped 
+ Container p09m-servidor-1 Removing 
+ Container p09m-atacante-1 Stopped 
+ Container p09m-atacante-1 Removing 
+ Container p09m-cliente-1 Removed 
+ Container p09m-atacante-1 Removed 
+ Container p09m-servidor-1 Removed 
+ Network p09m_labnet Removing 
+ Network p09m_labnet Removed 
+
+=== 2026-06-08 13:36:09 p10v ===
+time="2026-06-08T13:36:09-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p10v-attacker-dns Building 
+ Image p10v-host Building 
+ Image p10v-resolver Building 
+ Image p10v-host Building 
+ Image p10v-attacker-dns Building 
+ Image p10v-resolver Building 
+Sending build context to Docker daemon  1.553kB
+Sending build context to Docker daemon  1.553kB
+Sending build context to Docker daemon  1.553kB
+Step 1/9 : FROM python:3.11-slim-bookwormStep 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 2f3871491221
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 2f3871491221
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 2f3871491221
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 6a4779e89d7c
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 6a4779e89d7c
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> f881f313a7f3
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 6a4779e89d7c
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> adc4375a35fb
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> f881f313a7f3
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> f881f313a7f3
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> adc4375a35fb
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> adc4375a35fb
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 9002dfdd6bdd
+Successfully built 9002dfdd6bdd
+ ---> Using cache
+ ---> 9002dfdd6bdd
+Successfully tagged p10v-host:latest
+ Image p10v-host Built 
+ Image p10v-host Built 
+Successfully built 9002dfdd6bdd
+ ---> Using cache
+ ---> 9002dfdd6bdd
+Successfully tagged p10v-attacker-dns:latest
+ Image p10v-attacker-dns Built 
+ Image p10v-attacker-dns Built 
+Successfully built 9002dfdd6bdd
+Successfully tagged p10v-resolver:latest
+ Image p10v-resolver Built 
+ Image p10v-resolver Built 
+ Network p10v_labnet Creating 
+ Network p10v_labnet Created 
+ Container p10v-attacker-dns-1 Creating 
+ Container p10v-resolver-1 Creating 
+ Container p10v-host-1 Creating 
+ Container p10v-host-1 Created 
+ Container p10v-attacker-dns-1 Created 
+ Container p10v-resolver-1 Created 
+ Container p10v-resolver-1 Starting 
+ Container p10v-attacker-dns-1 Starting 
+ Container p10v-host-1 Starting 
+ Container p10v-host-1 Started 
+ Container p10v-attacker-dns-1 Started 
+ Container p10v-resolver-1 Started 
+ Container p10v-attacker-dns-1 Stopping 
+ Container p10v-host-1 Stopping 
+ Container p10v-resolver-1 Stopping 
+ Container p10v-attacker-dns-1 Stopped 
+ Container p10v-attacker-dns-1 Removing 
+ Container p10v-resolver-1 Stopped 
+ Container p10v-resolver-1 Removing 
+ Container p10v-attacker-dns-1 Removed 
+ Container p10v-resolver-1 Removed 
+ Container p10v-host-1 Stopped 
+ Container p10v-host-1 Removing 
+ Container p10v-host-1 Removed 
+ Network p10v_labnet Removing 
+ Network p10v_labnet Removed 
+
+=== 2026-06-08 13:36:28 p10m ===
+time="2026-06-08T13:36:28-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p10m-resolver Building 
+ Image p10m-host Building 
+ Image p10m-attacker-dns Building 
+ Image p10m-resolver Building 
+ Image p10m-host Building 
+ Image p10m-attacker-dns Building 
+Sending build context to Docker daemon   1.72kB
+Sending build context to Docker daemon   1.72kB
+Sending build context to Docker daemon   1.72kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 2f3871491221
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 2f3871491221
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 2f3871491221
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 84db1c2701ca
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 84db1c2701ca
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 84db1c2701ca
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 9cac1eee7cf8
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 9cac1eee7cf8
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 9cac1eee7cf8
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 1753f06cd19a
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 1753f06cd19a
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 1753f06cd19a
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> affc9d7a80c3
+Successfully built affc9d7a80c3
+ ---> Using cache
+ ---> affc9d7a80c3
+Successfully built affc9d7a80c3
+ ---> Using cache
+ ---> affc9d7a80c3
+Successfully tagged p10m-host:latest
+ Image p10m-host Built 
+ Image p10m-host Built 
+Successfully built affc9d7a80c3
+Successfully tagged p10m-attacker-dns:latest
+ Image p10m-attacker-dns Built 
+ Image p10m-attacker-dns Built 
+Successfully tagged p10m-resolver:latest
+ Image p10m-resolver Built 
+ Image p10m-resolver Built 
+ Network p10m_labnet Creating 
+ Network p10m_labnet Created 
+ Container p10m-host-1 Creating 
+ Container p10m-attacker-dns-1 Creating 
+ Container p10m-resolver-1 Creating 
+ Container p10m-host-1 Created 
+ Container p10m-resolver-1 Created 
+ Container p10m-attacker-dns-1 Created 
+ Container p10m-attacker-dns-1 Starting 
+ Container p10m-resolver-1 Starting 
+ Container p10m-host-1 Starting 
+ Container p10m-attacker-dns-1 Started 
+ Container p10m-host-1 Started 
+ Container p10m-resolver-1 Started 
+ Container p10m-resolver-1 Stopping 
+ Container p10m-host-1 Stopping 
+ Container p10m-attacker-dns-1 Stopping 
+ Container p10m-attacker-dns-1 Stopped 
+ Container p10m-attacker-dns-1 Removing 
+ Container p10m-resolver-1 Stopped 
+ Container p10m-resolver-1 Removing 
+ Container p10m-attacker-dns-1 Removed 
+ Container p10m-resolver-1 Removed 
+ Container p10m-host-1 Stopped 
+ Container p10m-host-1 Removing 
+ Container p10m-host-1 Removed 
+ Network p10m_labnet Removing 
+ Network p10m_labnet Removed 
+
+=== 2026-06-08 13:36:54 p11v ===
+time="2026-06-08T13:36:55-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p11v-gateway Building 
+ Image p11v-gateway Building 
+ Image p11v-atacante Building 
+ Image p11v-victima Building 
+ Image p11v-victima Building 
+ Image p11v-atacante Building 
+Sending build context to Docker daemon  1.566kB
+Sending build context to Docker daemon  1.566kB
+Sending build context to Docker daemon  1.566kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> df3242fce169
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> df3242fce169
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> df3242fce169
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> a492cbb14fed
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> a492cbb14fed
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> a492cbb14fed
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 3b840a732e0f
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 3b840a732e0f
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 3b840a732e0f
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> cff9fa29b0ed
+ ---> Using cache
+ ---> cff9fa29b0ed
+Successfully built cff9fa29b0ed
+ ---> Using cache
+ ---> cff9fa29b0ed
+Successfully built cff9fa29b0ed
+Successfully built cff9fa29b0ed
+Successfully tagged p11v-atacante:latest
+ Image p11v-atacante Built 
+ Image p11v-atacante Built 
+Successfully tagged p11v-victima:latest
+ Image p11v-victima Built 
+ Image p11v-victima Built 
+Successfully tagged p11v-gateway:latest
+ Image p11v-gateway Built 
+ Image p11v-gateway Built 
+ Network p11v_labnet Creating 
+ Network p11v_labnet Created 
+ Container p11v-atacante-1 Creating 
+ Container p11v-victima-1 Creating 
+ Container p11v-gateway-1 Creating 
+ Container p11v-gateway-1 Created 
+ Container p11v-atacante-1 Created 
+ Container p11v-victima-1 Created 
+ Container p11v-victima-1 Starting 
+ Container p11v-gateway-1 Starting 
+ Container p11v-atacante-1 Starting 
+ Container p11v-victima-1 Started 
+ Container p11v-atacante-1 Started 
+ Container p11v-gateway-1 Started 
+PING 10.9.0.1 (10.9.0.1) 56(84) bytes of data.
+64 bytes from 10.9.0.1: icmp_seq=1 ttl=64 time=0.105 ms
+
+--- 10.9.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.105/0.105/0.105/0.000 ms
+ Container p11v-gateway-1 Stopping 
+ Container p11v-victima-1 Stopping 
+ Container p11v-atacante-1 Stopping 
+ Container p11v-atacante-1 Stopped 
+ Container p11v-atacante-1 Removing 
+ Container p11v-gateway-1 Stopped 
+ Container p11v-gateway-1 Removing 
+ Container p11v-victima-1 Stopped 
+ Container p11v-victima-1 Removing 
+ Container p11v-gateway-1 Removed 
+ Container p11v-victima-1 Removed 
+ Container p11v-atacante-1 Removed 
+ Network p11v_labnet Removing 
+ Network p11v_labnet Removed 
+
+=== 2026-06-08 13:37:15 p11m ===
+time="2026-06-08T13:37:15-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p11m-victima Building 
+ Image p11m-atacante Building 
+ Image p11m-gateway Building 
+ Image p11m-gateway Building 
+ Image p11m-victima Building 
+ Image p11m-atacante Building 
+Sending build context to Docker daemon  1.774kB
+Sending build context to Docker daemon  1.774kB
+Sending build context to Docker daemon  1.774kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> a492cbb14fed
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> a492cbb14fed
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> a492cbb14fed
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> b6dbd36a0dd6
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> b6dbd36a0dd6
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> b6dbd36a0dd6
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 312eb14e50c7
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 312eb14e50c7
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 312eb14e50c7
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> d27ce26c778d
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> d27ce26c778d
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> d27ce26c778d
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2c2971be3198
+Successfully built 2c2971be3198
+ ---> Using cache
+ ---> 2c2971be3198
+ ---> Using cache
+ ---> 2c2971be3198
+Successfully built 2c2971be3198
+Successfully built 2c2971be3198
+Successfully tagged p11m-gateway:latest
+ Image p11m-gateway Built 
+ Image p11m-gateway Built 
+Successfully tagged p11m-victima:latest
+ Image p11m-victima Built 
+ Image p11m-victima Built 
+Successfully tagged p11m-atacante:latest
+ Image p11m-atacante Built 
+ Image p11m-atacante Built 
+ Network p11m_labnet Creating 
+ Network p11m_labnet Created 
+ Container p11m-victima-1 Creating 
+ Container p11m-atacante-1 Creating 
+ Container p11m-gateway-1 Creating 
+ Container p11m-atacante-1 Created 
+ Container p11m-gateway-1 Created 
+ Container p11m-victima-1 Created 
+ Container p11m-victima-1 Starting 
+ Container p11m-gateway-1 Starting 
+ Container p11m-atacante-1 Starting 
+ Container p11m-gateway-1 Started 
+ Container p11m-atacante-1 Started 
+ Container p11m-victima-1 Started 
+ Container p11m-victima-1 Stopping 
+ Container p11m-atacante-1 Stopping 
+ Container p11m-gateway-1 Stopping 
+ Container p11m-victima-1 Stopped 
+ Container p11m-victima-1 Removing 
+ Container p11m-atacante-1 Stopped 
+ Container p11m-atacante-1 Removing 
+ Container p11m-gateway-1 Stopped 
+ Container p11m-gateway-1 Removing 
+ Container p11m-atacante-1 Removed 
+ Container p11m-victima-1 Removed 
+ Container p11m-gateway-1 Removed 
+ Network p11m_labnet Removing 
+ Network p11m_labnet Removed 
+
+=== 2026-06-08 13:37:35 p12v ===
+time="2026-06-08T13:37:35-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p12v-servidor Building 
+ Image p12v-servidor Building 
+Sending build context to Docker daemon  1.286kB
+Step 1/7 : FROM debian:bookworm-slim
+ ---> 0104b334637a
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends nginx openssl curl     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> e4010372be5d
+Step 3/7 : COPY nginx.conf /etc/nginx/sites-available/default
+ ---> Using cache
+ ---> 5f8e3184cd4d
+Step 4/7 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> bf182fe69da4
+Step 5/7 : RUN chmod +x /entrypoint.sh     && openssl req -x509 -nodes -days 365 -newkey rsa:2048        -keyout /etc/ssl/private/nginx-selfsigned.key        -out /etc/ssl/certs/nginx-selfsigned.crt        -subj "/CN=lab.local"
+ ---> Using cache
+ ---> b7a99576b390
+Step 6/7 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 27fa8b63fa0f
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> e21584e0f648
+Successfully built e21584e0f648
+Successfully tagged p12v-servidor:latest
+ Image p12v-servidor Built 
+ Image p12v-servidor Built 
+ Network p12v_labnet Creating 
+ Network p12v_labnet Created 
+ Container p12v-servidor-1 Creating 
+ Container p12v-cliente-1 Creating 
+ Container p12v-servidor-1 Created 
+ Container p12v-cliente-1 Created 
+ Container p12v-cliente-1 Starting 
+ Container p12v-servidor-1 Starting 
+ Container p12v-servidor-1 Started 
+ Container p12v-cliente-1 Started 
+ Container p12v-cliente-1 Stopping 
+ Container p12v-servidor-1 Stopping 
+ Container p12v-cliente-1 Stopped 
+ Container p12v-cliente-1 Removing 
+ Container p12v-servidor-1 Stopped 
+ Container p12v-servidor-1 Removing 
+ Container p12v-cliente-1 Removed 
+ Container p12v-servidor-1 Removed 
+ Network p12v_labnet Removing 
+ Network p12v_labnet Removed 
+
+=== 2026-06-08 13:37:50 p12m ===
+time="2026-06-08T13:37:50-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p12m-servidor Building 
+ Image p12m-servidor Building 
+Sending build context to Docker daemon   1.26kB
+Step 1/7 : FROM debian:bookworm-slim
+ ---> 0104b334637a
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends nginx openssl curl     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> e4010372be5d
+Step 3/7 : COPY nginx.conf /etc/nginx/sites-available/default
+ ---> Using cache
+ ---> 846ec3a58625
+Step 4/7 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> de46337ad0b6
+Step 5/7 : RUN chmod +x /entrypoint.sh     && openssl req -x509 -nodes -days 365 -newkey rsa:2048        -keyout /etc/ssl/private/nginx-selfsigned.key        -out /etc/ssl/certs/nginx-selfsigned.crt        -subj "/CN=lab.local"
+ ---> Using cache
+ ---> d17461bb5e46
+Step 6/7 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 8a871d6607ab
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 3d19cf88d9d3
+Successfully built 3d19cf88d9d3
+Successfully tagged p12m-servidor:latest
+ Image p12m-servidor Built 
+ Image p12m-servidor Built 
+ Network p12m_labnet Creating 
+ Network p12m_labnet Created 
+ Container p12m-servidor-1 Creating 
+ Container p12m-cliente-1 Creating 
+ Container p12m-servidor-1 Created 
+ Container p12m-cliente-1 Created 
+ Container p12m-cliente-1 Starting 
+ Container p12m-servidor-1 Starting 
+ Container p12m-servidor-1 Started 
+ Container p12m-cliente-1 Started 
+ Container p12m-servidor-1 Stopping 
+ Container p12m-cliente-1 Stopping 
+ Container p12m-servidor-1 Stopped 
+ Container p12m-servidor-1 Removing 
+ Container p12m-cliente-1 Stopped 
+ Container p12m-cliente-1 Removing 
+ Container p12m-servidor-1 Removed 
+ Container p12m-cliente-1 Removed 
+ Network p12m_labnet Removing 
+ Network p12m_labnet Removed 
+
+=== 2026-06-08 13:38:06 p13v ===
+time="2026-06-08T13:38:06-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p13v-servidor Building 
+ Image p13v-cliente Building 
+ Image p13v-atacante Building 
+ Image p13v-servidor Building 
+ Image p13v-cliente Building 
+ Image p13v-atacante Building 
+Sending build context to Docker daemon  2.457kB
+Sending build context to Docker daemon  2.457kB
+Sending build context to Docker daemon  2.457kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 12649e7fdbb8
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 12649e7fdbb8
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 12649e7fdbb8
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> cfd082b4e6fb
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> cfd082b4e6fb
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> cfd082b4e6fb
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 19fb94cff7c7
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 19fb94cff7c7
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 19fb94cff7c7
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 9b95f022c3c0
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 9b95f022c3c0
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 6aa3bae938ff
+ ---> Using cache
+ ---> 9b95f022c3c0
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+Successfully built 6aa3bae938ff
+ ---> Using cache
+ ---> 6aa3bae938ff
+Successfully built 6aa3bae938ff
+ ---> Using cache
+ ---> 6aa3bae938ff
+Successfully built 6aa3bae938ff
+Successfully tagged p13v-cliente:latest
+ Image p13v-cliente Built 
+ Image p13v-cliente Built 
+Successfully tagged p13v-servidor:latest
+ Image p13v-servidor Built 
+ Image p13v-servidor Built 
+Successfully tagged p13v-atacante:latest
+ Image p13v-atacante Built 
+ Image p13v-atacante Built 
+ Network p13v_labnet Creating 
+ Network p13v_labnet Created 
+ Container p13v-cliente-1 Creating 
+ Container p13v-atacante-1 Creating 
+ Container p13v-servidor-1 Creating 
+ Container p13v-cliente-1 Created 
+ Container p13v-atacante-1 Created 
+ Container p13v-servidor-1 Created 
+ Container p13v-servidor-1 Starting 
+ Container p13v-cliente-1 Starting 
+ Container p13v-atacante-1 Starting 
+ Container p13v-atacante-1 Started 
+ Container p13v-cliente-1 Started 
+ Container p13v-servidor-1 Started 
+ Container p13v-servidor-1 Stopping 
+ Container p13v-cliente-1 Stopping 
+ Container p13v-atacante-1 Stopping 
+ Container p13v-cliente-1 Stopped 
+ Container p13v-cliente-1 Removing 
+ Container p13v-servidor-1 Stopped 
+ Container p13v-servidor-1 Removing 
+ Container p13v-atacante-1 Stopped 
+ Container p13v-atacante-1 Removing 
+ Container p13v-cliente-1 Removed 
+ Container p13v-atacante-1 Removed 
+ Container p13v-servidor-1 Removed 
+ Network p13v_labnet Removing 
+ Network p13v_labnet Removed 
+
+=== 2026-06-08 13:38:24 p13m ===
+time="2026-06-08T13:38:24-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p13m-servidor Building 
+ Image p13m-atacante Building 
+ Image p13m-cliente Building 
+ Image p13m-servidor Building 
+ Image p13m-cliente Building 
+ Image p13m-atacante Building 
+Sending build context to Docker daemon  2.512kB
+Sending build context to Docker daemon  2.512kB
+Sending build context to Docker daemon  2.512kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 12649e7fdbb8
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 12649e7fdbb8
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 12649e7fdbb8
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> ab0b3e0d76c2
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> ab0b3e0d76c2
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> ab0b3e0d76c2
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> b62ad3286610
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> b62ad3286610
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> b62ad3286610
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 618192c4834c
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 618192c4834c
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 618192c4834c
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> b854b72c373f
+ ---> Using cache
+ ---> b854b72c373f
+ ---> Using cache
+ ---> b854b72c373f
+Successfully built b854b72c373f
+Successfully built b854b72c373f
+Successfully built b854b72c373f
+Successfully tagged p13m-atacante:latest
+ Image p13m-atacante Built 
+ Image p13m-atacante Built 
+Successfully tagged p13m-servidor:latest
+ Image p13m-servidor Built 
+ Image p13m-servidor Built 
+Successfully tagged p13m-cliente:latest
+ Image p13m-cliente Built 
+ Image p13m-cliente Built 
+ Network p13m_labnet Creating 
+ Network p13m_labnet Created 
+ Container p13m-atacante-1 Creating 
+ Container p13m-servidor-1 Creating 
+ Container p13m-cliente-1 Creating 
+ Container p13m-atacante-1 Created 
+ Container p13m-cliente-1 Created 
+ Container p13m-servidor-1 Created 
+ Container p13m-servidor-1 Starting 
+ Container p13m-cliente-1 Starting 
+ Container p13m-atacante-1 Starting 
+ Container p13m-cliente-1 Started 
+ Container p13m-atacante-1 Started 
+ Container p13m-servidor-1 Started 
+ Container p13m-cliente-1 Stopping 
+ Container p13m-servidor-1 Stopping 
+ Container p13m-atacante-1 Stopping 
+ Container p13m-atacante-1 Stopped 
+ Container p13m-atacante-1 Removing 
+ Container p13m-servidor-1 Stopped 
+ Container p13m-servidor-1 Removing 
+ Container p13m-cliente-1 Stopped 
+ Container p13m-cliente-1 Removing 
+ Container p13m-servidor-1 Removed 
+ Container p13m-cliente-1 Removed 
+ Container p13m-atacante-1 Removed 
+ Network p13m_labnet Removing 
+ Network p13m_labnet Removed 

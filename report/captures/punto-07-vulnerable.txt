@@ -1,78 +1,13 @@
-========== PUNTO 07 — FRAGMENTACIÓN IP [VULNERABLE] ==========
-time="2026-06-08T12:56:03-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
- Image p07v-atacante Building 
- Image p07v-objetivo Building 
- Image p07v-atacante Building 
- Image p07v-objetivo Building 
-Sending build context to Docker daemon  1.684kB
-Sending build context to Docker daemon  1.684kB
-Step 1/7 : FROM python:3.11-slim-bookworm
-Step 1/7 : FROM python:3.11-slim-bookworm
- ---> 8dca233de9f3
-Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3     && rm -rf /var/lib/apt/lists/*
- ---> 8dca233de9f3
-Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd iperf3     && rm -rf /var/lib/apt/lists/*
- ---> Using cache
- ---> ce8021aaf169
-Step 3/7 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> ce8021aaf169
-Step 3/7 : RUN pip install --no-cache-dir scapy
- ---> Using cache
- ---> 14f51145fa8a
-Step 4/7 : WORKDIR /lab
- ---> Using cache
- ---> 14f51145fa8a
-Step 4/7 : WORKDIR /lab
- ---> Using cache
- ---> 64c502339872
-Step 5/7 : COPY scripts/ /lab/
- ---> Using cache
- ---> 64c502339872
-Step 5/7 : COPY scripts/ /lab/
- ---> Using cache
- ---> 1ce78eaec4f0
-Step 6/7 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> 1ce78eaec4f0
-Step 6/7 : CMD ["sleep", "infinity"]
- ---> Using cache
- ---> e5d124cdbfe1
-Step 7/7 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> e5d124cdbfe1
-Step 7/7 : LABEL com.docker.compose.image.builder=classic
- ---> Using cache
- ---> 251b06a421a7
- ---> Using cache
- ---> 251b06a421a7
-Successfully built 251b06a421a7
-Successfully built 251b06a421a7
-Successfully tagged p07v-objetivo:latest
- Image p07v-objetivo Built 
- Image p07v-objetivo Built 
-Successfully tagged p07v-atacante:latest
- Image p07v-atacante Built 
- Image p07v-atacante Built 
- Network p07v_labnet Creating 
- Network p07v_labnet Created 
- Container p07v-objetivo-1 Creating 
- Container p07v-atacante-1 Creating 
- Container p07v-atacante-1 Created 
- Container p07v-objetivo-1 Created 
- Container p07v-objetivo-1 Starting 
- Container p07v-atacante-1 Starting 
- Container p07v-objetivo-1 Started 
- Container p07v-atacante-1 Started 
+
+╔══════════════════════════════════════════════════════════════╗
+║  Taller 2 — Punto 07 — FRAGMENTACIÓN IP            ║
+║  Modo: VULNERABLE                                            ║
+╚══════════════════════════════════════════════════════════════╝
+
+oscar@lab $ [ATACANTE 10.9.0.101]
+python3 /lab/fragment_attack.py 10.9.0.102
 [+] Fragmento 0 enviado (16 bytes payload UDP benigno)
 [+] Fragmento 1 solapado (offset 8) con EVILPAYLOAD
- Container p07v-objetivo-1 Stopping 
- Container p07v-atacante-1 Stopping 
- Container p07v-objetivo-1 Stopped 
- Container p07v-objetivo-1 Removing 
- Container p07v-atacante-1 Stopped 
- Container p07v-atacante-1 Removing 
- Container p07v-objetivo-1 Removed 
- Container p07v-atacante-1 Removed 
- Network p07v_labnet Removing 
- Network p07v_labnet Removed 
+
+oscar@lab # [SERVIDOR/VÍCTIMA 10.9.0.102]
+cat /tmp/demo.log

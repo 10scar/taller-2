@@ -17,7 +17,7 @@ chmod +x run_all.sh lib/*.sh punto-*/**/demo.sh
 ./run_all.sh
 ```
 
-Al terminar:
+README.md
 
 | Artefacto | Ruta |
 |-----------|------|
@@ -29,6 +29,10 @@ Al terminar:
 Ejecutar un solo punto: `./run_all.sh 5`
 
 Regenerar informe sin Docker: `python3 lib/generate_report.py --only-report`
+
+## Capturas limpias
+
+Los pantallazos muestran **solo la fase de ataque** (comando del atacante + respuesta del servidor/víctima), con prompts estilo terminal local (`oscar@lab $` / `oscar@lab #`). El setup Docker (`build`, `up`, `down`) va silencioso a [`report/setup.log`](report/setup.log).
 
 ## Laboratorios
 

@@ -61,7 +61,7 @@ run_demo_capture() {
   start=$(date +%s)
   log "Ejecutando punto-${num} (${mode})..."
   set +e
-  (cd "${lab_dir}/${mode}" && bash demo.sh) > "${capture}" 2>&1
+  (cd "${lab_dir}/${mode}" && ROOT="${ROOT_DIR}" CAPTURE_MODE=1 bash demo.sh) > "${capture}" 2>&1
   status=$?
   set -e
   end=$(date +%s)

@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "========== PUNTO 07 — FRAGMENTACIÓN IP [VULNERABLE] =========="
-P="docker compose -p p07v -f docker-compose.yml"
-trap '$P down -v 2>/dev/null || true' EXIT
-$P down -v 2>/dev/null || true
-$P up -d --build
-sleep 3
-$P exec -d objetivo python3 /lab/fragment_detect.py
-sleep 1
-$P exec atacante python3 /lab/fragment_attack.py 10.9.0.102
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+source "${ROOT}/lib/capture_helpers.sh"
+init_compose "p07v" "docker-compose.yml"
+trap 'teardown_lab 2>/dev/null || true' EXIT
+
+setup_lab
+${COMPOSE} exec -d objetivo sh -c 'python3 /lab/fragment_detect.py > /tmp/demo.log 2>&1' >> "${SETUP_LOG}" 2>&1
+sleep 2
+
+section "07" "FRAGMENTACIÓN IP" "VULNERABLE"
+prompt_attack "10.9.0.101" "python3 /lab/fragment_attack.py 10.9.0.102"
+run_exec atacante python3 /lab/fragment_attack.py 10.9.0.102
 sleep 4
-$P logs objetivo 2>/dev/null || true
-$P down -v
+blank_line
+prompt_server "10.9.0.102" "cat /tmp/demo.log"
+run_exec objetivo cat /tmp/demo.log 2>/dev/null || true
+
+teardown_lab

