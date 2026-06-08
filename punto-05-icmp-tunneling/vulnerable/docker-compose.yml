@@ -1,0 +1,23 @@
+services:
+  emisor:
+    build: .
+    command: ["tail", "-f", "/dev/null"]
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.101
+  receptor:
+    build: .
+    command: ["tail", "-f", "/dev/null"]
+    cap_add: [NET_ADMIN, NET_RAW]
+    privileged: true
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.102
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.9.0.0/24

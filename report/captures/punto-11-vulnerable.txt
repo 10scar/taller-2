@@ -1,0 +1,120 @@
+========== PUNTO 11 — ARP SPOOFING [VULNERABLE] ==========
+time="2026-06-08T12:59:12-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p11v-victima Building 
+ Image p11v-gateway Building 
+ Image p11v-atacante Building 
+ Image p11v-victima Building 
+ Image p11v-atacante Building 
+ Image p11v-gateway Building 
+Sending build context to Docker daemon  1.496kB
+Sending build context to Docker daemon  1.496kB
+Sending build context to Docker daemon  1.496kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> df3242fce169
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> df3242fce169
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> df3242fce169
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> a492cbb14fed
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> a492cbb14fed
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> a492cbb14fed
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 3b840a732e0f
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 3b840a732e0f
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 3b840a732e0f
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> cff9fa29b0ed
+Successfully built cff9fa29b0ed
+ ---> Using cache
+ ---> cff9fa29b0ed
+Successfully built cff9fa29b0ed
+Successfully tagged p11v-atacante:latest
+ Image p11v-atacante Built 
+ Image p11v-atacante Built 
+ ---> Using cache
+ ---> cff9fa29b0ed
+Successfully tagged p11v-victima:latest
+ Image p11v-victima Built 
+ Image p11v-victima Built 
+Successfully built cff9fa29b0ed
+Successfully tagged p11v-gateway:latest
+ Image p11v-gateway Built 
+ Image p11v-gateway Built 
+ Network p11v_labnet Creating 
+ Network p11v_labnet Created 
+ Container p11v-atacante-1 Creating 
+ Container p11v-gateway-1 Creating 
+ Container p11v-victima-1 Creating 
+ Container p11v-atacante-1 Created 
+ Container p11v-victima-1 Created 
+ Container p11v-gateway-1 Created 
+ Container p11v-atacante-1 Starting 
+ Container p11v-gateway-1 Starting 
+ Container p11v-victima-1 Starting 
+ Container p11v-atacante-1 Started 
+ Container p11v-victima-1 Started 
+ Container p11v-gateway-1 Started 
+[*] MACs: victima=2a:0a:02:df:ab:fe atacante=26:fc:e2:51:97:ca gateway=6a:44:31:42:08:7c
+[*] Tabla ARP víctima ANTES:
+10.9.0.1 dev eth0 lladdr 6a:44:31:42:08:7c REACHABLE 
+[*] Envenenamiento silencioso contra 10.9.0.20 (2 iteraciones, 2.0s)
+[+] ARP Reply 1/2: 10.9.0.1 -> MAC 26:fc:e2:51:97:ca
+[+] ARP Reply 2/2: 10.9.0.1 -> MAC 26:fc:e2:51:97:ca
+[*] Auditoría ARP finalizada
+[*] Tabla ARP víctima DESPUÉS (gateway debería apuntar al MAC del atacante):
+10.9.0.1 dev eth0 lladdr 26:fc:e2:51:97:ca REACHABLE 
+ Container p11v-gateway-1 Stopping 
+ Container p11v-victima-1 Stopping 
+ Container p11v-atacante-1 Stopping 
+ Container p11v-victima-1 Stopped 
+ Container p11v-victima-1 Removing 
+ Container p11v-gateway-1 Stopped 
+ Container p11v-gateway-1 Removing 
+ Container p11v-atacante-1 Stopped 
+ Container p11v-atacante-1 Removing 
+ Container p11v-victima-1 Removed 
+ Container p11v-gateway-1 Removed 
+ Container p11v-atacante-1 Removed 
+ Network p11v_labnet Removing 
+ Network p11v_labnet Removed 

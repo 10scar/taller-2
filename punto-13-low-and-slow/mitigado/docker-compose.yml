@@ -1,0 +1,24 @@
+services:
+  atacante:
+    build: .
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.11
+  servidor:
+    build: .
+    privileged: true
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.100
+  cliente:
+    build: .
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.12
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.9.0.0/24

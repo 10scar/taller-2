@@ -1,0 +1,138 @@
+========== PUNTO 13 — LOW-AND-SLOW [VULNERABLE] ==========
+time="2026-06-08T13:00:26-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p13v-atacante Building 
+ Image p13v-cliente Building 
+ Image p13v-servidor Building 
+ Image p13v-atacante Building 
+ Image p13v-cliente Building 
+ Image p13v-servidor Building 
+Sending build context to Docker daemon  2.337kB
+Sending build context to Docker daemon  2.337kB
+Sending build context to Docker daemon  2.337kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd apache2     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> df3242fce169
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 62383ca066c1
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 039f60b4c43f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 12649e7fdbb8
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 12649e7fdbb8
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 12649e7fdbb8
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> cfd082b4e6fb
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> 928cdfb31a4b
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> d53b4c007177
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Running in f1a102e788f8
+ ---> Running in 718017de9537
+ ---> Running in 26c9c566d1f2
+ ---> Removed intermediate container f1a102e788f8
+ ---> 19fb94cff7c7
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Removed intermediate container 718017de9537
+ ---> cd7d5b105134
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Removed intermediate container 26c9c566d1f2
+ ---> 9e9551a55e21
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Running in eb253d70a5dd
+ ---> Running in 7095e49a950a
+ ---> Running in 5f87aed05434
+ ---> Removed intermediate container eb253d70a5dd
+ ---> 9b95f022c3c0
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Removed intermediate container 5f87aed05434
+ ---> 32eebfa30b0e
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Removed intermediate container 7095e49a950a
+ ---> 00b775bf0d6e
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in c82a0ab1e1b3
+ ---> Running in b41a085b6e10
+ ---> Running in 53117592d8e9
+ ---> Removed intermediate container c82a0ab1e1b3
+ ---> 6aa3bae938ff
+Successfully built 6aa3bae938ff
+ ---> Removed intermediate container 53117592d8e9
+ ---> a62f0e7ab0a5
+ ---> Removed intermediate container b41a085b6e10
+ ---> 5df6f1e4feeb
+Successfully built 5df6f1e4feeb
+Successfully built a62f0e7ab0a5
+Successfully tagged p13v-cliente:latest
+ Image p13v-cliente Built 
+ Image p13v-cliente Built 
+Successfully tagged p13v-servidor:latest
+ Image p13v-servidor Built 
+ Image p13v-servidor Built 
+Successfully tagged p13v-atacante:latest
+ Image p13v-atacante Built 
+ Image p13v-atacante Built 
+ Network p13v_labnet Creating 
+ Network p13v_labnet Created 
+ Container p13v-cliente-1 Creating 
+ Container p13v-atacante-1 Creating 
+ Container p13v-servidor-1 Creating 
+ Container p13v-servidor-1 Created 
+ Container p13v-cliente-1 Created 
+ Container p13v-atacante-1 Created 
+ Container p13v-atacante-1 Starting 
+ Container p13v-cliente-1 Starting 
+ Container p13v-servidor-1 Starting 
+ Container p13v-atacante-1 Started 
+ Container p13v-cliente-1 Started 
+ Container p13v-servidor-1 Started 
+[*] Cliente legítimo (puede timeout):
+http_code=000 time=0.000412s
+[!] Timeout/fallo — servidor saturado por Slowloris
+ Container p13v-atacante-1 Stopping 
+ Container p13v-cliente-1 Stopping 
+ Container p13v-servidor-1 Stopping 
+ Container p13v-servidor-1 Stopped 
+ Container p13v-atacante-1 Stopped 
+ Container p13v-atacante-1 Removing 
+ Container p13v-servidor-1 Removing 
+ Container p13v-cliente-1 Stopped 
+ Container p13v-cliente-1 Removing 
+ Container p13v-servidor-1 Removed 
+ Container p13v-atacante-1 Removed 
+ Container p13v-cliente-1 Removed 
+ Network p13v_labnet Removing 
+ Network p13v_labnet Removed 

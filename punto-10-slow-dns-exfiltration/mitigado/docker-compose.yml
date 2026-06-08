@@ -1,0 +1,26 @@
+services:
+  host:
+    build: .
+    dns: 10.9.0.53
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.102
+  resolver:
+    build: .
+    privileged: true
+    cap_add: [NET_ADMIN]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.53
+  attacker-dns:
+    build: .
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.101
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.9.0.0/24

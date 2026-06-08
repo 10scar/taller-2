@@ -1,0 +1,291 @@
+========== PUNTO 01 — CANALES ENCUBiertos [VULNERABLE] ==========
+time="2026-06-08T12:50:44-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p01v-emisor Building 
+ Image p01v-receptor Building 
+ Image p01v-emisor Building 
+ Image p01v-receptor Building 
+Sending build context to Docker daemon  1.489kB
+Sending build context to Docker daemon  1.489kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends iproute2 iputils-ping tcpdump     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends iproute2 iputils-ping tcpdump     && rm -rf /var/lib/apt/lists/*
+ ---> Running in 1ced6ffa7b5a
+ ---> Running in 72f187e587aa
+Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [306 kB]
+Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [306 kB]
+Fetched 9358 kB in 1s (11.1 MB/s)
+Reading package lists...Fetched 9358 kB in 1s (9939 kB/s)
+Reading package lists...
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Building dependency tree...
+Reading state information...
+
+Reading state information...
+The following additional packages will be installed:
+  libbpf1 libbsd0 libcap2-bin libdbus-1-3 libelf1 libmnl0 libpcap0.8
+  libxtables12
+Suggested packages:
+  iproute2-doc python3:any apparmor
+Recommended packages:
+  libatm1 libpam-cap dbus
+The following NEW packages will be installed:
+  iproute2 iputils-ping libbpf1 libbsd0 libcap2-bin libdbus-1-3 libelf1
+  libmnl0 libpcap0.8 libxtables12 tcpdump
+0 upgraded, 11 newly installed, 0 to remove and 6 not upgraded.
+Need to get 2433 kB of archives.
+After this operation, 7893 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libelf1 amd64 0.188-2.1 [174 kB]
+The following additional packages will be installed:
+  libbpf1 libbsd0 libcap2-bin libdbus-1-3 libelf1 libmnl0 libpcap0.8
+  libxtables12
+Suggested packages:
+  iproute2-doc python3:any apparmor
+Recommended packages:
+  libatm1 libpam-cap dbus
+Get:2 http://deb.debian.org/debian bookworm/main amd64 libbpf1 amd64 1:1.1.2-0+deb12u1 [145 kB]
+Get:3 http://deb.debian.org/debian bookworm/main amd64 libbsd0 amd64 0.11.7-2 [117 kB]
+Get:4 http://deb.debian.org/debian bookworm/main amd64 libmnl0 amd64 1.0.4-3 [12.5 kB]
+Get:5 http://deb.debian.org/debian bookworm/main amd64 libxtables12 amd64 1.8.9-2 [30.8 kB]
+Get:6 http://deb.debian.org/debian bookworm/main amd64 libcap2-bin amd64 1:2.66-4+deb12u3+b1 [35.2 kB]
+Get:7 http://deb.debian.org/debian bookworm/main amd64 iproute2 amd64 6.1.0-3 [1046 kB]
+Get:8 http://deb.debian.org/debian bookworm/main amd64 iputils-ping amd64 3:20221126-1+deb12u1 [47.2 kB]
+Get:9 http://deb.debian.org/debian bookworm/main amd64 libdbus-1-3 amd64 1.14.10-1~deb12u1 [201 kB]
+Get:10 http://deb.debian.org/debian bookworm/main amd64 libpcap0.8 amd64 1.10.3-1 [157 kB]
+Get:11 http://deb.debian.org/debian bookworm/main amd64 tcpdump amd64 4.99.3-1 [467 kB]
+The following NEW packages will be installed:
+  iproute2 iputils-ping libbpf1 libbsd0 libcap2-bin libdbus-1-3 libelf1
+  libmnl0 libpcap0.8 libxtables12 tcpdump
+0 upgraded, 11 newly installed, 0 to remove and 6 not upgraded.
+Need to get 2433 kB of archives.
+After this operation, 7893 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libelf1 amd64 0.188-2.1 [174 kB]
+Get:2 http://deb.debian.org/debian bookworm/main amd64 libbpf1 amd64 1:1.1.2-0+deb12u1 [145 kB]
+Get:3 http://deb.debian.org/debian bookworm/main amd64 libbsd0 amd64 0.11.7-2 [117 kB]
+Get:4 http://deb.debian.org/debian bookworm/main amd64 libmnl0 amd64 1.0.4-3 [12.5 kB]
+Get:5 http://deb.debian.org/debian bookworm/main amd64 libxtables12 amd64 1.8.9-2 [30.8 kB]
+Get:6 http://deb.debian.org/debian bookworm/main amd64 libcap2-bin amd64 1:2.66-4+deb12u3+b1 [35.2 kB]
+Get:7 http://deb.debian.org/debian bookworm/main amd64 iproute2 amd64 6.1.0-3 [1046 kB]
+Get:8 http://deb.debian.org/debian bookworm/main amd64 iputils-ping amd64 3:20221126-1+deb12u1 [47.2 kB]
+Get:9 http://deb.debian.org/debian bookworm/main amd64 libdbus-1-3 amd64 1.14.10-1~deb12u1 [201 kB]
+Get:10 http://deb.debian.org/debian bookworm/main amd64 libpcap0.8 amd64 1.10.3-1 [157 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mGet:11 http://deb.debian.org/debian bookworm/main amd64 tcpdump amd64 4.99.3-1 [467 kB]
+Fetched 2433 kB in 0s (26.1 MB/s)
+Selecting previously unselected package libelf1:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6695 files and directories currently installed.)
+Preparing to unpack .../00-libelf1_0.188-2.1_amd64.deb ...
+Unpacking libelf1:amd64 (0.188-2.1) ...
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 2433 kB in 0s (26.1 MB/s)
+Selecting previously unselected package libelf1:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%Selecting previously unselected package libbpf1:amd64.
+(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%Preparing to unpack .../01-libbpf1_1%3a1.1.2-0+deb12u1_amd64.deb ...
+(Reading database ... 100%(Reading database ... 6695 files and directories currently installed.)
+Preparing to unpack .../00-libelf1_0.188-2.1_amd64.deb ...
+Unpacking libbpf1:amd64 (1:1.1.2-0+deb12u1) ...
+Unpacking libelf1:amd64 (0.188-2.1) ...
+Selecting previously unselected package libbsd0:amd64.
+Preparing to unpack .../02-libbsd0_0.11.7-2_amd64.deb ...
+Unpacking libbsd0:amd64 (0.11.7-2) ...
+Selecting previously unselected package libbpf1:amd64.
+Preparing to unpack .../01-libbpf1_1%3a1.1.2-0+deb12u1_amd64.deb ...
+Unpacking libbpf1:amd64 (1:1.1.2-0+deb12u1) ...
+Selecting previously unselected package libmnl0:amd64.
+Preparing to unpack .../03-libmnl0_1.0.4-3_amd64.deb ...
+Selecting previously unselected package libbsd0:amd64.
+Unpacking libmnl0:amd64 (1.0.4-3) ...
+Preparing to unpack .../02-libbsd0_0.11.7-2_amd64.deb ...
+Unpacking libbsd0:amd64 (0.11.7-2) ...
+Selecting previously unselected package libxtables12:amd64.
+Preparing to unpack .../04-libxtables12_1.8.9-2_amd64.deb ...
+Selecting previously unselected package libmnl0:amd64.
+Unpacking libxtables12:amd64 (1.8.9-2) ...
+Preparing to unpack .../03-libmnl0_1.0.4-3_amd64.deb ...
+Unpacking libmnl0:amd64 (1.0.4-3) ...
+Selecting previously unselected package libcap2-bin.
+Preparing to unpack .../05-libcap2-bin_1%3a2.66-4+deb12u3+b1_amd64.deb ...
+Unpacking libcap2-bin (1:2.66-4+deb12u3+b1) ...
+Selecting previously unselected package libxtables12:amd64.
+Preparing to unpack .../04-libxtables12_1.8.9-2_amd64.deb ...
+Unpacking libxtables12:amd64 (1.8.9-2) ...
+Selecting previously unselected package libcap2-bin.
+Preparing to unpack .../05-libcap2-bin_1%3a2.66-4+deb12u3+b1_amd64.deb ...
+Unpacking libcap2-bin (1:2.66-4+deb12u3+b1) ...
+Selecting previously unselected package iproute2.
+Preparing to unpack .../06-iproute2_6.1.0-3_amd64.deb ...
+Unpacking iproute2 (6.1.0-3) ...
+Selecting previously unselected package iproute2.
+Preparing to unpack .../06-iproute2_6.1.0-3_amd64.deb ...
+Unpacking iproute2 (6.1.0-3) ...
+Selecting previously unselected package iputils-ping.
+Preparing to unpack .../07-iputils-ping_3%3a20221126-1+deb12u1_amd64.deb ...
+Unpacking iputils-ping (3:20221126-1+deb12u1) ...
+Selecting previously unselected package iputils-ping.
+Preparing to unpack .../07-iputils-ping_3%3a20221126-1+deb12u1_amd64.deb ...
+Unpacking iputils-ping (3:20221126-1+deb12u1) ...
+Selecting previously unselected package libdbus-1-3:amd64.
+Preparing to unpack .../08-libdbus-1-3_1.14.10-1~deb12u1_amd64.deb ...
+Unpacking libdbus-1-3:amd64 (1.14.10-1~deb12u1) ...
+Selecting previously unselected package libdbus-1-3:amd64.
+Preparing to unpack .../08-libdbus-1-3_1.14.10-1~deb12u1_amd64.deb ...
+Unpacking libdbus-1-3:amd64 (1.14.10-1~deb12u1) ...
+Selecting previously unselected package libpcap0.8:amd64.
+Preparing to unpack .../09-libpcap0.8_1.10.3-1_amd64.deb ...
+Unpacking libpcap0.8:amd64 (1.10.3-1) ...
+Selecting previously unselected package libpcap0.8:amd64.
+Preparing to unpack .../09-libpcap0.8_1.10.3-1_amd64.deb ...
+Unpacking libpcap0.8:amd64 (1.10.3-1) ...
+Selecting previously unselected package tcpdump.
+Preparing to unpack .../10-tcpdump_4.99.3-1_amd64.deb ...
+Unpacking tcpdump (4.99.3-1) ...
+Selecting previously unselected package tcpdump.
+Preparing to unpack .../10-tcpdump_4.99.3-1_amd64.deb ...
+Unpacking tcpdump (4.99.3-1) ...
+Setting up libcap2-bin (1:2.66-4+deb12u3+b1) ...
+Setting up libdbus-1-3:amd64 (1.14.10-1~deb12u1) ...
+Setting up libmnl0:amd64 (1.0.4-3) ...
+Setting up libcap2-bin (1:2.66-4+deb12u3+b1) ...
+Setting up libxtables12:amd64 (1.8.9-2) ...
+Setting up libdbus-1-3:amd64 (1.14.10-1~deb12u1) ...
+Setting up libbsd0:amd64 (0.11.7-2) ...
+Setting up libmnl0:amd64 (1.0.4-3) ...
+Setting up libelf1:amd64 (0.188-2.1) ...
+Setting up libxtables12:amd64 (1.8.9-2) ...
+Setting up iputils-ping (3:20221126-1+deb12u1) ...
+Setting up libbsd0:amd64 (0.11.7-2) ...
+Setting up libelf1:amd64 (0.188-2.1) ...
+Setting up libbpf1:amd64 (1:1.1.2-0+deb12u1) ...
+Setting up iputils-ping (3:20221126-1+deb12u1) ...
+Setting up iproute2 (6.1.0-3) ...
+Setting up libbpf1:amd64 (1:1.1.2-0+deb12u1) ...
+Setting up iproute2 (6.1.0-3) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Setting up libpcap0.8:amd64 (1.10.3-1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Setting up tcpdump (4.99.3-1) ...
+Setting up libpcap0.8:amd64 (1.10.3-1) ...
+Setting up tcpdump (4.99.3-1) ...
+Processing triggers for libc-bin (2.36-9+deb12u14) ...
+Processing triggers for libc-bin (2.36-9+deb12u14) ...
+ ---> Removed intermediate container 1ced6ffa7b5a
+ ---> c48d53a81932
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Removed intermediate container 72f187e587aa
+ ---> e0653d27dc15
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Running in 25d89773c170
+ ---> Running in f68471eb57b7
+Collecting scapy
+Collecting scapy
+  Downloading scapy-2.7.0-py3-none-any.whl.metadata (5.8 kB)
+  Downloading scapy-2.7.0-py3-none-any.whl.metadata (5.8 kB)
+Downloading scapy-2.7.0-py3-none-any.whl (2.6 MB)
+Downloading scapy-2.7.0-py3-none-any.whl (2.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 30.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 30.6 MB/s eta 0:00:00
+Installing collected packages: scapy
+Installing collected packages: scapy
+Successfully installed scapy-2.7.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0mSuccessfully installed scapy-2.7.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0m[91m
+[notice] A new release of pip is available: 24.0 -> 26.1.2
+[notice] To update, run: pip install --upgrade pip
+[0m[91m
+[notice] A new release of pip is available: 24.0 -> 26.1.2
+[notice] To update, run: pip install --upgrade pip
+[0m ---> Removed intermediate container 25d89773c170
+ ---> d6282b869187
+Step 4/7 : WORKDIR /lab
+ ---> Removed intermediate container f68471eb57b7
+ ---> 0ab31fabb62f
+Step 4/7 : WORKDIR /lab
+ ---> Running in ddfe0af11143
+ ---> Running in 2669794e8e6a
+ ---> Removed intermediate container ddfe0af11143
+ ---> 21c271cf650f
+Step 5/7 : COPY scripts/ /lab/
+ ---> Removed intermediate container 2669794e8e6a
+ ---> 67be9d28ac1e
+Step 5/7 : COPY scripts/ /lab/
+ ---> 9cbba98b6973
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> e7d1b6310e3e
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Running in 0eb5034e2e3c
+ ---> Running in b245c3c0ef54
+ ---> Removed intermediate container 0eb5034e2e3c
+ ---> d2f88e3b0bcf
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Removed intermediate container b245c3c0ef54
+ ---> 88157549615a
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in 622a30ce3079
+ ---> Running in 730626262d27
+ ---> Removed intermediate container 622a30ce3079
+ ---> 59dfd6c89fe0
+Successfully built 59dfd6c89fe0
+ ---> Removed intermediate container 730626262d27
+ ---> f5f927642910
+Successfully tagged p01v-receptor:latest
+ Image p01v-receptor Built 
+ Image p01v-receptor Built 
+Successfully built f5f927642910
+Successfully tagged p01v-emisor:latest
+ Image p01v-emisor Built 
+ Image p01v-emisor Built 
+ Network p01v_labnet Creating 
+ Network p01v_labnet Created 
+ Container p01v-emisor-1 Creating 
+ Container p01v-receptor-1 Creating 
+ Container p01v-receptor-1 Created 
+ Container p01v-emisor-1 Created 
+ Container p01v-receptor-1 Starting 
+ Container p01v-emisor-1 Starting 
+ Container p01v-emisor-1 Started 
+ Container p01v-receptor-1 Started 
+[+] Codificando 'SECRETO' en IP ID hacia 10.9.0.102
+    paquete 0: IP ID=21248 char='S'
+    paquete 1: IP ID=17665 char='E'
+    paquete 2: IP ID=17154 char='C'
+    paquete 3: IP ID=20995 char='R'
+    paquete 4: IP ID=17668 char='E'
+    paquete 5: IP ID=21509 char='T'
+    paquete 6: IP ID=20230 char='O'
+[+] Transmisión encubierta completada
+ Container p01v-receptor-1 Stopping 
+ Container p01v-emisor-1 Stopping 
+ Container p01v-emisor-1 Stopped 
+ Container p01v-emisor-1 Removing 
+ Container p01v-receptor-1 Stopped 
+ Container p01v-receptor-1 Removing 
+ Container p01v-receptor-1 Removed 
+ Container p01v-emisor-1 Removed 
+ Network p01v_labnet Removing 
+ Network p01v_labnet Removed 

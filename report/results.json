@@ -1,0 +1,187 @@
+{
+  "generated_at": "2026-06-08T17:50:44.420421+00:00",
+  "labs": {
+    "01": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-01-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-01-vulnerable.png",
+        "duration_sec": 38.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-01-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-01-mitigado.png",
+        "duration_sec": 29.0
+      }
+    },
+    "02": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-02-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-02-vulnerable.png",
+        "duration_sec": 30.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-02-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-02-mitigado.png",
+        "duration_sec": 43.0
+      }
+    },
+    "03": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-03-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-03-vulnerable.png",
+        "duration_sec": 21.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-03-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-03-mitigado.png",
+        "duration_sec": 22.0
+      }
+    },
+    "04": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-04-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-04-vulnerable.png",
+        "duration_sec": 18.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-04-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-04-mitigado.png",
+        "duration_sec": 19.0
+      }
+    },
+    "05": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-05-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-05-vulnerable.png",
+        "duration_sec": 24.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-05-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-05-mitigado.png",
+        "duration_sec": 25.0
+      }
+    },
+    "06": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-06-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-06-vulnerable.png",
+        "duration_sec": 23.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-06-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-06-mitigado.png",
+        "duration_sec": 22.0
+      }
+    },
+    "07": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-07-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-07-vulnerable.png",
+        "duration_sec": 20.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-07-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-07-mitigado.png",
+        "duration_sec": 20.0
+      }
+    },
+    "08": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-08-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-08-vulnerable.png",
+        "duration_sec": 30.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-08-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-08-mitigado.png",
+        "duration_sec": 31.0
+      }
+    },
+    "09": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-09-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-09-vulnerable.png",
+        "duration_sec": 21.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-09-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-09-mitigado.png",
+        "duration_sec": 19.0
+      }
+    },
+    "10": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-10-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-10-vulnerable.png",
+        "duration_sec": 19.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-10-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-10-mitigado.png",
+        "duration_sec": 27.0
+      }
+    },
+    "11": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-11-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-11-vulnerable.png",
+        "duration_sec": 19.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-11-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-11-mitigado.png",
+        "duration_sec": 24.0
+      }
+    },
+    "12": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-12-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-12-vulnerable.png",
+        "duration_sec": 15.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-12-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-12-mitigado.png",
+        "duration_sec": 16.0
+      }
+    },
+    "13": {
+      "vulnerable": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-13-vulnerable.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-13-vulnerable.png",
+        "duration_sec": 26.0
+      },
+      "mitigado": {
+        "status": "ok",
+        "capture": "/home/oscar/Escritorio/taller 2/report/captures/punto-13-mitigado.txt",
+        "screenshot": "/home/oscar/Escritorio/taller 2/screenshots/punto-13-mitigado.png",
+        "duration_sec": 21.0
+      }
+    }
+  }
+}

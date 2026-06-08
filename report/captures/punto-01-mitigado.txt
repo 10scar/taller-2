@@ -1,0 +1,100 @@
+========== PUNTO 01 — CANALES ENCUBiertos [MITIGADO] ==========
+time="2026-06-08T12:51:23-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p01m-receptor Building 
+ Image p01m-emisor Building 
+ Image p01m-receptor Building 
+ Image p01m-emisor Building 
+Sending build context to Docker daemon  1.726kB
+Sending build context to Docker daemon  1.726kB
+Step 1/9 : FROM python:3.11-slim-bookwormStep 1/9 : FROM python:3.11-slim-bookworm
+
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends iproute2 iputils-ping tcpdump     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends iproute2 iputils-ping tcpdump     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> e0653d27dc15
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> e0653d27dc15
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> d6282b869187
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> d6282b869187
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 21c271cf650f
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 21c271cf650f
+Step 5/9 : COPY scripts/ /lab/
+ ---> 6887dbab2e19
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> ca4d475b2392
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> d6b5d4756154
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> 81e340b8d149
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Running in 13bcd31fc92a
+ ---> Running in 4e4a884613e2
+ ---> Removed intermediate container 13bcd31fc92a
+ ---> dbb47cb922c9
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Removed intermediate container 4e4a884613e2
+ ---> 76135d43dbdb
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Running in 881ea97f5275
+ ---> Running in 4b9d45f9c011
+ ---> Removed intermediate container 4b9d45f9c011
+ ---> 33360963b853
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Removed intermediate container 881ea97f5275
+ ---> 3c36382330ee
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in 4cfe11ac00c6
+ ---> Running in 71b9d6817c07
+ ---> Removed intermediate container 4cfe11ac00c6
+ ---> bd4b1f4d475b
+ ---> Removed intermediate container 71b9d6817c07
+ ---> 1f49b1d4af6d
+Successfully built bd4b1f4d475b
+Successfully built 1f49b1d4af6d
+Successfully tagged p01m-emisor:latest
+ Image p01m-emisor Built 
+ Image p01m-emisor Built 
+Successfully tagged p01m-receptor:latest
+ Image p01m-receptor Built 
+ Image p01m-receptor Built 
+ Network p01m_labnet Creating 
+ Network p01m_labnet Created 
+ Container p01m-emisor-1 Creating 
+ Container p01m-receptor-1 Creating 
+ Container p01m-emisor-1 Created 
+ Container p01m-receptor-1 Created 
+ Container p01m-receptor-1 Starting 
+ Container p01m-emisor-1 Starting 
+ Container p01m-emisor-1 Started 
+ Container p01m-receptor-1 Started 
+[+] Codificando 'SECRETO' en IP ID hacia 10.9.0.102
+    paquete 0: IP ID=21248 char='S'
+    paquete 1: IP ID=17665 char='E'
+    paquete 2: IP ID=17154 char='C'
+    paquete 3: IP ID=20995 char='R'
+    paquete 4: IP ID=17668 char='E'
+    paquete 5: IP ID=21509 char='T'
+    paquete 6: IP ID=20230 char='O'
+[+] Transmisión encubierta completada
+receptor-1  | [+] Normalización de cabeceras activa (RFC 6528 ISN + filtro IP ID encubierto)
+ Container p01m-emisor-1 Stopping 
+ Container p01m-receptor-1 Stopping 
+ Container p01m-receptor-1 Stopped 
+ Container p01m-receptor-1 Removing 
+ Container p01m-emisor-1 Stopped 
+ Container p01m-emisor-1 Removing 
+ Container p01m-receptor-1 Removed 
+ Container p01m-emisor-1 Removed 
+ Network p01m_labnet Removing 
+ Network p01m_labnet Removed 

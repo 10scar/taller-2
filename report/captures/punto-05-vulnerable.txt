@@ -1,0 +1,77 @@
+========== PUNTO 05 — ICMP TUNNELING [VULNERABLE] ==========
+time="2026-06-08T12:54:27-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p05v-receptor Building 
+ Image p05v-emisor Building 
+ Image p05v-receptor Building 
+ Image p05v-emisor Building 
+Sending build context to Docker daemon  1.454kB
+Sending build context to Docker daemon  1.454kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 7964307b8cd4
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 7964307b8cd4
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> f6e1728fe5c5
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> f6e1728fe5c5
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2f7a9664276f
+ ---> Using cache
+ ---> 2f7a9664276f
+Successfully built 2f7a9664276f
+Successfully built 2f7a9664276f
+Successfully tagged p05v-emisor:latest
+ Image p05v-emisor Built 
+ Image p05v-emisor Built 
+Successfully tagged p05v-receptor:latest
+ Image p05v-receptor Built 
+ Image p05v-receptor Built 
+ Network p05v_labnet Creating 
+ Network p05v_labnet Created 
+ Container p05v-receptor-1 Creating 
+ Container p05v-emisor-1 Creating 
+ Container p05v-emisor-1 Created 
+ Container p05v-receptor-1 Created 
+ Container p05v-receptor-1 Starting 
+ Container p05v-emisor-1 Starting 
+ Container p05v-emisor-1 Started 
+ Container p05v-receptor-1 Started 
+[+] Datos transmitidos con éxito al host 10.9.0.102
+ Container p05v-receptor-1 Stopping 
+ Container p05v-emisor-1 Stopping 
+ Container p05v-emisor-1 Stopped 
+ Container p05v-emisor-1 Removing 
+ Container p05v-receptor-1 Stopped 
+ Container p05v-receptor-1 Removing 
+ Container p05v-emisor-1 Removed 
+ Container p05v-receptor-1 Removed 
+ Network p05v_labnet Removing 
+ Network p05v_labnet Removed 

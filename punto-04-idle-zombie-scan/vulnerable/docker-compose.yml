@@ -1,0 +1,32 @@
+services:
+  atacante:
+    build: .
+    command: ["tail", "-f", "/dev/null"]
+    cap_add: [NET_ADMIN, NET_RAW]
+    privileged: true
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.100
+  zombie:
+    build: .
+    cap_add: [NET_ADMIN, NET_RAW]
+    privileged: true
+    command: ["python3", "/lab/zombie.py"]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.150
+  objetivo:
+    build: .
+    cap_add: [NET_ADMIN, NET_RAW]
+    privileged: true
+    entrypoint: ["/entrypoint-target.sh"]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.200
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.9.0.0/24

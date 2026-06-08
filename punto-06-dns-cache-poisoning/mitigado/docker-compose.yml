@@ -1,0 +1,31 @@
+services:
+  auth:
+    build: .
+    cap_add: [NET_ADMIN]
+    entrypoint: ["/entrypoint-auth.sh"]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.120
+  resolver:
+    build: .
+    cap_add: [NET_ADMIN, NET_RAW]
+    privileged: true
+    entrypoint: ["/entrypoint-resolver.sh"]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.53
+  atacante:
+    build: .
+    command: ["tail", "-f", "/dev/null"]
+    cap_add: [NET_ADMIN, NET_RAW]
+    privileged: true
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.153
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.9.0.0/24

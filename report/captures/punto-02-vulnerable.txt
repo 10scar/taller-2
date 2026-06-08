@@ -1,0 +1,95 @@
+========== PUNTO 02 — CANALES TEMPORIZACIÓN [VULNERABLE] ==========
+time="2026-06-08T12:51:52-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p02v-receptor Building 
+ Image p02v-emisor Building 
+ Image p02v-receptor Building 
+ Image p02v-emisor Building 
+Sending build context to Docker daemon  1.831kB
+Sending build context to Docker daemon  1.831kB
+Step 1/7 : FROM python:3.11-slim-bookworm
+Step 1/7 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/7 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> dff87a52be11
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> dff87a52be11
+Step 6/7 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 2cd9f33c5292
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2cd9f33c5292
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> ee05f1ebc0f0
+ ---> Using cache
+ ---> ee05f1ebc0f0
+Successfully built ee05f1ebc0f0
+Successfully built ee05f1ebc0f0
+Successfully tagged p02v-emisor:latest
+ Image p02v-emisor Built 
+ Image p02v-emisor Built 
+Successfully tagged p02v-receptor:latest
+ Image p02v-receptor Built 
+ Image p02v-receptor Built 
+ Network p02v_labnet Creating 
+ Network p02v_labnet Created 
+ Container p02v-emisor-1 Creating 
+ Container p02v-receptor-1 Creating 
+ Container p02v-emisor-1 Created 
+ Container p02v-receptor-1 Created 
+ Container p02v-emisor-1 Starting 
+ Container p02v-receptor-1 Starting 
+ Container p02v-receptor-1 Started 
+ Container p02v-emisor-1 Started 
+[+] Codificando '1010' por temporización hacia 10.9.0.102
+    paquete sync enviado
+    bit 0: 1 (retardo previo=0.8s)
+    bit 1: 0 (retardo previo=0.2s)
+    bit 2: 1 (retardo previo=0.8s)
+    bit 3: 0 (retardo previo=0.2s)
+[+] Transmisión temporal completada
+[+] Escuchando canal temporal ICMP...
+[*] Echo Request de 10.9.0.101 @ 1780941119.830
+[*] Echo Request de 10.9.0.101 @ 1780941120.648
+[*] Echo Request de 10.9.0.101 @ 1780941120.860
+[*] Echo Request de 10.9.0.101 @ 1780941121.670
+[*] Echo Request de 10.9.0.101 @ 1780941121.885
+[*] IPD[0]=0.819s -> bit 1
+[*] IPD[1]=0.212s -> bit 0
+[*] IPD[2]=0.810s -> bit 1
+[*] IPD[3]=0.215s -> bit 0
+[+] Secuencia decodificada: 1010
+[+] DECODIFICACIÓN EXITOSA: 1010
+ Container p02v-emisor-1 Stopping 
+ Container p02v-receptor-1 Stopping 
+ Container p02v-emisor-1 Stopped 
+ Container p02v-emisor-1 Removing 
+ Container p02v-receptor-1 Stopped 
+ Container p02v-receptor-1 Removing 
+ Container p02v-emisor-1 Removed 
+ Container p02v-receptor-1 Removed 
+ Network p02v_labnet Removing 
+ Network p02v_labnet Removed 

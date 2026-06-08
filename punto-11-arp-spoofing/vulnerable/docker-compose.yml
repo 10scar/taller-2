@@ -1,0 +1,27 @@
+services:
+  atacante:
+    build: .
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.10
+  victima:
+    build: .
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.20
+  gateway:
+    build: .
+    cap_add: [NET_ADMIN]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.1
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.9.0.0/24
+          gateway: 10.9.0.254

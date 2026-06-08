@@ -1,0 +1,30 @@
+services:
+  servidor:
+    build: .
+    cap_add: [NET_ADMIN, NET_RAW]
+    privileged: true
+    entrypoint: ["/entrypoint-server.sh"]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.5
+  cliente:
+    build: .
+    command: ["tail", "-f", "/dev/null"]
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.6
+  atacante:
+    build: .
+    command: ["tail", "-f", "/dev/null"]
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      labnet:
+        ipv4_address: 10.9.0.7
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.9.0.0/24

