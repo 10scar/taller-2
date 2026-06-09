@@ -26,9 +26,9 @@ pip install -r requirements.txt
 chmod +x ejercicios-lan/**/*.sh ejercicios-lan/lib/*.sh
 ```
 
-1. En el **servidor**: `cd ejercicios-lan/0X-...` → `./servidor.sh`
+1. En el **servidor**: `cd ejercicios-lan/0X-...` → `./servidor.sh` o `./servidor-mitigado.sh`
 2. Comparte la **IP LAN** que imprime el script
-3. En el **atacante**: `./atacante.sh <IP_SERVIDOR>`
+3. En el **atacante**: `./atacante.sh <IP_SERVIDOR>` (mismo comando en vulnerable y mitigado)
 
 ## Laboratorios
 
@@ -40,6 +40,8 @@ chmod +x ejercicios-lan/**/*.sh ejercicios-lan/lib/*.sh
 | 05 | [05-icmp-tunnel](05-icmp-tunnel/) | ICMP | `sudo` + Scapy |
 | 07 | [07-fragmentacion](07-fragmentacion/) | UDP 9999 | `sudo` + Scapy |
 | 08 | [08-icmp-off-path](08-icmp-off-path/) | TCP 8080 | `sudo` + Scapy |
+
+Cada carpeta incluye `servidor-mitigado.sh` con la contramedida del taller (sysctl, iptables o `tc netem`). Ctrl+C restaura reglas/sysctl donde aplica.
 
 ## Firewall (servidor Fedora)
 
