@@ -142,3 +142,5 @@ Punto 12: OK  (vulnerable ✓  mitigado ✓)
 Punto 13: OK  (vulnerable ✓  mitigado ✓)
 Informe:  /home/oscar/Escritorio/taller 2/report/informe-taller2.html
 PDF:      no generado (instalar weasyprint o wkhtmltopdf)
+[16:23:32] === Taller 2 — Inicio ===
+[16:23:33] Ejecutando punto-01 (vulnerable)...

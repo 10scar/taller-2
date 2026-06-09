@@ -1,22 +1,65 @@
 # Punto 03 — TCP Session Hijacking (Challenge ACK Side-Channel)
 
-Demostración del canal colateral CVE-2016-5696 mediante SYN fuera de ventana.
+Canal colateral CVE-2016-5696: el atacante off-path deduce información de secuencia probando SYN fuera de ventana.
 
-## Topología
+## Topología interna
 
-| Host     | IP        | Rol                              |
-|----------|-----------|----------------------------------|
-| Servidor | 10.9.0.5  | nc -lk :9999, sesión TCP         |
-| Cliente  | 10.9.0.6  | Conexión netcat al servidor      |
-| Atacante | 10.9.0.7  | challenge_ack_probe.py           |
+| Rol | IP | Puerto expuesto al host |
+|-----|-----|-------------------------|
+| Servidor | 10.9.0.5 | `9999` → `:9999` |
+| Cliente | 10.9.0.6 | — |
+| Atacante | 10.9.0.7 | — |
 
-## Ejecución
+El atacante remoto mantiene la sesión con `nc <IP_HOST> 9999` y lanza el probe Scapy **desde su PC**.
+
+Guía del atacante: **[README-ATACANTE.md](README-ATACANTE.md)**
+
+## Levantar laboratorio vulnerable
 
 ```bash
-cd vulnerable && chmod +x demo.sh && ./demo.sh
-cd ../mitigado && chmod +x demo.sh && ./demo.sh
+cd vulnerable
+docker compose up -d --build
+sudo ../../lib/lan-expose.sh
 ```
 
-## Mitigación
+Comprueba:
 
-`sysctl net.ipv4.tcp_challenge_ack_limit=2147483647` en el servidor elimina la variación en Challenge ACKs.
+```bash
+echo test | nc -w 2 localhost 9999
+ip -4 route get 1.1.1.1 | awk '{for (i=1;i<=NF;i++) if ($i=="src") print $(i+1)}'
+```
+
+### Firewall (Fedora)
+
+```bash
+sudo firewall-cmd --add-port=9999/tcp
+```
+
+## Demo automática
+
+```bash
+cd vulnerable && ./demo.sh
+```
+
+## Versión mitigada
+
+```bash
+cd mitigado
+docker compose up -d --build
+sudo ../../lib/lan-expose.sh
+```
+
+## Apagar
+
+```bash
+sudo ../../lib/lan-expose.sh teardown
+docker compose down -v
+sudo firewall-cmd --remove-port=9999/tcp
+```
+
+## Salida esperada
+
+| Modo | Probe Challenge ACK |
+|------|---------------------|
+| Vulnerable | `CANAL COLATERAL ACTIVO: respuestas diferenciadas` |
+| Mitigado | `Respuestas uniformes — side-channel mitigado` |

@@ -2909,3 +2909,225 @@ Successfully tagged p13m-cliente:latest
  Container p13m-atacante-1 Removed 
  Network p13m_labnet Removing 
  Network p13m_labnet Removed 
+
+=== 2026-06-09 16:23:33 p01v ===
+ Image p01v-emisor Building 
+ Image p01v-receptor Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.09kB done
+#1 DONE 0.0s
+
+#2 [receptor internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 357B done
+#2 DONE 0.9s
+
+#3 [emisor internal] load metadata for docker.io/library/python:3.11-slim-bookworm
+#3 DONE 1.9s
+
+#4 [receptor internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.1s
+
+#5 [receptor internal] load build context
+#5 transferring context: 1.79kB done
+#5 DONE 0.1s
+
+#6 [emisor 1/5] FROM docker.io/library/python:3.11-slim-bookworm@sha256:8dca233de9f3d9bb410665f00a4da6dd06f331083137e0e98ccf227236fcc438
+#6 resolve docker.io/library/python:3.11-slim-bookworm@sha256:8dca233de9f3d9bb410665f00a4da6dd06f331083137e0e98ccf227236fcc438 0.1s done
+#6 sha256:b323b53a19e2208b498bd0f55473a1dc9498460583e3c9fbd268f1dddffddd6a 249B / 249B 0.1s done
+#6 sha256:b323b53a19e2208b498bd0f55473a1dc9498460583e3c9fbd268f1dddffddd6a 249B / 249B 0.1s done
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 1.05MB / 15.94MB 0.3s
+#6 sha256:1c23e389790426bfcee3a40b799e08430a86e79a77cc590c1f3adbcf473efebe 0B / 3.52MB 0.2s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 0B / 28.23MB 0.2s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 2.10MB / 15.94MB 0.6s
+#6 sha256:1c23e389790426bfcee3a40b799e08430a86e79a77cc590c1f3adbcf473efebe 1.05MB / 3.52MB 0.6s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 3.15MB / 15.94MB 0.9s
+#6 sha256:1c23e389790426bfcee3a40b799e08430a86e79a77cc590c1f3adbcf473efebe 2.10MB / 3.52MB 0.9s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 2.10MB / 28.23MB 0.9s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 4.19MB / 15.94MB 1.4s
+#6 sha256:1c23e389790426bfcee3a40b799e08430a86e79a77cc590c1f3adbcf473efebe 3.52MB / 3.52MB 1.3s done
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 5.24MB / 15.94MB 1.5s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 4.19MB / 28.23MB 1.4s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 6.18MB / 15.94MB 1.7s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 6.29MB / 28.23MB 1.7s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 8.39MB / 28.23MB 2.0s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 7.34MB / 15.94MB 2.3s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 10.49MB / 28.23MB 2.3s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 8.39MB / 15.94MB 2.6s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 9.44MB / 15.94MB 2.7s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 12.58MB / 28.23MB 2.6s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 10.49MB / 15.94MB 2.9s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 11.53MB / 15.94MB 3.0s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 12.58MB / 15.94MB 3.2s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 14.68MB / 28.23MB 3.0s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 13.63MB / 15.94MB 3.3s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 14.68MB / 15.94MB 3.6s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 16.78MB / 28.23MB 3.5s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 18.87MB / 28.23MB 3.8s
+#6 sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 15.94MB / 15.94MB 3.8s done
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 20.97MB / 28.23MB 3.9s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 24.12MB / 28.23MB 4.2s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 26.21MB / 28.23MB 4.4s
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 28.23MB / 28.23MB 4.7s done
+#6 sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 28.23MB / 28.23MB 4.7s done
+#6 extracting sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531
+#6 extracting sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 1.8s done
+#6 extracting sha256:068fedd6b0f109b8186d00d49327b6fc6747c428fd3c9a8739424ff5f38d7531 1.8s done
+#6 extracting sha256:1c23e389790426bfcee3a40b799e08430a86e79a77cc590c1f3adbcf473efebe
+#6 extracting sha256:1c23e389790426bfcee3a40b799e08430a86e79a77cc590c1f3adbcf473efebe 0.2s done
+#6 extracting sha256:1c23e389790426bfcee3a40b799e08430a86e79a77cc590c1f3adbcf473efebe 0.2s done
+#6 extracting sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28
+#6 extracting sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 1.1s done
+#6 extracting sha256:89bf18422c9cf5f29d07b8af72df31bd0edb6b31ec4bd57b4777a00eee4a8b28 1.1s done
+#6 extracting sha256:b323b53a19e2208b498bd0f55473a1dc9498460583e3c9fbd268f1dddffddd6a 0.0s done
+#6 DONE 8.2s
+
+#7 [emisor 2/5] RUN apt-get update && apt-get install -y --no-install-recommends iproute2 iputils-ping tcpdump     && rm -rf /var/lib/apt/lists/*
+#7 0.642 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#7 0.677 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#7 0.681 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+#7 0.879 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+#7 1.669 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#7 1.670 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [309 kB]
+#7 3.253 Fetched 9361 kB in 3s (3463 kB/s)
+#7 3.253 Reading package lists...
+#7 4.045 Reading package lists...
+#7 4.810 Building dependency tree...
+#7 4.988 Reading state information...
+#7 5.235 The following additional packages will be installed:
+#7 5.235   libbpf1 libbsd0 libcap2-bin libdbus-1-3 libelf1 libmnl0 libpcap0.8
+#7 5.236   libxtables12
+#7 5.238 Suggested packages:
+#7 5.238   iproute2-doc python3:any apparmor
+#7 5.238 Recommended packages:
+#7 5.238   libatm1 libpam-cap dbus
+#7 5.338 The following NEW packages will be installed:
+#7 5.338   iproute2 iputils-ping libbpf1 libbsd0 libcap2-bin libdbus-1-3 libelf1
+#7 5.339   libmnl0 libpcap0.8 libxtables12 tcpdump
+#7 5.438 0 upgraded, 11 newly installed, 0 to remove and 6 not upgraded.
+#7 5.438 Need to get 2433 kB of archives.
+#7 5.438 After this operation, 7893 kB of additional disk space will be used.
+#7 5.438 Get:1 http://deb.debian.org/debian bookworm/main amd64 libelf1 amd64 0.188-2.1 [174 kB]
+#7 5.461 Get:2 http://deb.debian.org/debian bookworm/main amd64 libbpf1 amd64 1:1.1.2-0+deb12u1 [145 kB]
+#7 5.474 Get:3 http://deb.debian.org/debian bookworm/main amd64 libbsd0 amd64 0.11.7-2 [117 kB]
+#7 5.484 Get:4 http://deb.debian.org/debian bookworm/main amd64 libmnl0 amd64 1.0.4-3 [12.5 kB]
+#7 5.510 Get:5 http://deb.debian.org/debian bookworm/main amd64 libxtables12 amd64 1.8.9-2 [30.8 kB]
+#7 5.517 Get:6 http://deb.debian.org/debian bookworm/main amd64 libcap2-bin amd64 1:2.66-4+deb12u3+b1 [35.2 kB]
+#7 5.524 Get:7 http://deb.debian.org/debian bookworm/main amd64 iproute2 amd64 6.1.0-3 [1046 kB]
+#7 5.619 Get:8 http://deb.debian.org/debian bookworm/main amd64 iputils-ping amd64 3:20221126-1+deb12u1 [47.2 kB]
+#7 5.626 Get:9 http://deb.debian.org/debian bookworm/main amd64 libdbus-1-3 amd64 1.14.10-1~deb12u1 [201 kB]
+#7 5.647 Get:10 http://deb.debian.org/debian bookworm/main amd64 libpcap0.8 amd64 1.10.3-1 [157 kB]
+#7 5.664 Get:11 http://deb.debian.org/debian bookworm/main amd64 tcpdump amd64 4.99.3-1 [467 kB]
+#7 5.959 debconf: delaying package configuration, since apt-utils is not installed
+#7 6.000 Fetched 2433 kB in 0s (6865 kB/s)
+#7 6.031 Selecting previously unselected package libelf1:amd64.
+#7 6.031 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6695 files and directories currently installed.)
+#7 6.045 Preparing to unpack .../00-libelf1_0.188-2.1_amd64.deb ...
+#7 6.394 Unpacking libelf1:amd64 (0.188-2.1) ...
+#7 6.470 Selecting previously unselected package libbpf1:amd64.
+#7 6.474 Preparing to unpack .../01-libbpf1_1%3a1.1.2-0+deb12u1_amd64.deb ...
+#7 6.476 Unpacking libbpf1:amd64 (1:1.1.2-0+deb12u1) ...
+#7 6.537 Selecting previously unselected package libbsd0:amd64.
+#7 6.541 Preparing to unpack .../02-libbsd0_0.11.7-2_amd64.deb ...
+#7 6.543 Unpacking libbsd0:amd64 (0.11.7-2) ...
+#7 6.601 Selecting previously unselected package libmnl0:amd64.
+#7 6.606 Preparing to unpack .../03-libmnl0_1.0.4-3_amd64.deb ...
+#7 6.610 Unpacking libmnl0:amd64 (1.0.4-3) ...
+#7 6.663 Selecting previously unselected package libxtables12:amd64.
+#7 6.669 Preparing to unpack .../04-libxtables12_1.8.9-2_amd64.deb ...
+#7 6.673 Unpacking libxtables12:amd64 (1.8.9-2) ...
+#7 6.729 Selecting previously unselected package libcap2-bin.
+#7 6.735 Preparing to unpack .../05-libcap2-bin_1%3a2.66-4+deb12u3+b1_amd64.deb ...
+#7 6.741 Unpacking libcap2-bin (1:2.66-4+deb12u3+b1) ...
+#7 6.810 Selecting previously unselected package iproute2.
+#7 6.816 Preparing to unpack .../06-iproute2_6.1.0-3_amd64.deb ...
+#7 6.820 Unpacking iproute2 (6.1.0-3) ...
+#7 7.022 Selecting previously unselected package iputils-ping.
+#7 7.026 Preparing to unpack .../07-iputils-ping_3%3a20221126-1+deb12u1_amd64.deb ...
+#7 7.032 Unpacking iputils-ping (3:20221126-1+deb12u1) ...
+#7 7.088 Selecting previously unselected package libdbus-1-3:amd64.
+#7 7.091 Preparing to unpack .../08-libdbus-1-3_1.14.10-1~deb12u1_amd64.deb ...
+#7 7.097 Unpacking libdbus-1-3:amd64 (1.14.10-1~deb12u1) ...
+#7 7.158 Selecting previously unselected package libpcap0.8:amd64.
+#7 7.161 Preparing to unpack .../09-libpcap0.8_1.10.3-1_amd64.deb ...
+#7 7.164 Unpacking libpcap0.8:amd64 (1.10.3-1) ...
+#7 7.213 Selecting previously unselected package tcpdump.
+#7 7.217 Preparing to unpack .../10-tcpdump_4.99.3-1_amd64.deb ...
+#7 7.232 Unpacking tcpdump (4.99.3-1) ...
+#7 7.390 Setting up libcap2-bin (1:2.66-4+deb12u3+b1) ...
+#7 7.397 Setting up libdbus-1-3:amd64 (1.14.10-1~deb12u1) ...
+#7 7.414 Setting up libmnl0:amd64 (1.0.4-3) ...
+#7 7.424 Setting up libxtables12:amd64 (1.8.9-2) ...
+#7 7.435 Setting up libbsd0:amd64 (0.11.7-2) ...
+#7 7.447 Setting up libelf1:amd64 (0.188-2.1) ...
+#7 7.458 Setting up iputils-ping (3:20221126-1+deb12u1) ...
+#7 7.491 Setting up libbpf1:amd64 (1:1.1.2-0+deb12u1) ...
+#7 7.501 Setting up iproute2 (6.1.0-3) ...
+#7 7.712 debconf: unable to initialize frontend: Dialog
+#7 7.712 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#7 7.712 debconf: falling back to frontend: Readline
+#7 7.713 debconf: unable to initialize frontend: Readline
+#7 7.713 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#7 7.713 debconf: falling back to frontend: Teletype
+#7 7.757 Setting up libpcap0.8:amd64 (1.10.3-1) ...
+#7 7.763 Setting up tcpdump (4.99.3-1) ...
+#7 7.980 Processing triggers for libc-bin (2.36-9+deb12u14) ...
+#7 DONE 9.2s
+
+#8 [emisor 3/5] RUN pip install --no-cache-dir scapy
+#8 3.546 Collecting scapy
+#8 3.794   Downloading scapy-2.7.0-py3-none-any.whl.metadata (5.8 kB)
+#8 3.833 Downloading scapy-2.7.0-py3-none-any.whl (2.6 MB)
+#8 4.453    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 11.5 MB/s eta 0:00:00
+#8 4.578 Installing collected packages: scapy
+#8 6.728 Successfully installed scapy-2.7.0
+#8 6.729 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#8 6.936 
+#8 6.936 [notice] A new release of pip is available: 24.0 -> 26.1.2
+#8 6.936 [notice] To update, run: pip install --upgrade pip
+#8 DONE 7.9s
+
+#9 [receptor 4/5] WORKDIR /lab
+#9 DONE 0.1s
+
+#10 [emisor 5/5] COPY scripts/ /lab/
+#10 DONE 0.1s
+
+#11 [receptor] exporting to image
+#11 exporting layers
+#11 exporting layers 3.7s done
+#11 exporting manifest sha256:dd318546cd4e0db6aae94a1f5ca4ae52088e83e595d434cffd222bdb70c80e69 0.0s done
+#11 exporting config sha256:12a088b2b7ff42639b847afb6c5a93c2cba87d166597d201b5120d1de875640c 0.0s done
+#11 exporting attestation manifest sha256:36f9180d3206305c58dcd81bc9922bdae976fc5b07da3259de5964abff6e39ea
+#11 exporting attestation manifest sha256:36f9180d3206305c58dcd81bc9922bdae976fc5b07da3259de5964abff6e39ea 0.1s done
+#11 exporting manifest list sha256:7354a53d95db03ff75c6e692b693e3074f1e3fb99a8e814dad4452b96d4d5179 0.0s done
+#11 naming to docker.io/library/p01v-receptor:latest 0.0s done
+#11 unpacking to docker.io/library/p01v-receptor:latest
+#11 unpacking to docker.io/library/p01v-receptor:latest 1.1s done
+#11 DONE 5.1s
+
+#12 [emisor] exporting to image
+#12 exporting layers 3.7s done
+#12 exporting manifest sha256:39bcd0ce8427c3f333735df266abeb1ea81dab1ba8effac179ed5138bb9cbdee 0.0s done
+#12 exporting config sha256:9e167909376478be647f70461b8e82977e0c9952405dc647d91078965b3a2da7 0.0s done
+#12 exporting attestation manifest sha256:9b77916035f91dbbf6145ef90c4cd7a87674b7733f0f0d2ef1369c07827722e2 0.1s done
+#12 exporting manifest list sha256:0cdc2d919a8e1cee86642fb2e37970a2cbe6e71513f903e24607e90e028eba79 0.0s done
+#12 naming to docker.io/library/p01v-emisor:latest 0.0s done
+#12 unpacking to docker.io/library/p01v-emisor:latest 1.1s done
+#12 DONE 5.1s
+
+#13 [emisor] resolving provenance for metadata file
+#13 DONE 0.0s
+
+#14 [receptor] resolving provenance for metadata file
+#14 DONE 0.0s
+ Image p01v-emisor Built 
+ Image p01v-receptor Built 
+ Network p01v_labnet Creating 
+ Network p01v_labnet Created 
+ Container p01v-receptor-1 Creating 
+ Container p01v-emisor-1 Creating 
+
+ Network p01v_labnet Removing 
+ Network p01v_labnet Removed 

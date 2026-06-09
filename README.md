@@ -30,6 +30,19 @@ Ejecutar un solo punto: `./run_all.sh 5`
 
 Regenerar informe sin Docker: `python3 lib/generate_report.py --only-report`
 
+## Acceso remoto en LAN (sin SSH)
+
+Varios laboratorios (03, 04, 08, 13…) exponen puertos al host y permiten que un atacante en la misma red ejecute scripts con Scapy en su PC:
+
+1. Operador: `docker compose up -d` + `sudo lib/lan-expose.sh`
+2. Atacante: `sudo ip route add 10.9.0.0/24 via <IP_LAN_OPERADOR>` + `pip install scapy` + scripts del punto
+
+Ver `README-ATACANTE.md` en cada carpeta `punto-XX-…`.
+
+## Ejercicios LAN sin Docker
+
+Los puntos **02, 03, 04, 05, 07 y 08** también están en [`ejercicios-lan/`](ejercicios-lan/): un servidor en tu PC (IP LAN) y el atacante remoto ejecuta `./atacante.sh <IP>` sin SSH ni Docker.
+
 ## Capturas limpias
 
 Los pantallazos muestran **solo la fase de ataque** (comando del atacante + respuesta del servidor/víctima), con prompts estilo terminal local (`oscar@lab $` / `oscar@lab #`). El setup Docker (`build`, `up`, `down`) va silencioso a [`report/setup.log`](report/setup.log).
